@@ -31,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Center(
           child: Image.asset(
             "assets/logo.png",
-            height: 160, // Définissez la hauteur souhaitée
-            width: 160, // Définissez la largeur souhaitée
+            height: 150, // Définissez la hauteur souhaitée
+            width: 150, // Définissez la largeur souhaitée
           ), // Ajoutez votre image de logo
         ),
       ),
