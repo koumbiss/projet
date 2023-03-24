@@ -5,6 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Flutter (TECNO B1g)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "06411371CN003759",
+            "flutterMode": "debug"
+          
+          },
+        {
+            "name": "Flutter: Run all Tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "./test/"
+        },
+        {
+            "name": "Dart: Run all Tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "./test/"
+        },
+        
+        {
             "name": "projet_etudes",
             "request": "launch",
             "type": "dart"
