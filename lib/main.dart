@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projet_etudes/regionselectionpage.dart';
+import 'package:projet_etudes/homepage.dart';
+import 'package:projet_etudes/locationselection.dart';
+import 'package:projet_etudes/regionselection.dart';
 import 'package:projet_etudes/splash.dart';
 
 void main() {
@@ -12,52 +14,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mon application',
-      debugShowCheckedModeBanner: false,
+      title: 'Ma superbe application',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: const TextTheme(
+          // ignore: deprecated_member_use
+          headline1: TextStyle(color: Colors.white),
+          // ignore: deprecated_member_use
+          bodyText1: TextStyle(color: Colors.white),
+          // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
+        ),
       ),
       home: const SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => const MyHomePage(),
+        '/location': (BuildContext context) => const LocationSelection(),
+        '/region': (BuildContext context) => RegionSelection(),
+        '/home': (BuildContext context) => MyHomePage(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-    // Ajoutez ici le code pour charger les données nécessaires à l'application
-    // et pour passer à la page suivante une fois que le chargement est terminé.
-    // Par exemple, vous pouvez utiliser un Future.delayed pour afficher
-    // la fenêtre de sélection de région après quelques secondes :
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const RegionSelectionPage()),
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mon application'),
-      ),
-      body: const Center(
-        child: Text('Bienvenue sur ma page d\'accueil !'),
-      ),
     );
   }
 }

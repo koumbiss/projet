@@ -67,6 +67,8 @@ flutter:
   assets:
       - assets/logo.png
       - assets/region.jpg
+      - assets/FondNoir.jpg
+      - assets/loginImg.jpg
 
 
   #   - images/a_dot_ham.jpeg
