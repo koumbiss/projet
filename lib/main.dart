@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projet_etudes/homepage.dart';
-import 'package:projet_etudes/locationselection.dart';
-import 'package:projet_etudes/regionselection.dart';
-import 'package:projet_etudes/splash.dart';
+import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/locationselection.dart';
+import 'package:projet_etudes/client/regionselection.dart';
+import 'package:projet_etudes/client/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/location': (BuildContext context) => const LocationSelection(),
         '/region': (BuildContext context) => RegionSelection(),
-        '/home': (BuildContext context) => MyHomePage(),
+        '/home': (BuildContext context) => MyHomePage(
+              collections: const [],
+            ),
       },
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_etudes/homepage.dart';
-import 'package:projet_etudes/regionselection.dart';
+import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/regionselection.dart';
 
 class LocationSelection extends StatefulWidget {
-  const LocationSelection({Key? key}) : super(key: key);
+  const LocationSelection({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -133,7 +133,10 @@ class _LocationSelectionState extends State<LocationSelection> {
     // ...
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => MyHomePage()),
+      MaterialPageRoute(
+          builder: (context) => MyHomePage(
+                collections: const [],
+              )),
     );
   }
 }

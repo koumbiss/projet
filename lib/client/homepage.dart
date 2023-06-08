@@ -7,7 +7,7 @@ class MyHomePage extends StatelessWidget {
     'Collection 3'
   ];
 
-  const MyHomePage({Key? key, required this.collections}) : super(key: key);
+  const MyHomePage({super.key, required this.collections});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 200,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
