@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projet_etudes/client/homepage.dart';
-import 'package:projet_etudes/client/locationselection.dart';
+import 'package:projet_etudes/testt/locationselection.dart';
 import 'package:projet_etudes/client/regionselection.dart';
 import 'package:projet_etudes/client/splash.dart';
 
