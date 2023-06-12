@@ -65,6 +65,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+      - assets/collection korite23/
       - assets/logo.png
       - assets/collection korite23/photo1.jpg
       - assets/collection korite23/photo2.jpg

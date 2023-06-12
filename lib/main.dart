@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ma superbe application',
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -26,14 +27,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: const SplashScreen(),
-      routes: <String, WidgetBuilder>{
-        '/location': (BuildContext context) => const LocationSelection(),
-        '/region': (BuildContext context) => RegionSelection(),
-        '/home': (BuildContext context) => MyHomePage(
-              collections: const [],
-            ),
-      },
+      home: MyHomePage(),
     );
   }
 }

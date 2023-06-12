@@ -1,84 +1,92 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
+import 'dart:math' as math;
+
+class MyHomePage extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return MyHomePage1();
+  }
+}
+
+class MyHomePage1 extends State<MyHomePage> {
   final List<String> collections = [
-    'Collection 1',
-    'Collection 2',
-    'Collection 3'
+    'assets/collection korite23/photo6.jpg',
+    'assets/collection korite23/photo1.jpg',
+    'assets/collection korite23/photo10.jpg'
   ];
 
-  const MyHomePage({super.key, required this.collections});
+  var ett;
 
-  @override
+  var jour;
+
+  TextEditingController searchController = TextEditingController();
+  bool showloading = false;
+  bool boolean = true;
+  var couleur = Colors.white;
+  var status;
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: ListView.builder(
-        itemCount: collections.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  collections[index],
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              SizedBox(
-                height: 200,
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            actions: [],
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Colors.white, Colors.white])),
+            ),
+            title: Text(
+              "YaryLifestyle",
+              style: TextStyle(color: Color.fromARGB(178, 0, 0, 0)),
+            ),
+
+            toolbarHeight: 50.7,
+            // leading: Text("PG"),
+            centerTitle: false,
+
+            //shape: RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(0),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(14),topRight: Radius.circular(0))),
+
+            elevation: 0,
+          ),
+          body: Column(
+            children: [
+              Expanded(
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: 150,
-                      margin: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.grey[300],
-                      ),
-                      child: Center(
-                        child: Text('Item $index'),
-                      ),
-                    );
-                  },
-                ),
-              ),
+                    itemCount: collections.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 1.0),
+                        child: Container(
+                            height: 600,
+                            color: Colors.deepPurple[200],
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(120, 130),
+                                elevation: 1,
+                                // padding: EdgeInsets.all(0),
+                                primary: Color.fromARGB(255, 255, 255, 255),
+                                padding: EdgeInsets.all(0),
+                              ),
+                              child: SizedBox(
+                                  height: 600,
+                                  width: 420,
+                                  child: Image.asset(
+                                    collections[index],
+                                    fit: BoxFit.cover,
+                                    height: 100,
+                                  )),
+                            )),
+                      );
+                    }),
+              )
             ],
-          );
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Products',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Wishlist',
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add new collection
-        },
-        child: const Icon(Icons.add),
-      ),
-    );
+        ));
   }
 }
