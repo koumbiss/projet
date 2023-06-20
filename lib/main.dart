@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projet_etudes/client/homepage.dart';
-import 'package:projet_etudes/testt/locationselection.dart';
-import 'package:projet_etudes/client/regionselection.dart';
-import 'package:projet_etudes/client/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +24,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }

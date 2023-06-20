@@ -1,10 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
-import 'dart:math' as math;
-
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
   State<StatefulWidget> createState() {
     return MyHomePage1();
   }
@@ -27,20 +26,21 @@ class MyHomePage1 extends State<MyHomePage> {
   var couleur = Colors.white;
   var status;
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            actions: [],
+            actions: const [],
             flexibleSpace: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [Colors.white, Colors.white])),
             ),
-            title: Text(
+            title: const Text(
               "YaryLifestyle",
               style: TextStyle(color: Color.fromARGB(178, 0, 0, 0)),
             ),
@@ -67,11 +67,9 @@ class MyHomePage1 extends State<MyHomePage> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                fixedSize: Size(120, 130),
+                                fixedSize: const Size(120, 130), backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                                 elevation: 1,
-                                // padding: EdgeInsets.all(0),
-                                primary: Color.fromARGB(255, 255, 255, 255),
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                               ),
                               child: SizedBox(
                                   height: 600,
