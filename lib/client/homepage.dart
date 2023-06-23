@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -10,6 +12,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePage1 extends State<MyHomePage> {
+  CloudFirestore fire = CloudFirestore();
   final List<String> collections = [
     'assets/collection korite23/photo6.jpg',
     'assets/collection korite23/photo1.jpg',
@@ -65,9 +68,17 @@ class MyHomePage1 extends State<MyHomePage> {
                             height: 600,
                             color: Colors.deepPurple[200],
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                fire.addCollection(
+                                    "yarry",
+                                    "assets/collection korite23/photo6.jpg",
+                                    DateTime.now());
+                                print("C'est bon ");
+                              },
                               style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(120, 130), backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                                fixedSize: const Size(120, 130),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 255, 255, 255),
                                 elevation: 1,
                                 padding: const EdgeInsets.all(0),
                               ),
