@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/client/homepage.dart';
 
 void main() async {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: const MyHomePage(),
+      home: AJoutArticles(),
     );
   }
 }
