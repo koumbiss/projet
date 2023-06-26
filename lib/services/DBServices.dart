@@ -9,8 +9,10 @@ class DBServices {
   Future saveCollection(Collection col) async {
     try {
       await Col.add(col.toJson());
+      print("object");
       return true;
     } catch (e) {
+      print("Exception in methode saveCollection : $e");
       return false;
     }
   }

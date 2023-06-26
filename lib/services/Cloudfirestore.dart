@@ -8,13 +8,10 @@ import 'package:path/path.dart';
 import 'dart:io';
 
 class CloudFirestore {
-  CollectionReference productref =
-      FirebaseFirestore.instance.collection("Collections");
-
   addCollection(nom, upl, date) async {
     try {
-      var url = await (await upl).ref.getDownloadURL();
-      print("url:$url");
+      // var url = await (await upl).ref.getDownloadURL();
+      // print("url:$url");
       await DBServices().saveCollection(
         Collection(nom: nom, image: upl, Date: date),
       );
