@@ -4,8 +4,10 @@ class Article {
       disponibilite,
       description,
       image,
-      collection;
-  late int prix, quantite;
+      collection,
+      categorie;
+  late double prix;
+  late int quantite;
   Article(
       {required this.referenceArticle,
       required this.nomArticle,
@@ -14,7 +16,8 @@ class Article {
       required this.image,
       required this.quantite,
       required this.prix,
-      required this.collection});
+      required this.collection,
+      required this.categorie});
 
 //doc.data())).toList()
   static Article fromJson(Map<String, dynamic> json) => Article(
@@ -26,6 +29,7 @@ class Article {
         description: json['description'],
         image: json['image'],
         collection: json['collection'],
+        categorie: json['categorie'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,5 +41,6 @@ class Article {
         'description': description,
         'image': image,
         'collection': collection,
+        'categorie': categorie,
       };
 }
