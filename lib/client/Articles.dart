@@ -146,6 +146,8 @@ class ArticlesState extends State<Articles> {
                                 i < snapshot.data.docs.length;
                                 i++) {
                               mesproduits2.add(Article(
+                                  categorie:
+                                      snapshot.data.docs[i].data()['categorie'],
                                   referenceArticle: snapshot.data.docs[i].id,
                                   collection: snapshot.data.docs[i]
                                       .data()['referenceArticle'],
@@ -283,16 +285,13 @@ class ArticlesState extends State<Articles> {
                                             mesproduits.add(Article(
                                                 referenceArticle:
                                                     snapshot.data.docs[i].id,
-                                                collection: snapshot
-                                                    .data.docs[i]
+                                                collection: snapshot.data.docs[i]
                                                     .data()['referenceArticle'],
-                                                description: snapshot
-                                                    .data.docs[i]
+                                                description: snapshot.data.docs[i]
                                                     .data()['description'],
                                                 image: snapshot.data.docs[i]
                                                     .data()['image'],
-                                                nomArticle: snapshot
-                                                    .data.docs[i]
+                                                nomArticle: snapshot.data.docs[i]
                                                     .data()['nomArticle'],
                                                 disponibilite: snapshot
                                                     .data.docs[i]
@@ -300,7 +299,9 @@ class ArticlesState extends State<Articles> {
                                                 prix: snapshot.data.docs[i]
                                                     .data()['prix'],
                                                 quantite: snapshot.data.docs[i]
-                                                    .data()['quantite']));
+                                                    .data()['quantite'],
+                                                categorie: snapshot.data.docs[i]
+                                                    .data()['categorie']));
                                           }
                                           mesproduits.addAll(mesproduits2);
                                           print(

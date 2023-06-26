@@ -13,7 +13,8 @@ class CloudFirestore {
       // var url = await (await upl).ref.getDownloadURL();
       // print("url:$url");
       await DBServices().saveCollection(
-        Collection(nom: nom, image: upl, Date: date),
+        Collection(
+            idCollection: nom, nomCollection: nom, image: upl, date: date),
       );
     } catch (e) {
       print("Exception in methode setlocation : $e");

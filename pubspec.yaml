@@ -74,6 +74,7 @@ flutter:
   assets:
       - assets/collection korite23/
       - assets/imagevide.jpg
+      - assets/loginImg.jpg
       - assets/logo.png
       - assets/collection korite23/photo1.jpg
       - assets/collection korite23/photo2.jpg

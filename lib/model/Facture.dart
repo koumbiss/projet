@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Facture {
   late int idLivraison, numeroLivreur;
-  late String nomLivreur, delaiLivraison;
+  late String nomLivreur;
   late double prixLivraison;
-  late DateTime dateLivraison;
+  late DateTime dateLivraison, delaiLivraison;
 
   Facture({
     required this.idLivraison,
