@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart';
+
 import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Collection.dart';
 
