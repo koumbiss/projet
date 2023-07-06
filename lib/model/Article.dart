@@ -6,8 +6,8 @@ class Article {
       image,
       collection,
       categorie;
-  late double prix;
-  late int quantite;
+
+  late int quantite, prix;
   Article(
       {required this.referenceArticle,
       required this.nomArticle,

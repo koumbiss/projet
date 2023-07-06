@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
+import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -59,41 +61,63 @@ class MyHomePage1 extends State<MyHomePage> {
           body: Column(
             children: [
               Expanded(
-                child: ListView.builder(
-                    itemCount: collections.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 1.0),
-                        child: Container(
-                            height: 600,
-                            color: Colors.deepPurple[200],
-                            child: ElevatedButton(
-                              onPressed: () {
-                                fire.addCollection(
-                                    "yarry",
-                                    "assets/collection korite23/photo6.jpg",
-                                    DateTime.now());
-                                print("C'est bon ");
-                              },
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(120, 130),
-                                backgroundColor:
-                                    const Color.fromARGB(255, 255, 255, 255),
-                                elevation: 1,
-                                padding: const EdgeInsets.all(0),
-                              ),
-                              child: SizedBox(
+                child: StreamBuilder<Object>(
+                    stream: FirebaseFirestore.instance
+                        .collection("Collections")
+                        .snapshots(),
+                    builder: (context, AsyncSnapshot snapshot) {
+                      return ListView.builder(
+                          itemCount: snapshot.data.docs.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 1.0),
+                              child: Container(
                                   height: 600,
-                                  width: 420,
-                                  child: Image.asset(
-                                    collections[index],
-                                    fit: BoxFit.cover,
-                                    height: 100,
+                                  color: Colors.deepPurple[200],
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: const Size(120, 130),
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 255, 255, 255),
+                                      elevation: 1,
+                                      padding: const EdgeInsets.all(0),
+                                    ),
+                                    child: SizedBox(
+                                        height: 600,
+                                        width: 420,
+                                        child: Image.network(
+                                          snapshot.data.docs[index]["image"],
+                                          fit: BoxFit.cover,
+                                          height: 100,
+                                        )),
                                   )),
-                            )),
-                      );
+                            );
+                          });
                     }),
-              )
+              ),
+              Container(
+                width: 400,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AJoutCollection()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(40, 40),
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    elevation: 1,
+                    padding: const EdgeInsets.all(0),
+                  ),
+                  child: Icon(
+                    Icons.add,
+                    color: Color.fromARGB(255, 31, 30, 30),
+                  ),
+                ),
+              ),
             ],
           ),
         ));

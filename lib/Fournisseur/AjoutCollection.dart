@@ -9,15 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:projet_etudes/model/Categorie.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
-class AJoutArticles extends StatefulWidget {
-  final idcollection;
-  AJoutArticles({Key? key, this.idcollection}) : super(key: key);
+class AJoutCollection extends StatefulWidget {
   State<StatefulWidget> createState() {
-    return AJoutArticlesstate();
+    return AJoutCollectionstate();
   }
 }
 
-class AJoutArticlesstate extends State<AJoutArticles> {
+class AJoutCollectionstate extends State<AJoutCollection> {
   GlobalKey<FormState> formstates = new GlobalKey<FormState>();
   var v;
   late int re;
@@ -116,11 +114,12 @@ class AJoutArticlesstate extends State<AJoutArticles> {
               color: Colors.white,
               child: ListView(
                 children: [
-                  Row(
+                  Column(
                     children: [
                       Container(
-                        width: 100,
-                        margin: EdgeInsets.only(top: 20, left: 10, right: 0),
+                        width: 400,
+                        height: 440,
+                        margin: EdgeInsets.only(top: 0, left: 10, right: 10),
                         decoration: BoxDecoration(
                             color: Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.only(
@@ -378,247 +377,23 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                           child: Column(
                             children: [
                               Container(
-                                  height: 40,
-                                  width: 140,
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, left: 10, right: 10, top: 20),
-                                  child: TextFormField(
-                                      controller: CategorieCollection,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return "champ vide";
-                                        } else
-                                          return null;
-                                      },
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        // errorMaxLines: 5,
-                                        hintMaxLines: 19,
-
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        //  floatingLabelAlignment: FloatingLabelAlignment.center,
-                                        //  floatingLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 116, 203, 232),
-                                              width: 1),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 244, 244, 244),
-                                              width: 1),
-                                        ),
-
-                                        label: Center(
-                                          child: Text(
-                                            "Categorie ",
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 211, 211, 211)),
-                                          ),
-                                        ),
-                                      ))),
-                              Container(
-                                  height: 40,
-                                  width: 200,
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, left: 10, right: 10, top: 20),
-                                  child: TextFormField(
-                                      controller: ReferenceController,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return "champ vide";
-                                        } else
-                                          return null;
-                                      },
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        // errorMaxLines: 5,
-                                        hintMaxLines: 19,
-
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        //  floatingLabelAlignment: FloatingLabelAlignment.center,
-                                        //  floatingLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 116, 203, 232),
-                                              width: 1),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 244, 244, 244),
-                                              width: 1),
-                                        ),
-
-                                        label: Center(
-                                          child: Text(
-                                            "Reference ",
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 211, 211, 211)),
-                                          ),
-                                        ),
-                                      ))),
-                              Container(
                                   height: 50,
-                                  width: 260,
+                                  width: 300,
                                   margin: EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
+                                      bottom: 10, left: 10, right: 10, top: 20),
                                   child: TextFormField(
                                       controller: nomController,
                                       validator: (val) {
                                         if (val!.isEmpty) {
                                           return "champ vide";
-                                        } else if (val.length < 2) {
-                                          return "entrer un nom valide";
-                                        } else
-                                          return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        //  floatingLabelAlignment: FloatingLabelAlignment.center,
-                                        //  floatingLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 116, 203, 232),
-                                              width: 1),
-                                          gapPadding: 0.2,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 244, 244, 244),
-                                              width: 1),
-                                        ),
-
-                                        label: Center(
-                                          child: Text(
-                                            "Nom de l'article",
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 211, 211, 211)),
-                                          ),
-                                        ),
-                                      ))),
-                              Container(
-                                  width: 255,
-                                  height: 50,
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
-                                  child: TextFormField(
-                                      controller: prixController,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return "champ vide";
-                                        } else
-                                          return null;
-                                      },
-                                      onChanged: (val) {
-                                        prix = int.parse(prixController.text);
-                                      },
-                                      keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        //  floatingLabelAlignment: FloatingLabelAlignment.center,
-                                        //  floatingLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 116, 203, 232),
-                                              width: 1),
-                                          gapPadding: 0.2,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 244, 244, 244),
-                                              width: 1),
-                                        ),
-
-                                        label: Center(
-                                          child: Text(
-                                            "Prix",
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 211, 211, 211)),
-                                          ),
-                                        ),
-                                      ))),
-                              Container(
-                                  width: 255,
-                                  height: 50,
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
-                                  child: TextFormField(
-                                      controller: quatiteController,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return "champ vide";
-                                        } else
-                                          return null;
-                                      },
-                                      onChanged: (val) {
-                                        quantite =
-                                            int.parse(quatiteController.text);
-                                      },
-                                      keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        //  floatingLabelAlignment: FloatingLabelAlignment.center,
-                                        //  floatingLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 116, 203, 232),
-                                              width: 1),
-                                          gapPadding: 0.2,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color.fromARGB(
-                                                  255, 244, 244, 244),
-                                              width: 1),
-                                        ),
-
-                                        label: Center(
-                                          child: Text(
-                                            "Quantite ",
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 211, 211, 211)),
-                                          ),
-                                        ),
-                                      ))),
-                              Container(
-                                  width: 255,
-                                  height: 50,
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
-                                  child: TextFormField(
-                                      controller: DescriptionController,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return "champ vide";
                                         } else
                                           return null;
                                       },
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
+                                        // errorMaxLines: 5,
+                                        hintMaxLines: 19,
+
                                         filled: true,
                                         fillColor:
                                             Color.fromARGB(255, 255, 255, 255),
@@ -629,7 +404,6 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                               color: Color.fromARGB(
                                                   255, 116, 203, 232),
                                               width: 1),
-                                          gapPadding: 0.2,
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -640,7 +414,7 @@ class AJoutArticlesstate extends State<AJoutArticles> {
 
                                         label: Center(
                                           child: Text(
-                                            "Description ",
+                                            "nom ",
                                             style: TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 211, 211, 211)),
@@ -662,26 +436,13 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                   onPressed: () {
                                     var formdata = formstates.currentState;
 
-                                    print(" type ${quatiteController.text}");
-                                    print(" qunt ${quantite}");
-
                                     if (!formdata!.validate()) {
                                       //  // alert.Showmessage(context, "Champs vide");
                                     } else if (upl != null) {
-                                      print(
-                                          "ref ${ReferenceController.text} url ${upl}");
-                                      print(
-                                          "nom ${nomController.text} prix ${upl}");
-
-                                      CloudFirestore().addArticle(
-                                          ReferenceController.text,
+                                      CloudFirestore().addCollection(
                                           nomController.text,
-                                          prix,
-                                          quantite,
-                                          DescriptionController.text,
                                           upl,
-                                          "widget.idcollection",
-                                          CategorieCollection.text);
+                                          DateTime.now());
                                       print("C'est bon ");
                                       // var ider = FirebaseAuth
                                       //     .instance.currentUser!.uid;
