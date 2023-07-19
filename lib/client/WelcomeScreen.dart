@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projet_etudes/client/loginScreen.dart';
-import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/fournisseur/Homepage.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -37,7 +36,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   welcomTit,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Text(

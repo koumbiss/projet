@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
@@ -8,13 +7,12 @@ import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Item.dart';
 
 import 'package:provider/provider.dart';
-import 'dart:math' as math;
 
 class ToutslesArticles extends StatefulWidget {
   final id, idc, nom, photo, categorie;
-  ToutslesArticles(
-      {Key? key, this.idc, this.id, this.categorie, this.nom, this.photo})
-      : super(key: key);
+  const ToutslesArticles(
+      {super.key, this.idc, this.id, this.categorie, this.nom, this.photo});
+  @override
   State<StatefulWidget> createState() {
     return ToutslesArticlesState();
   }
@@ -31,6 +29,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
   var vert22 = Colors.grey;
   bool boolean = true;
   double mmargin = 19;
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,13 +40,13 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                   Consumer<Cart>(builder: ((context, value, child) {
                     return Stack(children: [
                       Container(
-                        margin: EdgeInsets.only(right: 25),
+                        margin: const EdgeInsets.only(right: 25),
                         child: IconButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Panier()));
+                                      builder: (context) => const Panier()));
                             },
                             icon: Icon(Icons.shopping_cart_rounded,
                                 color: vert22)),
@@ -58,6 +57,10 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                           child: Container(
                             height: 20,
                             width: 30,
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(99, 224, 224, 224)),
                             child: Text(
                               " ${value.qte}",
                               style: TextStyle(
@@ -65,10 +68,6 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                   fontSize: 13,
                                   color: vert22),
                             ),
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(99, 224, 224, 224)),
                           )),
                     ]);
                   }))
@@ -86,7 +85,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     IconlyLight.arrowLeft2,
                     color: Color.fromARGB(255, 87, 87, 87),
                   ),
@@ -111,7 +110,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
             ),
             resizeToAvoidBottomInset: true,
             body: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.topRight,
@@ -164,7 +163,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
 
                             return Container();
                           }
-                          return Center(
+                          return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }),
@@ -173,7 +172,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                         Container(
                             width: 300,
                             margin:
-                                EdgeInsets.only(top: 10, bottom: 20, left: 30),
+                                const EdgeInsets.only(top: 10, bottom: 20, left: 30),
                             child: TextFormField(
                               onFieldSubmitted: (value) {
                                 print("search : $value");
@@ -181,7 +180,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                               },
                               controller: searchControl,
                               keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   hintText: "chercher un produit",
                                   hintStyle: TextStyle(
                                       color:
@@ -201,12 +200,12 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                   )),
                                   filled: true,
                                   fillColor: Color.fromARGB(255, 250, 250, 250),
-                                  contentPadding: const EdgeInsets.all(15.5)),
+                                  contentPadding: EdgeInsets.all(15.5)),
                             )),
                         Container(
                           height: 50,
-                          margin: EdgeInsets.only(top: 10, bottom: 20),
-                          decoration: BoxDecoration(
+                          margin: const EdgeInsets.only(top: 10, bottom: 20),
+                          decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 250, 250, 250),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(0),
@@ -220,12 +219,13 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                 setState(() {
                                   boolean = false;
                                 });
-                              } else
+                              } else {
                                 setState(() {
                                   boolean = true;
                                 });
+                              }
                             },
-                            icon: Icon(Icons.search),
+                            icon: const Icon(Icons.search),
                             color: Colors.grey,
                           ),
                         ),
@@ -242,11 +242,11 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(left: 10),
                           ),
                           Container(
                               width: 400,
-                              padding: EdgeInsets.only(left: 10, right: 20),
+                              padding: const EdgeInsets.only(left: 10, right: 20),
                               child: ListView(
                                 children: [
                                   StreamBuilder(
@@ -306,7 +306,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
 
                                           return GridView.builder(
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               itemCount: mesproduits.length,
                                               gridDelegate:
                                                   SliverGridDelegateWithFixedCrossAxisCount(
@@ -323,14 +323,14 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                               ),
                                               shrinkWrap: true,
                                               itemBuilder: (context, index) {
-                                                var image;
-                                                var nom;
-                                                var collection;
-                                                var disponibilite;
-                                                var quantite;
-                                                var prix;
-                                                var description;
-                                                var category;
+                                                String image;
+                                                String nom;
+                                                String collection;
+                                                String disponibilite;
+                                                int quantite;
+                                                int prix;
+                                                String description;
+                                                String category;
 
                                                 image =
                                                     mesproduits[index].image;
@@ -369,20 +369,20 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                     "lenght nom ${nom.length}");
 
                                                 print(
-                                                    "lenght marge ${mmargin}");
+                                                    "lenght marge $mmargin");
 
                                                 return Container(
                                                   // height: 200,
 
-                                                  margin: EdgeInsets.only(
+                                                  margin: const EdgeInsets.only(
                                                       left: 10,
                                                       top: 10,
                                                       right: 10,
                                                       bottom: 10),
 
-                                                  padding: EdgeInsets.all(10),
+                                                  padding: const EdgeInsets.all(10),
 
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
@@ -452,10 +452,28 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                             //             description:
                                                             //                 description)));
                                                           },
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            fixedSize:
+                                                                const Size(120, 120), backgroundColor: const Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
+                                                            elevation: 1,
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    0),
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            90)),
+                                                          ),
                                                           child: Stack(
                                                             children: [
                                                               image == null
-                                                                  ? CircleAvatar(
+                                                                  ? const CircleAvatar(
                                                                       backgroundColor: Color.fromARGB(
                                                                           255,
                                                                           255,
@@ -469,7 +487,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                           80,
                                                                     )
                                                                   : CircleAvatar(
-                                                                      backgroundColor: Color.fromARGB(
+                                                                      backgroundColor: const Color.fromARGB(
                                                                           255,
                                                                           255,
                                                                           255,
@@ -490,7 +508,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: EdgeInsets.only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -499,13 +517,13 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: Color.fromARGB(
+                                                                        color: const Color.fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
                                                                             193),
                                                                         child:
-                                                                            Text(
+                                                                            const Text(
                                                                           " non disponible ",
                                                                           style:
                                                                               TextStyle(color: Color.fromARGB(255, 140, 7, 7)),
@@ -513,43 +531,20 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                       ))
                                                                   : Container()
                                                             ],
-                                                          ),
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            fixedSize:
-                                                                Size(120, 120),
-                                                            elevation: 1,
-                                                            // padding: EdgeInsets.all(0),
-                                                            primary:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    0),
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            90)),
                                                           )),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
-                                                              nom == null
-                                                                  ? ""
-                                                                  : nom,
+                                                              nom ?? "",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -559,45 +554,40 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                       17))),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
-                                                              collection == null
-                                                                  ? ""
-                                                                  : collection,
+                                                              collection ?? "",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   color: Colors
                                                                       .black,
                                                                   fontSize:
                                                                       14))),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
-                                                              disponibilite ==
-                                                                      null
-                                                                  ? ""
-                                                                  : "$disponibilite",
+                                                              disponibilite ?? "",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   color: Colors
                                                                       .black,
                                                                   fontSize:
                                                                       13))),
                                                       Container(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             top: 5),
                                                         decoration: BoxDecoration(
-                                                            boxShadow: [
+                                                            boxShadow: const [
                                                               BoxShadow(
                                                                   blurRadius:
                                                                       18,
@@ -611,7 +601,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                           230))
                                                             ],
                                                             color:
-                                                                Color.fromARGB(
+                                                                const Color.fromARGB(
                                                                     255,
                                                                     255,
                                                                     255,
@@ -621,7 +611,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                     .circular(
                                                                         40)),
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets.only(
                                                                 top: 2,
                                                                 bottom: 2,
                                                                 left: 2,
@@ -633,7 +623,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                 : "$prix Mro",
                                                             textAlign: TextAlign
                                                                 .center,
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                                                                 color: Colors
                                                                     .black,
                                                                 fontSize: 16,
@@ -647,11 +637,32 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                               0
                                                           ? Container()
                                                           : Container(
-                                                              margin: EdgeInsets
+                                                              margin: const EdgeInsets
                                                                   .only(
                                                                       top: 10),
                                                               width: 40,
                                                               height: 40,
+                                                              decoration: const BoxDecoration(
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Color.fromARGB(
+                                                                            121,
+                                                                            168,
+                                                                            168,
+                                                                            168),
+                                                                        blurRadius:
+                                                                            15,
+                                                                        spreadRadius:
+                                                                            -4),
+                                                                  ],
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          218,
+                                                                          222,
+                                                                          241,
+                                                                          236)),
                                                               child: Consumer<
                                                                       Cart>(
                                                                   builder: ((context,
@@ -701,7 +712,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                             prix,
                                                                           );
                                                                         } else {
-                                                                          final snackBar =
+                                                                          const snackBar =
                                                                               SnackBar(
                                                                             content:
                                                                                 Text('quantite non disponible'),
@@ -735,34 +746,13 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                                                     print(
                                                                         "${instance.selectedproduct}");
                                                                   },
-                                                                  icon: Icon(
+                                                                  icon: const Icon(
                                                                     Icons
                                                                         .add_shopping_cart_rounded,
                                                                     size: 27,
                                                                   ),
                                                                 );
                                                               })),
-                                                              decoration: BoxDecoration(
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                        color: Color.fromARGB(
-                                                                            121,
-                                                                            168,
-                                                                            168,
-                                                                            168),
-                                                                        blurRadius:
-                                                                            15,
-                                                                        spreadRadius:
-                                                                            -4),
-                                                                  ],
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          218,
-                                                                          222,
-                                                                          241,
-                                                                          236)),
                                                             ),
                                                     ],
                                                   ),
@@ -770,7 +760,7 @@ class ToutslesArticlesState extends State<ToutslesArticles> {
                                               });
                                         }
 
-                                        return Center(
+                                        return const Center(
                                           child: CircularProgressIndicator(),
                                         );
                                       }),

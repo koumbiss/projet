@@ -1,20 +1,9 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 //import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
->>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
-import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
-import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Articles.dart';
-import 'package:projet_etudes/client/ToutslesArticles.dart';
-import 'package:projet_etudes/model/Item.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
-import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -70,8 +59,8 @@ class MyHomePage1 extends State<MyHomePage> {
                                         vertical: 1.0),
                                     child: Container(
                                         height: 580,
-                                        color:
-                                            Color.fromARGB(255, 226, 223, 232),
+                                        color: const Color.fromARGB(
+                                            255, 226, 223, 232),
                                         child: Stack(
                                           children: [
                                             ElevatedButton(
@@ -80,7 +69,7 @@ class MyHomePage1 extends State<MyHomePage> {
                                                         rootNavigator: true)
                                                     .push(MaterialPageRoute(
                                                         builder: (context) =>
-                                                            new Articles(
+                                                            Articles(
                                                               nomcollection: snapshot
                                                                           .data
                                                                           .docs[
@@ -118,17 +107,21 @@ class MyHomePage1 extends State<MyHomePage> {
                                               child: Container(
                                                 width: 200,
                                                 height: 50,
-                                                padding: EdgeInsets.only(
+                                                padding: const EdgeInsets.only(
                                                     left: 150, top: 15),
-                                                color: Color.fromARGB(
+                                                color: const Color.fromARGB(
                                                     47, 255, 255, 255),
                                                 child: Text(
                                                   "${snapshot.data.docs[index]["nomCollection"]}",
                                                   style: GoogleFonts.bebasNeue(
                                                       fontSize: 20,
                                                       //fontWeight: FontWeight.bold,
-                                                      color: Color.fromRGBO(
-                                                          255, 255, 255, 1)),
+                                                      color:
+                                                          const Color.fromRGBO(
+                                                              255,
+                                                              255,
+                                                              255,
+                                                              1)),
                                                 ),
                                               ),
                                             ),
@@ -138,7 +131,7 @@ class MyHomePage1 extends State<MyHomePage> {
                                 });
                           }
                           return Center(
-                            child: CircularProgressIndicator(),
+                            child: const CircularProgressIndicator(),
                           );
                         }),
                   ),
@@ -168,27 +161,6 @@ class MyHomePage1 extends State<MyHomePage> {
                   // ),
                 ],
               ),
-<<<<<<< HEAD
-              SizedBox(
-                width: 400,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AJoutCollection()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(40, 40),
-                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    elevation: 1,
-                    padding: const EdgeInsets.all(0),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Color.fromARGB(255, 31, 30, 30),
-                  ),
-=======
               Positioned(
                 right: 20,
                 left: 30,
@@ -199,7 +171,6 @@ class MyHomePage1 extends State<MyHomePage> {
                       fontSize: 40,
                       //fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(255, 255, 255, 0.694)),
->>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                 ),
               ),
             ],

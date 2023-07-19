@@ -1,17 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:projet_etudes/Fournisseur/Homepage.dart';
-import 'package:projet_etudes/client/Articles.dart';
 import 'package:projet_etudes/client/Panier.dart';
 import 'package:projet_etudes/client/homepage.dart';
 
 class Menu extends StatefulWidget {
   final indexx;
-  Menu({super.key, this.indexx});
+  const Menu({super.key, this.indexx});
 
+  @override
   State<StatefulWidget> createState() {
     return MenuState();
   }
@@ -20,9 +16,9 @@ class Menu extends StatefulWidget {
 class MenuState extends State<Menu> {
   int selectedindex = 0;
   final List pages = [
-    MyHomePage(),
-    Panier(),
-    Panier(),
+    const MyHomePage(),
+    const Panier(),
+    const Panier(),
   ];
 
   void selectedpage(int index) {
@@ -31,11 +27,13 @@ class MenuState extends State<Menu> {
     });
   }
 
+  @override
   void initState() {
-    selectedindex = widget.indexx == null ? 0 : widget.indexx;
+    selectedindex = widget.indexx ?? 0;
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -50,7 +48,7 @@ class MenuState extends State<Menu> {
                     showUnselectedLabels: false,
                     type: BottomNavigationBarType.fixed,
                     currentIndex: selectedindex,
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     onTap: selectedpage,
                     items: [
                       BottomNavigationBarItem(

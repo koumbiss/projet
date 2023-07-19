@@ -8,8 +8,11 @@ import 'package:projet_etudes/services/Cloudfirestore.dart';
 import 'package:provider/provider.dart';
 
 class Panier extends StatelessWidget {
+  const Panier({super.key});
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Pannier(),
       // routes: {"1": ((context) => Pharma())},
@@ -18,6 +21,9 @@ class Panier extends StatelessWidget {
 }
 
 class Pannier extends StatefulWidget {
+  const Pannier({super.key});
+
+  @override
   State<StatefulWidget> createState() {
     return PannierState();
   }
@@ -26,6 +32,7 @@ class Pannier extends StatefulWidget {
 class PannierState extends State<Pannier> {
   int indexx = 0;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -34,11 +41,11 @@ class PannierState extends State<Pannier> {
             Consumer<Cart>(builder: ((context, value, child) {
               return Stack(children: [
                 Container(
-                  margin: EdgeInsets.only(right: 25),
+                  margin: const EdgeInsets.only(right: 25),
                   child: IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.shopping_bag_rounded,
-                          color: const Color.fromARGB(255, 0, 0, 0))),
+                      icon: const Icon(Icons.shopping_bag_rounded,
+                          color: Color.fromARGB(255, 0, 0, 0))),
                 ),
                 Positioned(
                     top: 2,
@@ -46,17 +53,17 @@ class PannierState extends State<Pannier> {
                     child: Container(
                       height: 20,
                       width: 30,
-                      child: Text(
-                        " ${value.qte}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                            color: const Color.fromARGB(255, 0, 0, 0)),
-                      ),
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(4),
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromARGB(98, 255, 255, 255)),
+                      child: Text(
+                        " ${value.qte}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                            color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
                     )),
               ]);
             }))
@@ -71,7 +78,7 @@ class PannierState extends State<Pannier> {
 
         leading: Container(
           width: 40,
-          margin: EdgeInsets.only(left: 29, top: 5, bottom: 5),
+          margin: const EdgeInsets.only(left: 29, top: 5, bottom: 5),
           height: 30,
         ),
         toolbarHeight: 53,
@@ -99,17 +106,17 @@ class PannierState extends State<Pannier> {
                 child: ListView(
                   children: [
                     Consumer<Cart>(builder: ((context, value, child) {
-                      if (value.selectedproduct.length == 0) {
+                      if (value.selectedproduct.isEmpty) {
                         return Container(
-                          child: Center(
+                          child: const Center(
                               child: Text("aucun produit dans votre panier")),
                         );
                       } else {
                         return GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: value.selectedproduct.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 1,
                             childAspectRatio: 1.5,
                             mainAxisSpacing: 1,
@@ -122,13 +129,13 @@ class PannierState extends State<Pannier> {
                               },
                               key: UniqueKey(),
                               child: Container(
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                   top: 10,
                                   left: 0,
                                   right: 20,
                                   bottom: 10,
                                 ),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
                                 height: 300,
@@ -136,8 +143,8 @@ class PannierState extends State<Pannier> {
                                   Expanded(
                                     child: Container(
                                       height: 300,
-                                      margin: EdgeInsets.only(top: 0),
-                                      decoration: BoxDecoration(
+                                      margin: const EdgeInsets.only(top: 0),
+                                      decoration: const BoxDecoration(
                                         boxShadow: [
                                           BoxShadow(
                                               color: Color.fromARGB(
@@ -161,7 +168,7 @@ class PannierState extends State<Pannier> {
                                     children: [
                                       Container(
                                         margin:
-                                            EdgeInsets.only(top: 12, right: 20),
+                                            const EdgeInsets.only(top: 12, right: 20),
                                         width: 200,
                                         child: Text(
                                           value.selectedproduct[index]
@@ -171,7 +178,7 @@ class PannierState extends State<Pannier> {
                                           style: GoogleFonts.quicksand(
                                               // fontWeight: FontWeight.bold,
                                               color:
-                                                  Color.fromARGB(255, 0, 0, 0),
+                                                  const Color.fromARGB(255, 0, 0, 0),
                                               fontSize: 18),
                                         ),
                                       ),
@@ -179,7 +186,7 @@ class PannierState extends State<Pannier> {
                                         children: [
                                           Container(
                                             width: 170,
-                                            margin: EdgeInsets.only(
+                                            margin: const EdgeInsets.only(
                                                 top: 5, left: 0),
                                             child: Text(
                                               value.selectedproduct[index]
@@ -187,7 +194,7 @@ class PannierState extends State<Pannier> {
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.quicksand(
-                                                  color: Color.fromARGB(
+                                                  color: const Color.fromARGB(
                                                       255, 0, 0, 0),
                                                   fontSize: 13),
                                             ),
@@ -196,12 +203,12 @@ class PannierState extends State<Pannier> {
                                       ),
                                       Container(
                                         margin:
-                                            EdgeInsets.only(top: 5, left: 20),
+                                            const EdgeInsets.only(top: 5, left: 20),
                                         child: Container(
                                           child: Row(children: [
                                             Container(
                                               height: 38,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Color.fromARGB(
                                                     255, 255, 255, 255),
                                                 // gradient: LinearGradient(
@@ -212,7 +219,7 @@ class PannierState extends State<Pannier> {
                                                 //       Color.fromARGB(255, 114, 171, 157),
                                                 //     ]),
                                               ),
-                                              margin: EdgeInsets.only(
+                                              margin: const EdgeInsets.only(
                                                   top: 0, left: 10),
                                               child: Row(
                                                 children: [
@@ -260,7 +267,7 @@ class PannierState extends State<Pannier> {
                                                         } else {
                                                           print("Hi");
 
-                                                          final snackBar =
+                                                          const snackBar =
                                                               SnackBar(
                                                             content: Text(
                                                                 'quantite non disponible'),
@@ -278,14 +285,14 @@ class PannierState extends State<Pannier> {
                                                                   snackBar);
                                                         }
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                           Icons.add_rounded,
-                                                          color: const Color
+                                                          color: Color
                                                               .fromARGB(255, 37,
                                                               37, 37))),
                                                   Text(
                                                       " ${value.selectedproduct[index].quantite}",
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold)),
                                                   IconButton(
@@ -307,9 +314,9 @@ class PannierState extends State<Pannier> {
                                                               index]);
                                                         }
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                           Icons.remove_outlined,
-                                                          color: const Color
+                                                          color: Color
                                                               .fromARGB(
                                                               255, 0, 0, 0))),
                                                 ],
@@ -319,15 +326,15 @@ class PannierState extends State<Pannier> {
                                         ),
                                       ),
                                       Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 15, right: 20),
                                           height: 26,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Text(
                                               " ${value.selectedproduct[index].prix} Mro",
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.quicksand(
-                                                color: Color.fromARGB(
+                                                color: const Color.fromARGB(
                                                     255, 0, 0, 0),
                                                 fontSize: 17,
                                               )))
@@ -347,7 +354,7 @@ class PannierState extends State<Pannier> {
                   flex: 0,
                   child: Container(
                     color: Colors.white,
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     height: 70,
                     child: Consumer<Cart>(builder: ((context, value, child) {
                       return Row(
@@ -355,17 +362,16 @@ class PannierState extends State<Pannier> {
                           Container(
                               width: 170,
                               height: 40,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.black,
                               ),
-                              margin: EdgeInsets.only(right: 20, left: 25),
+                              margin: const EdgeInsets.only(right: 20, left: 25),
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    fixedSize: Size(90, 30),
+                                    fixedSize: const Size(90, 30), backgroundColor: const Color.fromARGB(0, 252, 252, 252),
                                     elevation: 0,
-                                    primary: Color.fromARGB(0, 252, 252, 252),
                                   ),
-                                  onPressed: value.selectedproduct.length == 0
+                                  onPressed: value.selectedproduct.isEmpty
                                       ? null
                                       : () {
                                           if (FirebaseAuth
@@ -384,7 +390,7 @@ class PannierState extends State<Pannier> {
                                                   .pharmacieref);
                                             }
                                             print("list: $Listid");
-                                            var seen = Set<String>();
+                                            var seen = <String>{};
                                             List uniquelist = Listid.where(
                                                 (id) => seen.add(id)).toList();
                                             print(" unique List $uniquelist");
@@ -414,20 +420,20 @@ class PannierState extends State<Pannier> {
                           Row(
                             children: [
                               Container(
-                                  margin: EdgeInsets.only(left: 0, top: 5),
+                                  margin: const EdgeInsets.only(left: 0, top: 5),
                                   child: Text("total ",
                                       style: GoogleFonts.quicksand(
                                           //fontWeight: FontWeight.bold,
                                           fontSize: 19,
-                                          color: Color.fromARGB(
+                                          color: const Color.fromARGB(
                                               255, 196, 196, 196)))),
                               Container(
-                                margin: EdgeInsets.only(left: 30),
+                                margin: const EdgeInsets.only(left: 30),
                                 child: Text("${value.price} Mro",
                                     style: GoogleFonts.quicksand(
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        color: Color.fromARGB(255, 2, 2, 2))),
+                                        color: const Color.fromARGB(255, 2, 2, 2))),
                               )
                             ],
                           ),

@@ -5,7 +5,6 @@ import 'package:projet_etudes/client/WelcomeScreen.dart';
 
 =======
 import 'package:projet_etudes/Provider/Cart.dart';
-import 'package:projet_etudes/client/Menu.dart';
 
 import 'package:projet_etudes/client/homepage.dart';
 import 'package:provider/provider.dart';
