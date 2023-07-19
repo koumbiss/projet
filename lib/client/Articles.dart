@@ -1,11 +1,17 @@
 // ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+<<<<<<< HEAD
+=======
+import 'package:flutter/foundation.dart';
+>>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/ArticleDetails.dart';
+import 'package:projet_etudes/client/Menu.dart';
 import 'package:projet_etudes/client/Panier.dart';
 
 //import 'dart:math' as math;
@@ -20,9 +26,14 @@ class Articles extends StatefulWidget {
     super.key,
     this.idc,
     this.nomcollection,
+<<<<<<< HEAD
   });
   State<StatefulWidget> @override
   createState() {
+=======
+  }) : super(key: key);
+  State<StatefulWidget> createState() {
+>>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
     return ArticlesState();
   }
 }
@@ -55,7 +66,11 @@ class ArticlesState extends State<Articles> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
+<<<<<<< HEAD
                                       builder: (context) => const Panier()));
+=======
+                                      builder: (context) => Menu(indexx: 1)));
+>>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
                             },
                             icon: const Icon(Icons.shopping_bag_rounded,
                                 color: Color.fromARGB(255, 37, 37, 37))),
@@ -66,10 +81,6 @@ class ArticlesState extends State<Articles> {
                           child: Container(
                             height: 20,
                             width: 30,
-                            padding: const EdgeInsets.all(4),
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(99, 224, 224, 224)),
                             child: Text(
                               " ${value.qte}",
                               style: const TextStyle(
@@ -263,8 +274,7 @@ class ArticlesState extends State<Articles> {
                                                 print(
                                                     "lenght nom ${nom.length}");
 
-                                                print(
-                                                    "lenght marge $mmargin");
+                                                print("lenght marge $mmargin");
 
                                                 return Container(
                                                   // height: 200,
@@ -277,7 +287,8 @@ class ArticlesState extends State<Articles> {
 
                                                   padding: EdgeInsets.all(0),
 
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
@@ -304,54 +315,25 @@ class ArticlesState extends State<Articles> {
                                                                 "id collection :");
                                                             print(widget.idc);
 
-                                                            // Navigator.push(
-                                                            //     context,
-                                                            //     MaterialPageRoute(
-                                                            //         builder: (context) => ProduitDetails(
-                                                            //             item: a,
-                                                            //             quantite:
-                                                            //                 mesproduits[index]
-                                                            //                     .quantite,
-                                                            //             colletion:
-                                                            //                 mesproduits[index]
-                                                            //                     .collection,
-                                                            //             referenceproduit:
-                                                            //                 mesproduits[index]
-                                                            //                     .referenceArticle,
-                                                            //             image:
-                                                            //                 image,
-                                                            //             disponibilite:
-                                                            //                 mesproduits[index]
-                                                            //                     .disponibilite,
-                                                            //             name: widget
-                                                            //                 .nom,
-                                                            //             photo: widget
-                                                            //                 .photo,
-                                                            //             nom:
-                                                            //                 nom,
-                                                            //             prix:
-                                                            //                 prix,
-                                                            //             description:
-                                                            //                 description)));
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) => ArticleDetails(
+                                                                        item: a,
+                                                                        quantite: mesproduits[index]
+                                                                            .quantite,
+                                                                        Reference:
+                                                                            mesproduits[index]
+                                                                                .referenceArticle,
+                                                                        image:
+                                                                            image,
+                                                                        nom: mesproduits[index]
+                                                                            .nomArticle,
+                                                                        prix:
+                                                                            prix,
+                                                                        description:
+                                                                            description)));
                                                           },
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            fixedSize:
-                                                                const Size(120, 120), backgroundColor: const Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            elevation: 1,
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    0),
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            90)),
-                                                          ),
                                                           child: Stack(
                                                             children: [
                                                               // ignore: unnecessary_null_comparison
@@ -404,7 +386,8 @@ class ArticlesState extends State<Articles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: const EdgeInsets.only(
+                                                                        padding: const EdgeInsets
+                                                                            .only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -413,7 +396,8 @@ class ArticlesState extends State<Articles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: const Color.fromARGB(
+                                                                        color: const Color
+                                                                            .fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
