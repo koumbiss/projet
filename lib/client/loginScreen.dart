@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/client/sign_in_screen.dart';
 
 class loginScreen extends StatelessWidget {
   const loginScreen({super.key});
@@ -59,12 +60,32 @@ class loginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                            onPressed: () {}, child: Text(login.toUpperCase())),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white),
+                          onPressed: () {},
+                          child: Text(
+                            login.toUpperCase(),
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
                       ),
-                      Align(
-                          alignment: Alignment.bottomLeft,
-                          child: TextButton(
-                              onPressed: () {}, child: const Text(creComp))),
+                      Column(
+                        children: [
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  alignment: Alignment.center,
+                                  foregroundColor: Colors.white),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignInScreen()),
+                                );
+                              },
+                              child: const Text(creComp)),
+                        ],
+                      ),
                     ],
                   ),
                 ))

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projet_etudes/client/loginScreen.dart';
+import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/fournisseur/Homepage.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -46,6 +47,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 10.0,
+            ),
             Row(
               children: [
                 Expanded(
@@ -54,7 +58,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const HomePage()),
+                                builder: (context) => const SignInScreen()),
                           );
                         },
                         style: OutlinedButton.styleFrom(
@@ -82,7 +86,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                         child: Text(login.toUpperCase()))),
               ],
-            )
+            ),
+            Column(children: [
+              TextButton(
+                  style: TextButton.styleFrom(foregroundColor: Colors.white),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  },
+                  child: const Text("Continuer en tant que visiteur")),
+            ]),
           ],
         ),
       ),

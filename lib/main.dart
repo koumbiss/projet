@@ -3,7 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 
 import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/profile_screen.dart';
+import 'package:projet_etudes/client/splash_screen.dart';
 import 'package:provider/provider.dart';
+
+import 'client/Menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +38,9 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: Menu(indexx: 1),
+      //home: SplashScreen(),
+      //Menu(indexx: 1),
+      home: ProfileScreen(),
     );
   }
 }

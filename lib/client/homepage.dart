@@ -2,11 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
-<<<<<<< HEAD
-=======
 import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
->>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
 import 'package:projet_etudes/client/Articles.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 

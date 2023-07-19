@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -105,13 +102,13 @@ class ArticleDetailsState extends State<ArticleDetails> {
                   Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(
+                        margin: const EdgeInsets.only(
                             left: 0, bottom: 5, top: 0, right: 0),
                         width: 430,
                         height: 490,
                         decoration: BoxDecoration(
                           color: couleur,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 color: Color.fromARGB(121, 168, 168, 168),
                                 blurRadius: 8,
@@ -120,7 +117,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                           image: DecorationImage(
                               image: NetworkImage(widget.image),
                               fit: BoxFit.cover),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(0),
                               bottomRight: Radius.circular(0),
                               bottomLeft: Radius.circular(0),
@@ -130,8 +127,8 @@ class ArticleDetailsState extends State<ArticleDetails> {
                     ],
                   ),
                   Container(
-                    padding:
-                        EdgeInsets.only(left: 5, bottom: 0, top: 0, right: 0),
+                    padding: const EdgeInsets.only(
+                        left: 5, bottom: 0, top: 0, right: 0),
                     width: double.infinity,
                     height: 300,
                     color: couleur,

@@ -1,23 +1,19 @@
 // ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-<<<<<<< HEAD
-=======
-import 'package:flutter/foundation.dart';
->>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
-import 'package:projet_etudes/client/ArticleDetails.dart';
-import 'package:projet_etudes/client/Menu.dart';
 import 'package:projet_etudes/client/Panier.dart';
 
 //import 'dart:math' as math;
 
 import 'package:projet_etudes/model/Article.dart';
 import 'package:provider/provider.dart';
+
+import '../model/Item.dart';
 
 
 class Articles extends StatefulWidget {
@@ -26,14 +22,11 @@ class Articles extends StatefulWidget {
     super.key,
     this.idc,
     this.nomcollection,
-<<<<<<< HEAD
   });
-  State<StatefulWidget> @override
-  createState() {
-=======
-  }) : super(key: key);
+
+  @override
   State<StatefulWidget> createState() {
->>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
+    
     return ArticlesState();
   }
 }
@@ -66,11 +59,7 @@ class ArticlesState extends State<Articles> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-<<<<<<< HEAD
                                       builder: (context) => const Panier()));
-=======
-                                      builder: (context) => Menu(indexx: 1)));
->>>>>>> 090c51328cbce0fea2e5fb172a803eac3a47c7bb
                             },
                             icon: const Icon(Icons.shopping_bag_rounded,
                                 color: Color.fromARGB(255, 37, 37, 37))),
@@ -81,6 +70,11 @@ class ArticlesState extends State<Articles> {
                           child: Container(
                             height: 20,
                             width: 30,
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(99, 224, 224, 224)),
+                            
                             child: Text(
                               " ${value.qte}",
                               style: const TextStyle(
@@ -88,10 +82,6 @@ class ArticlesState extends State<Articles> {
                                   fontSize: 13,
                                   color: Color.fromARGB(255, 3, 3, 3)),
                             ),
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(96, 255, 255, 255)),
                           )),
                     ]);
                   }))
@@ -161,7 +151,7 @@ class ArticlesState extends State<Articles> {
                           ),
                           Container(
                               width: 400,
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 10, bottom: 10, right: 20),
                               child: ListView(
                                 children: [
@@ -175,7 +165,7 @@ class ArticlesState extends State<Articles> {
                                           (context, AsyncSnapshot snapshot) {
                                         if (snapshot.hasData) {
                                           if (snapshot.data.docs.length == 0) {
-                                            return Center(
+                                            return const Center(
                                                 child: Text(
                                                     "Il n'ya pas encore d'articles"));
                                           }
@@ -274,21 +264,21 @@ class ArticlesState extends State<Articles> {
                                                 print(
                                                     "lenght nom ${nom.length}");
 
-                                                print("lenght marge $mmargin");
+                                                print(
+                                                    "lenght marge $mmargin");
 
                                                 return Container(
                                                   // height: 200,
 
-                                                  margin: EdgeInsets.only(
+                                                  margin: const EdgeInsets.only(
                                                       left: 0,
                                                       top: 10,
                                                       right: 0,
                                                       bottom: 5),
 
-                                                  padding: EdgeInsets.all(0),
+                                                  padding: const EdgeInsets.all(0),
 
-                                                  decoration:
-                                                      const BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
@@ -315,25 +305,51 @@ class ArticlesState extends State<Articles> {
                                                                 "id collection :");
                                                             print(widget.idc);
 
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (context) => ArticleDetails(
-                                                                        item: a,
-                                                                        quantite: mesproduits[index]
-                                                                            .quantite,
-                                                                        Reference:
-                                                                            mesproduits[index]
-                                                                                .referenceArticle,
-                                                                        image:
-                                                                            image,
-                                                                        nom: mesproduits[index]
-                                                                            .nomArticle,
-                                                                        prix:
-                                                                            prix,
-                                                                        description:
-                                                                            description)));
+                                                            // Navigator.push(
+                                                            //     context,
+                                                            //     MaterialPageRoute(
+                                                            //         builder: (context) => ProduitDetails(
+                                                            //             item: a,
+                                                            //             quantite:
+                                                            //                 mesproduits[index]
+                                                            //                     .quantite,
+                                                            //             colletion:
+                                                            //                 mesproduits[index]
+                                                            //                     .collection,
+                                                            //             referenceproduit:
+                                                            //                 mesproduits[index]
+                                                            //                     .referenceArticle,
+                                                            //             image:
+                                                            //                 image,
+                                                            //             disponibilite:
+                                                            //                 mesproduits[index]
+                                                            //                     .disponibilite,
+                                                            //             name: widget
+                                                            //                 .nom,
+                                                            //             photo: widget
+                                                            //                 .photo,
+                                                            //             nom:
+                                                            //                 nom,
+                                                            //             prix:
+                                                            //                 prix,
+                                                            //             description:
+                                                            //                 description)));
                                                           },
+                                                          
+                                                            
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            fixedSize:
+                                                                const Size(170, 220), backgroundColor: const Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
+                                                            elevation: 0,
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    0),
+                                                          ),
                                                           child: Stack(
                                                             children: [
                                                               // ignore: unnecessary_null_comparison
@@ -349,11 +365,11 @@ class ArticlesState extends State<Articles> {
                                                                           300,
                                                                       width:
                                                                           200,
-                                                                      margin: EdgeInsets
+                                                                      margin: const EdgeInsets
                                                                           .only(
                                                                               top: 0),
                                                                       decoration:
-                                                                          BoxDecoration(
+                                                                          const BoxDecoration(
                                                                         boxShadow: [
                                                                           BoxShadow(
                                                                               color: Color.fromARGB(121, 180, 35, 35),
@@ -386,8 +402,7 @@ class ArticlesState extends State<Articles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: const EdgeInsets
-                                                                            .only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -396,8 +411,7 @@ class ArticlesState extends State<Articles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: const Color
-                                                                            .fromARGB(
+                                                                        color: const Color.fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
@@ -411,26 +425,10 @@ class ArticlesState extends State<Articles> {
                                                                       ))
                                                                   : Container()
                                                             ],
-                                                          ),
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            fixedSize:
-                                                                Size(170, 220),
-                                                            elevation: 0,
-                                                            // padding: EdgeInsets.all(0),
-                                                            primary:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    0),
                                                           )),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 0),
                                                           child: Text(
                                                               nom == null
@@ -445,7 +443,7 @@ class ArticlesState extends State<Articles> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  color: Color
+                                                                  color: const Color
                                                                       .fromARGB(
                                                                           255,
                                                                           81,
@@ -454,7 +452,7 @@ class ArticlesState extends State<Articles> {
                                                                   fontSize:
                                                                       17))),
                                                       Container(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             top: 0),
                                                         width: 120,
                                                         child: Text(
@@ -466,7 +464,7 @@ class ArticlesState extends State<Articles> {
                                                                 .center,
                                                             style: GoogleFonts
                                                                 .quicksand(
-                                                              color: Color
+                                                              color: const Color
                                                                   .fromARGB(255,
                                                                       0, 0, 0),
                                                               fontSize: 15,
@@ -478,7 +476,7 @@ class ArticlesState extends State<Articles> {
                                                               0
                                                           ? Container()
                                                           : Container(
-                                                              margin: EdgeInsets
+                                                              margin: const EdgeInsets
                                                                   .only(top: 2),
                                                               width: 150,
                                                               height: 30,
@@ -535,7 +533,7 @@ class ArticlesState extends State<Articles> {
                                                                               prix,
                                                                             );
                                                                           } else {
-                                                                            final snackBar =
+                                                                            const snackBar =
                                                                                 SnackBar(
                                                                               content: Text('quantite non disponible'),
                                                                               backgroundColor: Color.fromARGB(255, 234, 132, 124),
@@ -564,14 +562,13 @@ class ArticlesState extends State<Articles> {
                                                                     },
                                                                     style: ElevatedButton.styleFrom(
                                                                         elevation:
-                                                                            0,
-                                                                        primary: Color.fromARGB(
+                                                                            0, backgroundColor: const Color.fromARGB(
                                                                             255,
                                                                             255,
                                                                             255,
                                                                             255),
                                                                         padding:
-                                                                            EdgeInsets.all(0)),
+                                                                            const EdgeInsets.all(0)),
                                                                     child: Text(
                                                                       "AJOUTER AU PANIER",
                                                                       style: GoogleFonts.quicksand(
@@ -593,7 +590,7 @@ class ArticlesState extends State<Articles> {
                                         }
 
                                         return const Center(
-                                          child = const CircularProgressIndicator(),
+                                          child :CircularProgressIndicator(),
                                         );
                                       }),
                                 ],
