@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/ArticleDetails.dart';
+import 'package:projet_etudes/client/Menu.dart';
 import 'package:projet_etudes/client/Panier.dart';
 
 //import 'dart:math' as math;
@@ -53,7 +55,7 @@ class ArticlesState extends State<Articles> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Panier()));
+                                      builder: (context) => Menu(indexx: 1)));
                             },
                             icon: Icon(Icons.shopping_bag_rounded,
                                 color: const Color.fromARGB(255, 37, 37, 37))),
@@ -296,35 +298,24 @@ class ArticlesState extends State<Articles> {
                                                                 "id collection :");
                                                             print(widget.idc);
 
-                                                            // Navigator.push(
-                                                            //     context,
-                                                            //     MaterialPageRoute(
-                                                            //         builder: (context) => ProduitDetails(
-                                                            //             item: a,
-                                                            //             quantite:
-                                                            //                 mesproduits[index]
-                                                            //                     .quantite,
-                                                            //             colletion:
-                                                            //                 mesproduits[index]
-                                                            //                     .collection,
-                                                            //             referenceproduit:
-                                                            //                 mesproduits[index]
-                                                            //                     .referenceArticle,
-                                                            //             image:
-                                                            //                 image,
-                                                            //             disponibilite:
-                                                            //                 mesproduits[index]
-                                                            //                     .disponibilite,
-                                                            //             name: widget
-                                                            //                 .nom,
-                                                            //             photo: widget
-                                                            //                 .photo,
-                                                            //             nom:
-                                                            //                 nom,
-                                                            //             prix:
-                                                            //                 prix,
-                                                            //             description:
-                                                            //                 description)));
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) => ArticleDetails(
+                                                                        item: a,
+                                                                        quantite: mesproduits[index]
+                                                                            .quantite,
+                                                                        Reference:
+                                                                            mesproduits[index]
+                                                                                .referenceArticle,
+                                                                        image:
+                                                                            image,
+                                                                        nom: mesproduits[index]
+                                                                            .nomArticle,
+                                                                        prix:
+                                                                            prix,
+                                                                        description:
+                                                                            description)));
                                                           },
                                                           child: Stack(
                                                             children: [
