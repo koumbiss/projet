@@ -11,7 +11,7 @@ class loginScreen extends StatelessWidget {
     const String login = "se connecter";
     const String loginCon = "Connecte toi ou crée ton compte YL";
     const String logo = "assets/logo.png";
-    const String oublimotdepasse = "Tu as oublié ton mot de passe ?";
+    const String creComp = " Créer un compte";
     final size = MediaQuery.of(context).size;
     const forhei = 30.0;
 
@@ -61,11 +61,6 @@ class loginScreen extends StatelessWidget {
                       const SizedBox(
                         height: forhei - 20,
                       ),
-                      // Align(
-                      //     alignment: Alignment.bottomLeft,
-                      //     child: TextButton(
-                      //         onPressed: () {},
-                      //         child: const Text(oublimotdepasse))),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -79,6 +74,10 @@ class loginScreen extends StatelessWidget {
                             },
                             child: Text(login.toUpperCase())),
                       ),
+                      Align(
+                          alignment: Alignment.bottomLeft,
+                          child: TextButton(
+                              onPressed: () {}, child: const Text(creComp))),
                     ],
                   ),
                 ))

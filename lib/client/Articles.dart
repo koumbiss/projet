@@ -1,8 +1,5 @@
-// ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,14 +7,10 @@ import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/ArticleDetails.dart';
 import 'package:projet_etudes/client/Menu.dart';
-import 'package:projet_etudes/client/Panier.dart';
-
-//import 'dart:math' as math;
 
 import 'package:projet_etudes/model/Article.dart';
+import 'package:projet_etudes/model/Item.dart';
 import 'package:provider/provider.dart';
-
-import '../model/Item.dart';
 
 class Articles extends StatefulWidget {
   final idc, nomcollection;
@@ -26,6 +19,7 @@ class Articles extends StatefulWidget {
     this.idc,
     this.nomcollection,
   }) : super(key: key);
+
   State<StatefulWidget> createState() {
     return ArticlesState();
   }
@@ -61,8 +55,8 @@ class ArticlesState extends State<Articles> {
                                   MaterialPageRoute(
                                       builder: (context) => Menu(indexx: 1)));
                             },
-                            icon: Icon(Icons.shopping_bag_rounded,
-                                color: const Color.fromARGB(255, 37, 37, 37))),
+                            icon: const Icon(Icons.shopping_bag_rounded,
+                                color: Color.fromARGB(255, 37, 37, 37))),
                       ),
                       Positioned(
                           top: 2,
@@ -72,10 +66,10 @@ class ArticlesState extends State<Articles> {
                             width: 30,
                             child: Text(
                               " ${value.qte}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13,
-                                  color: const Color.fromARGB(255, 3, 3, 3)),
+                                  color: Color.fromARGB(255, 3, 3, 3)),
                             ),
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
@@ -118,7 +112,7 @@ class ArticlesState extends State<Articles> {
                   child: Text(
                 widget.nomcollection,
                 style: GoogleFonts.quicksand(
-                  color: Color.fromARGB(255, 58, 58, 58),
+                  color: const Color.fromARGB(255, 58, 58, 58),
                   fontSize: 27,
                 ),
               )),
@@ -609,7 +603,8 @@ class ArticlesState extends State<Articles> {
                                         }
 
                                         return const Center(
-                                          child: CircularProgressIndicator(),
+                                          child:
+                                              const CircularProgressIndicator(),
                                         );
                                       }),
                                 ],
