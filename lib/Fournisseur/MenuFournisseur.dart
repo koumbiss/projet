@@ -64,13 +64,13 @@ class MenuFournisseurState extends State<MenuFournisseur> {
                             : IconlyLight.home),
                       ),
                       BottomNavigationBarItem(
-                        label: "Panier",
+                        label: "collection",
                         icon: Icon(selectedindex == 1
                             ? Icons.collections_rounded
                             : Icons.collections_outlined),
                       ),
                       BottomNavigationBarItem(
-                        label: "Home",
+                        label: "Reception",
                         icon: Icon(selectedindex == 2
                             ? Icons.message
                             : Icons.message_outlined),

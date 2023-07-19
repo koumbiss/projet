@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:projet_etudes/Fournisseur/MenuFournisseur.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Menu.dart';
 
 import 'package:projet_etudes/client/homepage.dart';
 import 'package:provider/provider.dart';
