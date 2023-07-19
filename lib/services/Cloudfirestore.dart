@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-// ignore_for_file: avoid_print
-
-=======
 import 'package:cloud_firestore/cloud_firestore.dart';
->>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Collection.dart';
 import 'package:projet_etudes/services/DBServices.dart';

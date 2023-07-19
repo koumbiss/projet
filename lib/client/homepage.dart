@@ -2,12 +2,9 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 //import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
->>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Articles.dart';
@@ -168,27 +165,6 @@ class MyHomePage1 extends State<MyHomePage> {
                   // ),
                 ],
               ),
-<<<<<<< HEAD
-              SizedBox(
-                width: 400,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AJoutCollection()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(40, 40),
-                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    elevation: 1,
-                    padding: const EdgeInsets.all(0),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Color.fromARGB(255, 31, 30, 30),
-                  ),
-=======
               Positioned(
                 right: 20,
                 left: 30,
@@ -199,7 +175,6 @@ class MyHomePage1 extends State<MyHomePage> {
                       fontSize: 40,
                       //fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(255, 255, 255, 0.694)),
->>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                 ),
               ),
             ],
