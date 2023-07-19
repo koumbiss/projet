@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:projet_etudes/client/sign_in_screen.dart';
+=======
+import 'package:projet_etudes/services/Authentification.dart';
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
 
 class loginScreen extends StatelessWidget {
   const loginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final memailController = TextEditingController();
+    final mpasswordController = TextEditingController();
     const String login = "se connecter";
     const String loginCon = "Connecte toi ou crée ton compte YL";
     const String logo = "assets/logo.png";
@@ -37,7 +43,8 @@ class loginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
-                        decoration: const InputDecoration(
+                        controller: memailController,
+                        decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             //labelText: "E-mail",
                             hintText: "E-mail",
@@ -47,6 +54,7 @@ class loginScreen extends StatelessWidget {
                         height: forhei - 20,
                       ),
                       TextFormField(
+                        controller: mpasswordController,
                         decoration: const InputDecoration(
                           //labelText: "Mot de passe",
                           prefixIcon: Icon(Icons.fingerprint),
@@ -60,6 +68,7 @@ class loginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+<<<<<<< HEAD
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white),
                           onPressed: () {},
@@ -85,6 +94,17 @@ class loginScreen extends StatelessWidget {
                               },
                               child: const Text(creComp)),
                         ],
+=======
+                            onPressed: () async {
+                              var us = await Authentification().signinn(
+                                  memailController, mpasswordController);
+
+                              if (us == 'true') {
+                                print("c'est bon");
+                              }
+                            },
+                            child: Text(login.toUpperCase())),
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
                       ),
                     ],
                   ),

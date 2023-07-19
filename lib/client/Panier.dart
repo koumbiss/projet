@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Commandes.dart';
+import 'package:projet_etudes/model/Commande.dart';
+import 'package:projet_etudes/model/Item.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 import 'package:provider/provider.dart';
@@ -167,8 +170,8 @@ class PannierState extends State<Pannier> {
                                       child: Column(
                                     children: [
                                       Container(
-                                        margin:
-                                            const EdgeInsets.only(top: 12, right: 20),
+                                        margin: const EdgeInsets.only(
+                                            top: 12, right: 20),
                                         width: 200,
                                         child: Text(
                                           value.selectedproduct[index]
@@ -177,8 +180,8 @@ class PannierState extends State<Pannier> {
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.quicksand(
                                               // fontWeight: FontWeight.bold,
-                                              color:
-                                                  const Color.fromARGB(255, 0, 0, 0),
+                                              color: const Color.fromARGB(
+                                                  255, 0, 0, 0),
                                               fontSize: 18),
                                         ),
                                       ),
@@ -202,8 +205,8 @@ class PannierState extends State<Pannier> {
                                         ],
                                       ),
                                       Container(
-                                        margin:
-                                            const EdgeInsets.only(top: 5, left: 20),
+                                        margin: const EdgeInsets.only(
+                                            top: 5, left: 20),
                                         child: Container(
                                           child: Row(children: [
                                             Container(
@@ -287,9 +290,11 @@ class PannierState extends State<Pannier> {
                                                       },
                                                       icon: const Icon(
                                                           Icons.add_rounded,
-                                                          color: Color
-                                                              .fromARGB(255, 37,
-                                                              37, 37))),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              37,
+                                                              37,
+                                                              37))),
                                                   Text(
                                                       " ${value.selectedproduct[index].quantite}",
                                                       style: const TextStyle(
@@ -316,8 +321,7 @@ class PannierState extends State<Pannier> {
                                                       },
                                                       icon: const Icon(
                                                           Icons.remove_outlined,
-                                                          color: Color
-                                                              .fromARGB(
+                                                          color: Color.fromARGB(
                                                               255, 0, 0, 0))),
                                                 ],
                                               ),
@@ -365,10 +369,13 @@ class PannierState extends State<Pannier> {
                               decoration: const BoxDecoration(
                                 color: Colors.black,
                               ),
-                              margin: const EdgeInsets.only(right: 20, left: 25),
+                              margin:
+                                  const EdgeInsets.only(right: 20, left: 25),
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(90, 30), backgroundColor: const Color.fromARGB(0, 252, 252, 252),
+                                    fixedSize: const Size(90, 30),
+                                    backgroundColor:
+                                        const Color.fromARGB(0, 252, 252, 252),
                                     elevation: 0,
                                   ),
                                   onPressed: value.selectedproduct.isEmpty
@@ -377,31 +384,31 @@ class PannierState extends State<Pannier> {
                                           if (FirebaseAuth
                                                   .instance.currentUser !=
                                               null) {
-                                            List Listid = [];
+                                            List<Item> mesArticles = [];
+
                                             for (int i = 0;
                                                 i <
                                                     value
                                                         .selectedproduct.length;
                                                 i++) {
-                                              print(
-                                                  "list: ${value.selectedproduct[i].pharmacieref}");
-                                              Listid.add(value
-                                                  .selectedproduct[i]
-                                                  .pharmacieref);
+                                              mesArticles.add(
+                                                  value.selectedproduct[i]);
                                             }
-                                            print("list: $Listid");
-                                            var seen = <String>{};
-                                            List uniquelist = Listid.where(
-                                                (id) => seen.add(id)).toList();
-                                            print(" unique List $uniquelist");
 
-                                            // Navigator.of(context,
-                                            //         rootNavigator: true)
-                                            //     .push(MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             new Confirmationpage(
-                                            //                 listid:
-                                            //                     uniquelist)));
+                                            Navigator
+                                                    .of(
+                                                        context,
+                                                        rootNavigator: true)
+                                                .push(MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        new Commandes(
+                                                            total: value.price,
+                                                            id: FirebaseAuth
+                                                                .instance
+                                                                .currentUser!
+                                                                .uid,
+                                                            listproduits:
+                                                                mesArticles)));
                                           } else {
                                             // Navigator.of(context,
                                             //         rootNavigator: true)
@@ -420,7 +427,8 @@ class PannierState extends State<Pannier> {
                           Row(
                             children: [
                               Container(
-                                  margin: const EdgeInsets.only(left: 0, top: 5),
+                                  margin:
+                                      const EdgeInsets.only(left: 0, top: 5),
                                   child: Text("total ",
                                       style: GoogleFonts.quicksand(
                                           //fontWeight: FontWeight.bold,
@@ -433,7 +441,8 @@ class PannierState extends State<Pannier> {
                                     style: GoogleFonts.quicksand(
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        color: const Color.fromARGB(255, 2, 2, 2))),
+                                        color: const Color.fromARGB(
+                                            255, 2, 2, 2))),
                               )
                             ],
                           ),

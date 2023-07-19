@@ -1,32 +1,50 @@
-// ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+<<<<<<< HEAD
 //import 'package:firebase_auth/firebase_auth.dart';
+=======
+
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+<<<<<<< HEAD
 import 'package:projet_etudes/client/Panier.dart';
 
 //import 'dart:math' as math;
+=======
+import 'package:projet_etudes/client/ArticleDetails.dart';
+import 'package:projet_etudes/client/Menu.dart';
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
 
 import 'package:projet_etudes/model/Article.dart';
+import 'package:projet_etudes/model/Item.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD
 import '../model/Item.dart';
 
 
+=======
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
 class Articles extends StatefulWidget {
   final idc, nomcollection;
-  const Articles({
-    super.key,
+  Articles({
+    Key? key,
     this.idc,
     this.nomcollection,
+<<<<<<< HEAD
   });
 
   @override
   State<StatefulWidget> createState() {
     
+=======
+  }) : super(key: key);
+
+  State<StatefulWidget> createState() {
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
     return ArticlesState();
   }
 }
@@ -59,7 +77,11 @@ class ArticlesState extends State<Articles> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
+<<<<<<< HEAD
                                       builder: (context) => const Panier()));
+=======
+                                      builder: (context) => Menu(indexx: 1)));
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
                             },
                             icon: const Icon(Icons.shopping_bag_rounded,
                                 color: Color.fromARGB(255, 37, 37, 37))),
@@ -137,9 +159,36 @@ class ArticlesState extends State<Articles> {
                 Column(
                   children: [
                     Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: ElevatedButton(
+                          child: Icon(Icons.add),
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .push(MaterialPageRoute(
+                                    builder: (context) => new AJoutArticles(
+                                          idcollection: widget.idc,
+                                        )));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            // fixedSize: Size(250, 250),
+                            elevation: 0,
+                            // padding: EdgeInsets.all(0),
+                            primary: Color.fromARGB(0, 255, 255, 255),
+                            padding: EdgeInsets.all(0),
+                          )),
                       // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
                       decoration: BoxDecoration(
-                        color: couleur,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        // borderRadius: BorderRadius.circular(70),
+                      ),
+                      width: 60,
+
+                      height: 30,
+                    ),
+                    Container(
+                      // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
                         // borderRadius: BorderRadius.circular(70),
                       ),
 
@@ -590,7 +639,12 @@ class ArticlesState extends State<Articles> {
                                         }
 
                                         return const Center(
+<<<<<<< HEAD
                                           child :CircularProgressIndicator(),
+=======
+                                          child:
+                                              const CircularProgressIndicator(),
+>>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
                                         );
                                       }),
                                 ],
