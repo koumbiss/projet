@@ -1,8 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Collection.dart';
 import 'package:projet_etudes/services/DBServices.dart';
 
 class CloudFirestore {
+  checkquantity(id, catgorie) async {
+    print(catgorie);
+    try {
+      DocumentSnapshot<Map<String, dynamic>> feed =
+          await FirebaseFirestore.instance.collection("Articles").doc(id).get();
+
+      print(" resulytat ${feed["quantite"]}");
+
+      print("qunatite${feed["quantite"]}");
+      print("DEbut ");
+
+      return feed["quantite"];
+    } catch (e) {
+      print(" on a une exception $e");
+    }
+  }
+
   addCollection(nom, upl, date) async {
     try {
       var url = await (await upl).ref.getDownloadURL();

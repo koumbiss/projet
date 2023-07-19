@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Menu.dart';
 
 import 'package:projet_etudes/client/homepage.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: ((context) {
+        return Cart();
+      }),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +35,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: MyHomePage(),
+      home: Menu(indexx: 1),
     );
   }
 }

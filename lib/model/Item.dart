@@ -1,12 +1,12 @@
 class Item {
   late String referenceArticle,
       nomArticle,
-      prixunitaire,
       disponibilite,
       description,
       image,
-      collection;
-  late int prix, quantite;
+      collection,
+      categorie;
+  late int prix, quantite, prixunitaire;
   Item(
       {required this.referenceArticle,
       required this.prixunitaire,
@@ -16,6 +16,7 @@ class Item {
       required this.image,
       required this.quantite,
       required this.prix,
+      required this.categorie,
       required this.collection});
 
 //doc.data())).toList()
@@ -23,6 +24,7 @@ class Item {
         referenceArticle: json['referenceArticle'],
         prixunitaire: json["prixunitaire"],
         nomArticle: json['nomArticle'],
+        categorie: json['categorie'],
         quantite: json['quantite'],
         disponibilite: json['disponibilite'],
         prix: json['prix'],
@@ -38,6 +40,7 @@ class Item {
         'disponibilite': disponibilite,
         'quantite': quantite,
         'prix': prix,
+        'categorie': categorie,
         'description': description,
         'image': image,
         'collection': collection,

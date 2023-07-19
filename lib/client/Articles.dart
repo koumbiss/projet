@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Panier.dart';
 
-import 'dart:math' as math;
+//import 'dart:math' as math;
 
 import 'package:projet_etudes/model/Article.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +15,12 @@ import 'package:provider/provider.dart';
 import '../model/Item.dart';
 
 class Articles extends StatefulWidget {
-  final id, idc, nom, photo, categorie;
-  Articles({Key? key, this.idc, this.id, this.categorie, this.nom, this.photo})
-      : super(key: key);
+  final idc, nomcollection;
+  Articles({
+    Key? key,
+    this.idc,
+    this.nomcollection,
+  }) : super(key: key);
   State<StatefulWidget> createState() {
     return ArticlesState();
   }
@@ -44,15 +50,13 @@ class ArticlesState extends State<Articles> {
                         margin: EdgeInsets.only(right: 25),
                         child: IconButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => bottombar(
-                              //               indexx: 1,
-                              //             )));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Panier()));
                             },
-                            icon: Icon(Icons.shopping_cart_rounded,
-                                color: vert22)),
+                            icon: Icon(Icons.shopping_bag_rounded,
+                                color: const Color.fromARGB(255, 37, 37, 37))),
                       ),
                       Positioned(
                           top: 2,
@@ -65,12 +69,12 @@ class ArticlesState extends State<Articles> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13,
-                                  color: vert22),
+                                  color: const Color.fromARGB(255, 3, 3, 3)),
                             ),
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color.fromARGB(99, 224, 224, 224)),
+                                color: Color.fromARGB(96, 255, 255, 255)),
                           )),
                     ]);
                   }))
@@ -81,7 +85,10 @@ class ArticlesState extends State<Articles> {
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.white, Colors.white]))),
+                          colors: [
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ]))),
 
               leading: Container(
                 child: IconButton(
@@ -90,7 +97,7 @@ class ArticlesState extends State<Articles> {
                   },
                   icon: Icon(
                     IconlyLight.arrowLeft2,
-                    color: Color.fromARGB(255, 87, 87, 87),
+                    color: Color.fromARGB(255, 50, 50, 50),
                   ),
                 ),
               ),
@@ -101,12 +108,11 @@ class ArticlesState extends State<Articles> {
               //shape: RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(0),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(14),topRight: Radius.circular(0))),
               title: Container(
                   child: Text(
-                "widget.categorie",
-                style: TextStyle(
-                    color: vert22,
-                    fontSize: 27,
-                    fontFamily: "",
-                    fontWeight: FontWeight.bold),
+                widget.nomcollection,
+                style: GoogleFonts.quicksand(
+                  color: Color.fromARGB(255, 58, 58, 58),
+                  fontSize: 27,
+                ),
               )),
 
               elevation: 0,
@@ -121,118 +127,6 @@ class ArticlesState extends State<Articles> {
               child: ListView(children: [
                 Column(
                   children: [
-                    StreamBuilder(
-                        stream: !boolean
-                            ? FirebaseFirestore.instance
-                                .collection("Categories")
-                                .doc(widget.idc)
-                                .collection("Produits")
-                                .where("marque", isEqualTo: "")
-                                .snapshots()
-                            : FirebaseFirestore.instance
-                                .collection("Categories")
-                                .doc(widget.idc)
-                                .collection("Produits")
-                                .where("marque", isEqualTo: searchControl.text)
-                                .snapshots(),
-                        builder: (context, AsyncSnapshot snapshot) {
-                          print("len2 1: ${mesproduits2.length} ");
-                          mesproduits2.clear();
-                          print("len2 2: ${mesproduits2.length} ");
-                          if (snapshot.hasData) {
-                            print("len snapshot :${snapshot.data.docs.length}");
-
-                            for (int i = 0;
-                                i < snapshot.data.docs.length;
-                                i++) {
-                              mesproduits2.add(Article(
-                                  categorie:
-                                      snapshot.data.docs[i].data()['categorie'],
-                                  referenceArticle: snapshot.data.docs[i].id,
-                                  collection: snapshot.data.docs[i]
-                                      .data()['referenceArticle'],
-                                  description: snapshot.data.docs[i]
-                                      .data()['description'],
-                                  image: snapshot.data.docs[i].data()['image'],
-                                  nomArticle: snapshot.data.docs[i]
-                                      .data()['nomArticle'],
-                                  disponibilite: snapshot.data.docs[i]
-                                      .data()['disponibilite'],
-                                  prix: snapshot.data.docs[i].data()['prix'],
-                                  quantite: snapshot.data.docs[i]
-                                      .data()['quantite']));
-                            }
-                            print("len2 : ${mesproduits2.length} ");
-
-                            return Container();
-                          }
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }),
-                    Row(
-                      children: [
-                        Container(
-                            width: 300,
-                            margin:
-                                EdgeInsets.only(top: 10, bottom: 20, left: 30),
-                            child: TextFormField(
-                              onFieldSubmitted: (value) {
-                                print("search : $value");
-                                print("search : ${searchControl.text}");
-                              },
-                              controller: searchControl,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                  hintText: "chercher un produit",
-                                  hintStyle: TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 136, 136, 136)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              Color.fromARGB(0, 213, 245, 226)),
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(60),
-                                          bottomLeft: Radius.circular(60),
-                                          bottomRight: Radius.circular(0),
-                                          topRight: Radius.circular(0))),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                    color: Color.fromARGB(0, 222, 222, 222),
-                                  )),
-                                  filled: true,
-                                  fillColor: Color.fromARGB(255, 250, 250, 250),
-                                  contentPadding: const EdgeInsets.all(15.5)),
-                            )),
-                        Container(
-                          height: 50,
-                          margin: EdgeInsets.only(top: 10, bottom: 20),
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 250, 250, 250),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(0),
-                                bottomLeft: Radius.circular(0),
-                                bottomRight: Radius.circular(60),
-                                topRight: Radius.circular(60)),
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              if (searchControl.text.isEmpty) {
-                                setState(() {
-                                  boolean = false;
-                                });
-                              } else
-                                setState(() {
-                                  boolean = true;
-                                });
-                            },
-                            icon: Icon(Icons.search),
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                      ],
-                    ),
                     Container(
                       // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
                       decoration: BoxDecoration(
@@ -240,7 +134,7 @@ class ArticlesState extends State<Articles> {
                         // borderRadius: BorderRadius.circular(70),
                       ),
 
-                      height: 525,
+                      height: 610,
                       child: Row(
                         children: [
                           Container(
@@ -248,35 +142,25 @@ class ArticlesState extends State<Articles> {
                           ),
                           Container(
                               width: 400,
-                              padding: EdgeInsets.only(left: 10, right: 20),
+                              padding: EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 20),
                               child: ListView(
                                 children: [
                                   StreamBuilder(
-                                      stream: !boolean ||
-                                              searchControl.text.isEmpty
-                                          ? FirebaseFirestore.instance
-                                              .collection("Categories")
-                                              .doc(widget.idc)
-                                              .collection("Produits")
-                                              .snapshots()
-                                          : FirebaseFirestore.instance
-                                              .collection("Categories")
-                                              .doc(widget.idc)
-                                              .collection("Produits")
-                                              .where("nom",
-                                                  isEqualTo: searchControl.text)
-                                              .snapshots(),
+                                      stream: FirebaseFirestore.instance
+                                          .collection("Articles")
+                                          .where("collection",
+                                              isEqualTo: widget.idc)
+                                          .snapshots(),
                                       builder:
                                           (context, AsyncSnapshot snapshot) {
-                                        // if (snapshot.data.docs.length == 0) {
-                                        //   return Center(
-                                        //       child: Text(
-                                        //           "Il n'ya pas encore de produits"));
-                                        // }
                                         if (snapshot.hasData) {
-                                          if (!boolean) {
-                                            mesproduits2.clear();
+                                          if (snapshot.data.docs.length == 0) {
+                                            return Center(
+                                                child: Text(
+                                                    "Il n'ya pas encore d'articles"));
                                           }
+
                                           mesproduits.clear();
 
                                           for (int i = 0;
@@ -286,15 +170,14 @@ class ArticlesState extends State<Articles> {
                                                 referenceArticle:
                                                     snapshot.data.docs[i].id,
                                                 collection: snapshot.data.docs[i]
-                                                    .data()['referenceArticle'],
+                                                    .data()['collection'],
                                                 description: snapshot.data.docs[i]
                                                     .data()['description'],
                                                 image: snapshot.data.docs[i]
                                                     .data()['image'],
                                                 nomArticle: snapshot.data.docs[i]
                                                     .data()['nomArticle'],
-                                                disponibilite: snapshot
-                                                    .data.docs[i]
+                                                disponibilite: snapshot.data.docs[i]
                                                     .data()['disponibilite'],
                                                 prix: snapshot.data.docs[i]
                                                     .data()['prix'],
@@ -303,9 +186,7 @@ class ArticlesState extends State<Articles> {
                                                 categorie: snapshot.data.docs[i]
                                                     .data()['categorie']));
                                           }
-                                          mesproduits.addAll(mesproduits2);
-                                          print(
-                                              "len mesproduits : ${mesproduits.length} ");
+                                          // mesproduits.addAll(mesproduits2);
 
                                           return GridView.builder(
                                               physics:
@@ -328,8 +209,8 @@ class ArticlesState extends State<Articles> {
                                               itemBuilder: (context, index) {
                                                 var image;
                                                 var nom;
-                                                var contenuN;
-                                                var marque;
+
+                                                var category;
                                                 var quantite;
                                                 var prix;
                                                 var description;
@@ -343,19 +224,22 @@ class ArticlesState extends State<Articles> {
                                                 nom = mesproduits[index]
                                                     .nomArticle;
 
-                                                marque = mesproduits[index]
+                                                collection = mesproduits[index]
                                                     .collection;
                                                 quantite =
                                                     mesproduits[index].quantite;
                                                 prix = mesproduits[index].prix;
                                                 description = mesproduits[index]
                                                     .description;
+                                                category = mesproduits[index]
+                                                    .categorie;
 
                                                 disponibilte =
                                                     mesproduits[index]
                                                         .disponibilite;
 
                                                 Item a = Item(
+                                                  categorie: category,
                                                   referenceArticle:
                                                       mesproduits[index]
                                                           .referenceArticle,
@@ -378,40 +262,26 @@ class ArticlesState extends State<Articles> {
                                                   // height: 200,
 
                                                   margin: EdgeInsets.only(
-                                                      left: 10,
+                                                      left: 0,
                                                       top: 10,
-                                                      right: 10,
-                                                      bottom: 10),
+                                                      right: 0,
+                                                      bottom: 5),
 
-                                                  padding: EdgeInsets.all(10),
+                                                  padding: EdgeInsets.all(0),
 
                                                   decoration: BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
                                                               121,
-                                                              168,
-                                                              168,
-                                                              168),
+                                                              255,
+                                                              255,
+                                                              255),
                                                           blurRadius: 15,
                                                           spreadRadius: -7),
                                                     ],
                                                     color: Color.fromARGB(
                                                         255, 255, 255, 255),
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    90),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    90),
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    90),
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    90)),
                                                   ),
 
                                                   child: Column(
@@ -419,12 +289,12 @@ class ArticlesState extends State<Articles> {
                                                       ElevatedButton(
                                                           onPressed: () {
                                                             print(nom);
-                                                            print(marque);
+
                                                             print(prix);
                                                             print(description);
-                                                            print(widget.id);
-                                                            print(widget.nom);
-                                                            print(widget.photo);
+                                                            print(
+                                                                "id collection :");
+                                                            print(widget.idc);
 
                                                             // Navigator.push(
                                                             //     context,
@@ -459,31 +329,44 @@ class ArticlesState extends State<Articles> {
                                                           child: Stack(
                                                             children: [
                                                               image == null
-                                                                  ? CircleAvatar(
-                                                                      backgroundColor: Color.fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          255),
-                                                                      backgroundImage:
-                                                                          AssetImage(
+                                                                  ? SizedBox(
+                                                                      child: Image
+                                                                          .network(
                                                                         "lib/images/imagevide.jpg",
                                                                       ),
-                                                                      radius:
-                                                                          80,
                                                                     )
-                                                                  : CircleAvatar(
-                                                                      backgroundColor: Color.fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          255),
-                                                                      backgroundImage:
-                                                                          NetworkImage(
-                                                                        image,
+                                                                  : Container(
+                                                                      height:
+                                                                          300,
+                                                                      width:
+                                                                          200,
+                                                                      margin: EdgeInsets
+                                                                          .only(
+                                                                              top: 0),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                              color: Color.fromARGB(121, 180, 35, 35),
+                                                                              blurRadius: 15,
+                                                                              spreadRadius: -7),
+                                                                        ],
                                                                       ),
-                                                                      radius:
-                                                                          80,
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            300,
+                                                                        height:
+                                                                            double.infinity,
+                                                                        child: Image
+                                                                            .network(
+                                                                          image,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          height:
+                                                                              200,
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                               snapshot.data.docs[index]
                                                                               .data()[
@@ -521,8 +404,8 @@ class ArticlesState extends State<Articles> {
                                                           style: ElevatedButton
                                                               .styleFrom(
                                                             fixedSize:
-                                                                Size(120, 120),
-                                                            elevation: 1,
+                                                                Size(170, 220),
+                                                            elevation: 0,
                                                             // padding: EdgeInsets.all(0),
                                                             primary:
                                                                 Color.fromARGB(
@@ -533,116 +416,49 @@ class ArticlesState extends State<Articles> {
                                                             padding:
                                                                 EdgeInsets.all(
                                                                     0),
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            90)),
                                                           )),
                                                       Container(
                                                           margin:
                                                               EdgeInsets.only(
-                                                                  top: 5),
+                                                                  top: 0),
                                                           child: Text(
                                                               nom == null
                                                                   ? ""
                                                                   : nom,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                              overflow: TextOverflow
+                                                                  .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: TextStyle(
+                                                              style: GoogleFonts.quicksand(
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      17))),
-                                                      Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  top: 5),
-                                                          child: Text(
-                                                              marque == null
-                                                                  ? ""
-                                                                  : marque,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  fontSize:
-                                                                      14))),
-                                                      Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  top: 5),
-                                                          child: Text(
-                                                              contenuN == null
-                                                                  ? ""
-                                                                  : "$contenuN",
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  fontSize:
-                                                                      13))),
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                            top: 5),
-                                                        decoration: BoxDecoration(
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  blurRadius:
-                                                                      18,
-                                                                  spreadRadius:
-                                                                      -3,
                                                                   color: Color
                                                                       .fromARGB(
                                                                           255,
-                                                                          230,
-                                                                          230,
-                                                                          230))
-                                                            ],
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        40)),
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 2,
-                                                                bottom: 2,
-                                                                left: 2,
-                                                                right: 2),
-                                                        width: 240,
+                                                                          81,
+                                                                          79,
+                                                                          79),
+                                                                  fontSize:
+                                                                      17))),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 0),
+                                                        width: 120,
                                                         child: Text(
                                                             prix == null
                                                                 ? ""
                                                                 : "$prix Mro",
                                                             textAlign: TextAlign
                                                                 .center,
-                                                            style: TextStyle(
-                                                                color:
-                                                                    Colors.grey,
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
+                                                            style: GoogleFonts
+                                                                .quicksand(
+                                                              color: Color
+                                                                  .fromARGB(255,
+                                                                      0, 0, 0),
+                                                              fontSize: 15,
+                                                            )),
                                                       ),
                                                       snapshot.data.docs[index]
                                                                       .data()[
@@ -651,121 +467,112 @@ class ArticlesState extends State<Articles> {
                                                           ? Container()
                                                           : Container(
                                                               margin: EdgeInsets
-                                                                  .only(
-                                                                      top: 10),
-                                                              width: 40,
-                                                              height: 40,
+                                                                  .only(top: 2),
+                                                              width: 150,
+                                                              height: 30,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                color: const Color
+                                                                    .fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    0,
+                                                                    0),
+                                                                width: 1,
+                                                              )),
                                                               child: Consumer<
                                                                       Cart>(
                                                                   builder: ((context,
                                                                       instance,
                                                                       child) {
-                                                                return IconButton(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  onPressed:
-                                                                      () {
-                                                                    print(
-                                                                        "item index : $index : $a");
-                                                                    int q = 1;
+                                                                return ElevatedButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          "click");
+                                                                      print(
+                                                                          "item index : $index : $a");
+                                                                      int q = 1;
 
-                                                                    for (int i =
-                                                                            0;
-                                                                        i < instance.selectedproduct.length;
-                                                                        i++) {
-                                                                      if (instance
-                                                                              .selectedproduct[i]
-                                                                              .id ==
-                                                                          a.referenceArticle) {
-                                                                        if (instance.selectedproduct[i].quantite <
-                                                                            snapshot.data.docs[i].data()['quantite']) {
-                                                                          print(
-                                                                              " quantite item : ${snapshot.data.docs[i].data()['quantite']}");
-                                                                          print(
-                                                                              " quantite selected : ${instance.selectedproduct[i].quantite}");
+                                                                      for (int i =
+                                                                              0;
+                                                                          i < instance.selectedproduct.length;
+                                                                          i++) {
+                                                                        if (instance.selectedproduct[i].referenceArticle ==
+                                                                            a.referenceArticle) {
+                                                                          if (instance.selectedproduct[i].quantite <
+                                                                              snapshot.data.docs[i].data()['quantite']) {
+                                                                            print(" quantite item : ${snapshot.data.docs[i].data()['quantite']}");
+                                                                            print(" quantite selected : ${instance.selectedproduct[i].quantite}");
 
-                                                                          instance
-                                                                              .quantite(instance.selectedproduct[i]);
+                                                                            instance.quantite(instance.selectedproduct[i]);
 
-                                                                          1;
-                                                                          instance
-                                                                              .quantiteTotal();
+                                                                            1;
+                                                                            instance.quantiteTotal();
 
-                                                                          instance.pricee(
-                                                                              instance.selectedproduct[i],
-                                                                              prix);
-                                                                          q++;
+                                                                            instance.pricee(instance.selectedproduct[i],
+                                                                                prix);
+                                                                            q++;
 
-                                                                          print(
-                                                                              "ind repeat:$index");
+                                                                            print("ind repeat:$index");
 
-                                                                          instance
-                                                                              .prices(
-                                                                            prix,
-                                                                          );
-                                                                        } else {
-                                                                          final snackBar =
-                                                                              SnackBar(
-                                                                            content:
-                                                                                Text('quantite non disponible'),
-                                                                            backgroundColor: Color.fromARGB(
-                                                                                255,
-                                                                                234,
-                                                                                132,
-                                                                                124),
-                                                                          );
+                                                                            instance.prices(
+                                                                              prix,
+                                                                            );
+                                                                          } else {
+                                                                            final snackBar =
+                                                                                SnackBar(
+                                                                              content: Text('quantite non disponible'),
+                                                                              backgroundColor: Color.fromARGB(255, 234, 132, 124),
+                                                                            );
 
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(snackBar);
-                                                                          q++;
+                                                                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                                                            q++;
+                                                                          }
                                                                         }
                                                                       }
-                                                                    }
-                                                                    print(q);
-                                                                    if (q ==
-                                                                        1) {
-                                                                      print(
-                                                                          "index: $index");
-                                                                      instance
-                                                                          .add(
-                                                                              a);
+                                                                      print(q);
+                                                                      if (q ==
+                                                                          1) {
+                                                                        print(
+                                                                            "index: $index");
+                                                                        instance
+                                                                            .add(a);
 
-                                                                      instance
-                                                                          .quantiteTotal();
-                                                                      instance.prices(
-                                                                          a.prix);
-                                                                    }
-                                                                    print(
-                                                                        "${instance.selectedproduct}");
-                                                                  },
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .add_shopping_cart_rounded,
-                                                                    size: 27,
-                                                                  ),
-                                                                );
+                                                                        instance
+                                                                            .quantiteTotal();
+                                                                        instance
+                                                                            .prices(a.prix);
+                                                                      }
+                                                                      print(
+                                                                          "${instance.selectedproduct}");
+                                                                    },
+                                                                    style: ElevatedButton.styleFrom(
+                                                                        elevation:
+                                                                            0,
+                                                                        primary: Color.fromARGB(
+                                                                            255,
+                                                                            255,
+                                                                            255,
+                                                                            255),
+                                                                        padding:
+                                                                            EdgeInsets.all(0)),
+                                                                    child: Text(
+                                                                      "AJOUTER AU PANIER",
+                                                                      style: GoogleFonts.quicksand(
+                                                                          fontSize:
+                                                                              14,
+                                                                          color: const Color
+                                                                              .fromARGB(
+                                                                              255,
+                                                                              3,
+                                                                              3,
+                                                                              3)),
+                                                                    ));
                                                               })),
-                                                              decoration: BoxDecoration(
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                        color: Color.fromARGB(
-                                                                            121,
-                                                                            168,
-                                                                            168,
-                                                                            168),
-                                                                        blurRadius:
-                                                                            15,
-                                                                        spreadRadius:
-                                                                            -4),
-                                                                  ],
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          218,
-                                                                          222,
-                                                                          241,
-                                                                          236)),
                                                             ),
                                                     ],
                                                   ),
