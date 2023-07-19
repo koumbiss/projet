@@ -1,10 +1,21 @@
 // ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+<<<<<<< HEAD
+=======
+import 'package:flutter/foundation.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Panier.dart';
 
+<<<<<<< HEAD
+=======
+//import 'dart:math' as math;
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 
 import 'package:projet_etudes/model/Article.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +23,18 @@ import 'package:provider/provider.dart';
 import '../model/Item.dart';
 
 class Articles extends StatefulWidget {
+<<<<<<< HEAD
   final id, idc, nom, photo, categorie;
   const Articles({super.key, this.idc, this.id, this.categorie, this.nom, this.photo});
   @override
+=======
+  final idc, nomcollection;
+  Articles({
+    Key? key,
+    this.idc,
+    this.nomcollection,
+  }) : super(key: key);
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
   State<StatefulWidget> createState() {
     return ArticlesState();
   }
@@ -45,15 +65,13 @@ class ArticlesState extends State<Articles> {
                         margin: const EdgeInsets.only(right: 25),
                         child: IconButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => bottombar(
-                              //               indexx: 1,
-                              //             )));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Panier()));
                             },
-                            icon: Icon(Icons.shopping_cart_rounded,
-                                color: vert22)),
+                            icon: Icon(Icons.shopping_bag_rounded,
+                                color: const Color.fromARGB(255, 37, 37, 37))),
                       ),
                       Positioned(
                           top: 2,
@@ -70,8 +88,15 @@ class ArticlesState extends State<Articles> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13,
-                                  color: vert22),
+                                  color: const Color.fromARGB(255, 3, 3, 3)),
                             ),
+<<<<<<< HEAD
+=======
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(96, 255, 255, 255)),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                           )),
                     ]);
                   }))
@@ -82,7 +107,10 @@ class ArticlesState extends State<Articles> {
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.white, Colors.white]))),
+                          colors: [
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ]))),
 
               // ignore: avoid_unnecessary_containers
               leading: Container(
@@ -92,7 +120,7 @@ class ArticlesState extends State<Articles> {
                   },
                   icon: const Icon(
                     IconlyLight.arrowLeft2,
-                    color: Color.fromARGB(255, 87, 87, 87),
+                    color: Color.fromARGB(255, 50, 50, 50),
                   ),
                 ),
               ),
@@ -104,12 +132,11 @@ class ArticlesState extends State<Articles> {
               // ignore: avoid_unnecessary_containers
               title: Container(
                   child: Text(
-                "widget.categorie",
-                style: TextStyle(
-                    color: vert22,
-                    fontSize: 27,
-                    fontFamily: "",
-                    fontWeight: FontWeight.bold),
+                widget.nomcollection,
+                style: GoogleFonts.quicksand(
+                  color: Color.fromARGB(255, 58, 58, 58),
+                  fontSize: 27,
+                ),
               )),
 
               elevation: 0,
@@ -124,6 +151,7 @@ class ArticlesState extends State<Articles> {
               child: ListView(children: [
                 Column(
                   children: [
+<<<<<<< HEAD
                     StreamBuilder(
                         stream: !boolean
                             ? FirebaseFirestore.instance
@@ -237,6 +265,8 @@ class ArticlesState extends State<Articles> {
                         ),
                       ],
                     ),
+=======
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                     Container(
                       // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
                       decoration: BoxDecoration(
@@ -244,7 +274,7 @@ class ArticlesState extends State<Articles> {
                         // borderRadius: BorderRadius.circular(70),
                       ),
 
-                      height: 525,
+                      height: 610,
                       child: Row(
                         children: [
                           Container(
@@ -252,35 +282,29 @@ class ArticlesState extends State<Articles> {
                           ),
                           Container(
                               width: 400,
+<<<<<<< HEAD
                               padding: const EdgeInsets.only(left: 10, right: 20),
+=======
+                              padding: EdgeInsets.only(
+                                  left: 10, bottom: 10, right: 20),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                               child: ListView(
                                 children: [
                                   StreamBuilder(
-                                      stream: !boolean ||
-                                              searchControl.text.isEmpty
-                                          ? FirebaseFirestore.instance
-                                              .collection("Categories")
-                                              .doc(widget.idc)
-                                              .collection("Produits")
-                                              .snapshots()
-                                          : FirebaseFirestore.instance
-                                              .collection("Categories")
-                                              .doc(widget.idc)
-                                              .collection("Produits")
-                                              .where("nom",
-                                                  isEqualTo: searchControl.text)
-                                              .snapshots(),
+                                      stream: FirebaseFirestore.instance
+                                          .collection("Articles")
+                                          .where("collection",
+                                              isEqualTo: widget.idc)
+                                          .snapshots(),
                                       builder:
                                           (context, AsyncSnapshot snapshot) {
-                                        // if (snapshot.data.docs.length == 0) {
-                                        //   return Center(
-                                        //       child: Text(
-                                        //           "Il n'ya pas encore de produits"));
-                                        // }
                                         if (snapshot.hasData) {
-                                          if (!boolean) {
-                                            mesproduits2.clear();
+                                          if (snapshot.data.docs.length == 0) {
+                                            return Center(
+                                                child: Text(
+                                                    "Il n'ya pas encore d'articles"));
                                           }
+
                                           mesproduits.clear();
 
                                           for (int i = 0;
@@ -290,15 +314,14 @@ class ArticlesState extends State<Articles> {
                                                 referenceArticle:
                                                     snapshot.data.docs[i].id,
                                                 collection: snapshot.data.docs[i]
-                                                    .data()['referenceArticle'],
+                                                    .data()['collection'],
                                                 description: snapshot.data.docs[i]
                                                     .data()['description'],
                                                 image: snapshot.data.docs[i]
                                                     .data()['image'],
                                                 nomArticle: snapshot.data.docs[i]
                                                     .data()['nomArticle'],
-                                                disponibilite: snapshot
-                                                    .data.docs[i]
+                                                disponibilite: snapshot.data.docs[i]
                                                     .data()['disponibilite'],
                                                 prix: snapshot.data.docs[i]
                                                     .data()['prix'],
@@ -307,9 +330,7 @@ class ArticlesState extends State<Articles> {
                                                 categorie: snapshot.data.docs[i]
                                                     .data()['categorie']));
                                           }
-                                          mesproduits.addAll(mesproduits2);
-                                          print(
-                                              "len mesproduits : ${mesproduits.length} ");
+                                          // mesproduits.addAll(mesproduits2);
 
                                           return GridView.builder(
                                               physics:
@@ -330,6 +351,7 @@ class ArticlesState extends State<Articles> {
                                               ),
                                               shrinkWrap: true,
                                               itemBuilder: (context, index) {
+<<<<<<< HEAD
                                                 String image;
                                                 String nom;
                                                 
@@ -341,6 +363,17 @@ class ArticlesState extends State<Articles> {
                                                 String description;
                                                 String collection;
                                                 String disponibilte;
+=======
+                                                var image;
+                                                var nom;
+
+                                                var category;
+                                                var quantite;
+                                                var prix;
+                                                var description;
+                                                var collection;
+                                                var disponibilte;
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 
                                                 image =
                                                     mesproduits[index].image;
@@ -349,19 +382,22 @@ class ArticlesState extends State<Articles> {
                                                 nom = mesproduits[index]
                                                     .nomArticle;
 
-                                                marque = mesproduits[index]
+                                                collection = mesproduits[index]
                                                     .collection;
                                                 quantite =
                                                     mesproduits[index].quantite;
                                                 prix = mesproduits[index].prix;
                                                 description = mesproduits[index]
                                                     .description;
+                                                category = mesproduits[index]
+                                                    .categorie;
 
                                                 disponibilte =
                                                     mesproduits[index]
                                                         .disponibilite;
 
                                                 Item a = Item(
+                                                  categorie: category,
                                                   referenceArticle:
                                                       mesproduits[index]
                                                           .referenceArticle,
@@ -383,41 +419,36 @@ class ArticlesState extends State<Articles> {
                                                 return Container(
                                                   // height: 200,
 
+<<<<<<< HEAD
                                                   margin: const EdgeInsets.only(
                                                       left: 10,
+=======
+                                                  margin: EdgeInsets.only(
+                                                      left: 0,
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                       top: 10,
-                                                      right: 10,
-                                                      bottom: 10),
+                                                      right: 0,
+                                                      bottom: 5),
 
+<<<<<<< HEAD
                                                   padding: const EdgeInsets.all(10),
+=======
+                                                  padding: EdgeInsets.all(0),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 
                                                   decoration: const BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
                                                               121,
-                                                              168,
-                                                              168,
-                                                              168),
+                                                              255,
+                                                              255,
+                                                              255),
                                                           blurRadius: 15,
                                                           spreadRadius: -7),
                                                     ],
                                                     color: Color.fromARGB(
                                                         255, 255, 255, 255),
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    90),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    90),
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    90),
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    90)),
                                                   ),
 
                                                   child: Column(
@@ -425,12 +456,12 @@ class ArticlesState extends State<Articles> {
                                                       ElevatedButton(
                                                           onPressed: () {
                                                             print(nom);
-                                                            print(marque);
+
                                                             print(prix);
                                                             print(description);
-                                                            print(widget.id);
-                                                            print(widget.nom);
-                                                            print(widget.photo);
+                                                            print(
+                                                                "id collection :");
+                                                            print(widget.idc);
 
                                                             // Navigator.push(
                                                             //     context,
@@ -484,6 +515,7 @@ class ArticlesState extends State<Articles> {
                                                             children: [
                                                               // ignore: unnecessary_null_comparison
                                                               image == null
+<<<<<<< HEAD
                                                                   ? const CircleAvatar(
                                                                       backgroundColor: Color.fromARGB(
                                                                           255,
@@ -492,11 +524,15 @@ class ArticlesState extends State<Articles> {
                                                                           255),
                                                                       backgroundImage:
                                                                           AssetImage(
+=======
+                                                                  ? SizedBox(
+                                                                      child: Image
+                                                                          .network(
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                                         "lib/images/imagevide.jpg",
                                                                       ),
-                                                                      radius:
-                                                                          80,
                                                                     )
+<<<<<<< HEAD
                                                                   : CircleAvatar(
                                                                       backgroundColor: const Color.fromARGB(
                                                                           255,
@@ -506,9 +542,40 @@ class ArticlesState extends State<Articles> {
                                                                       backgroundImage:
                                                                           NetworkImage(
                                                                         image,
+=======
+                                                                  : Container(
+                                                                      height:
+                                                                          300,
+                                                                      width:
+                                                                          200,
+                                                                      margin: EdgeInsets
+                                                                          .only(
+                                                                              top: 0),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                              color: Color.fromARGB(121, 180, 35, 35),
+                                                                              blurRadius: 15,
+                                                                              spreadRadius: -7),
+                                                                        ],
                                                                       ),
-                                                                      radius:
-                                                                          80,
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            300,
+                                                                        height:
+                                                                            double.infinity,
+                                                                        child: Image
+                                                                            .network(
+                                                                          image,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          height:
+                                                                              200,
+                                                                        ),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
+                                                                      ),
                                                                     ),
                                                               snapshot.data.docs[index]
                                                                               .data()[
@@ -542,6 +609,7 @@ class ArticlesState extends State<Articles> {
                                                                       ))
                                                                   : Container()
                                                             ],
+<<<<<<< HEAD
                                                           )),
                                                       Container(
                                                           margin:
@@ -631,6 +699,54 @@ class ArticlesState extends State<Articles> {
                                                                 left: 2,
                                                                 right: 2),
                                                         width: 240,
+=======
+                                                          ),
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            fixedSize:
+                                                                Size(170, 220),
+                                                            elevation: 0,
+                                                            // padding: EdgeInsets.all(0),
+                                                            primary:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    0),
+                                                          )),
+                                                      Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  top: 0),
+                                                          child: Text(
+                                                              nom == null
+                                                                  ? ""
+                                                                  : nom,
+                                                              overflow: TextOverflow
+                                                                  .ellipsis,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: GoogleFonts.quicksand(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          81,
+                                                                          79,
+                                                                          79),
+                                                                  fontSize:
+                                                                      17))),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 0),
+                                                        width: 120,
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                         child: Text(
                                                             // ignore: unnecessary_null_comparison
                                                             prix == null
@@ -638,6 +754,7 @@ class ArticlesState extends State<Articles> {
                                                                 : "$prix Mro",
                                                             textAlign: TextAlign
                                                                 .center,
+<<<<<<< HEAD
                                                             style: const TextStyle(
                                                                 color:
                                                                     Colors.grey,
@@ -645,6 +762,15 @@ class ArticlesState extends State<Articles> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold)),
+=======
+                                                            style: GoogleFonts
+                                                                .quicksand(
+                                                              color: Color
+                                                                  .fromARGB(255,
+                                                                      0, 0, 0),
+                                                              fontSize: 15,
+                                                            )),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                       ),
                                                       snapshot.data.docs[index]
                                                                       .data()[
@@ -652,6 +778,7 @@ class ArticlesState extends State<Articles> {
                                                               0
                                                           ? Container()
                                                           : Container(
+<<<<<<< HEAD
                                                               margin: const EdgeInsets
                                                                   .only(
                                                                       top: 10),
@@ -678,50 +805,62 @@ class ArticlesState extends State<Articles> {
                                                                           222,
                                                                           241,
                                                                           236)),
+=======
+                                                              margin: EdgeInsets
+                                                                  .only(top: 2),
+                                                              width: 150,
+                                                              height: 30,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                color: const Color
+                                                                    .fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    0,
+                                                                    0),
+                                                                width: 1,
+                                                              )),
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                               child: Consumer<
                                                                       Cart>(
                                                                   builder: ((context,
                                                                       instance,
                                                                       child) {
-                                                                return IconButton(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  onPressed:
-                                                                      () {
-                                                                    print(
-                                                                        "item index : $index : $a");
-                                                                    int q = 1;
+                                                                return ElevatedButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          "click");
+                                                                      print(
+                                                                          "item index : $index : $a");
+                                                                      int q = 1;
 
-                                                                    for (int i =
-                                                                            0;
-                                                                        i < instance.selectedproduct.length;
-                                                                        i++) {
-                                                                      if (instance
-                                                                              .selectedproduct[i]
-                                                                              .id ==
-                                                                          a.referenceArticle) {
-                                                                        if (instance.selectedproduct[i].quantite <
-                                                                            snapshot.data.docs[i].data()['quantite']) {
-                                                                          print(
-                                                                              " quantite item : ${snapshot.data.docs[i].data()['quantite']}");
-                                                                          print(
-                                                                              " quantite selected : ${instance.selectedproduct[i].quantite}");
+                                                                      for (int i =
+                                                                              0;
+                                                                          i < instance.selectedproduct.length;
+                                                                          i++) {
+                                                                        if (instance.selectedproduct[i].referenceArticle ==
+                                                                            a.referenceArticle) {
+                                                                          if (instance.selectedproduct[i].quantite <
+                                                                              snapshot.data.docs[i].data()['quantite']) {
+                                                                            print(" quantite item : ${snapshot.data.docs[i].data()['quantite']}");
+                                                                            print(" quantite selected : ${instance.selectedproduct[i].quantite}");
 
-                                                                          instance
-                                                                              .quantite(instance.selectedproduct[i]);
+                                                                            instance.quantite(instance.selectedproduct[i]);
 
-                                                                          1;
-                                                                          instance
-                                                                              .quantiteTotal();
+                                                                            1;
+                                                                            instance.quantiteTotal();
 
-                                                                          instance.pricee(
-                                                                              instance.selectedproduct[i],
-                                                                              prix);
-                                                                          q++;
+                                                                            instance.pricee(instance.selectedproduct[i],
+                                                                                prix);
+                                                                            q++;
 
-                                                                          print(
-                                                                              "ind repeat:$index");
+                                                                            print("ind repeat:$index");
 
+<<<<<<< HEAD
                                                                           instance
                                                                               .prices(
                                                                             prix,
@@ -737,22 +876,32 @@ class ArticlesState extends State<Articles> {
                                                                                 132,
                                                                                 124),
                                                                           );
+=======
+                                                                            instance.prices(
+                                                                              prix,
+                                                                            );
+                                                                          } else {
+                                                                            final snackBar =
+                                                                                SnackBar(
+                                                                              content: Text('quantite non disponible'),
+                                                                              backgroundColor: Color.fromARGB(255, 234, 132, 124),
+                                                                            );
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(snackBar);
-                                                                          q++;
+                                                                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                                                            q++;
+                                                                          }
                                                                         }
                                                                       }
-                                                                    }
-                                                                    print(q);
-                                                                    if (q ==
-                                                                        1) {
-                                                                      print(
-                                                                          "index: $index");
-                                                                      instance
-                                                                          .add(
-                                                                              a);
+                                                                      print(q);
+                                                                      if (q ==
+                                                                          1) {
+                                                                        print(
+                                                                            "index: $index");
+                                                                        instance
+                                                                            .add(a);
 
+<<<<<<< HEAD
                                                                       instance
                                                                           .quantiteTotal();
                                                                       instance.prices(
@@ -768,6 +917,38 @@ class ArticlesState extends State<Articles> {
                                                                     size: 27,
                                                                   ),
                                                                 );
+=======
+                                                                        instance
+                                                                            .quantiteTotal();
+                                                                        instance
+                                                                            .prices(a.prix);
+                                                                      }
+                                                                      print(
+                                                                          "${instance.selectedproduct}");
+                                                                    },
+                                                                    style: ElevatedButton.styleFrom(
+                                                                        elevation:
+                                                                            0,
+                                                                        primary: Color.fromARGB(
+                                                                            255,
+                                                                            255,
+                                                                            255,
+                                                                            255),
+                                                                        padding:
+                                                                            EdgeInsets.all(0)),
+                                                                    child: Text(
+                                                                      "AJOUTER AU PANIER",
+                                                                      style: GoogleFonts.quicksand(
+                                                                          fontSize:
+                                                                              14,
+                                                                          color: const Color
+                                                                              .fromARGB(
+                                                                              255,
+                                                                              3,
+                                                                              3,
+                                                                              3)),
+                                                                    ));
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
                                                               })),
                                                             ),
                                                     ],

@@ -1,10 +1,31 @@
+<<<<<<< HEAD
 // ignore_for_file: avoid_print
 
+=======
+import 'package:cloud_firestore/cloud_firestore.dart';
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
 import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Collection.dart';
 import 'package:projet_etudes/services/DBServices.dart';
 
 class CloudFirestore {
+  checkquantity(id, catgorie) async {
+    print(catgorie);
+    try {
+      DocumentSnapshot<Map<String, dynamic>> feed =
+          await FirebaseFirestore.instance.collection("Articles").doc(id).get();
+
+      print(" resulytat ${feed["quantite"]}");
+
+      print("qunatite${feed["quantite"]}");
+      print("DEbut ");
+
+      return feed["quantite"];
+    } catch (e) {
+      print(" on a une exception $e");
+    }
+  }
+
   addCollection(nom, upl, date) async {
     try {
       var url = await (await upl).ref.getDownloadURL();

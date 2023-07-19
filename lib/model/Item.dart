@@ -4,7 +4,12 @@ class Item {
       disponibilite,
       description,
       image,
+<<<<<<< HEAD
       collection;
+=======
+      collection,
+      categorie;
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
   late int prix, quantite, prixunitaire;
   Item(
       {required this.referenceArticle,
@@ -15,6 +20,7 @@ class Item {
       required this.image,
       required this.quantite,
       required this.prix,
+      required this.categorie,
       required this.collection});
 
 //doc.data())).toList()
@@ -22,6 +28,7 @@ class Item {
         referenceArticle: json['referenceArticle'],
         prixunitaire: json["prixunitaire"],
         nomArticle: json['nomArticle'],
+        categorie: json['categorie'],
         quantite: json['quantite'],
         disponibilite: json['disponibilite'],
         prix: json['prix'],
@@ -37,6 +44,7 @@ class Item {
         'disponibilite': disponibilite,
         'quantite': quantite,
         'prix': prix,
+        'categorie': categorie,
         'description': description,
         'image': image,
         'collection': collection,

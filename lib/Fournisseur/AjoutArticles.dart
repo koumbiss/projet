@@ -697,7 +697,7 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                           quantite,
                                           DescriptionController.text,
                                           upl,
-                                          "widget.idcollection",
+                                          widget.idcollection,
                                           CategorieCollection.text);
                                       print("C'est bon ");
                                       // var ider = FirebaseAuth
