@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/services/Authentification.dart';
 
 class loginScreen extends StatelessWidget {
   const loginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final memailController = TextEditingController();
+    final mpasswordController = TextEditingController();
     const String login = "se connecter";
     const String loginCon = "Connecte toi ou crée ton compte YL";
     const String logo = "assets/logo.png";
@@ -36,7 +39,8 @@ class loginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
-                        decoration: const InputDecoration(
+                        controller: memailController,
+                        decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             //labelText: "E-mail",
                             hintText: "E-mail",
@@ -46,6 +50,7 @@ class loginScreen extends StatelessWidget {
                         height: forhei - 20,
                       ),
                       TextFormField(
+                        controller: mpasswordController,
                         decoration: const InputDecoration(
                           //labelText: "Mot de passe",
                           prefixIcon: Icon(Icons.fingerprint),
@@ -56,15 +61,23 @@ class loginScreen extends StatelessWidget {
                       const SizedBox(
                         height: forhei - 20,
                       ),
-                      Align(
-                          alignment: Alignment.bottomLeft,
-                          child: TextButton(
-                              onPressed: () {},
-                              child: const Text(oublimotdepasse))),
+                      // Align(
+                      //     alignment: Alignment.bottomLeft,
+                      //     child: TextButton(
+                      //         onPressed: () {},
+                      //         child: const Text(oublimotdepasse))),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                            onPressed: () {}, child: Text(login.toUpperCase())),
+                            onPressed: () async {
+                              var us = await Authentification().signinn(
+                                  memailController, mpasswordController);
+
+                              if (us == 'true') {
+                                print("c'est bon");
+                              }
+                            },
+                            child: Text(login.toUpperCase())),
                       ),
                     ],
                   ),

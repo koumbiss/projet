@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:projet_etudes/Fournisseur/MenuFournisseur.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Menu.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: Menu(indexx: 1),
+      home: MenuFournisseur(indexx: 0),
     );
   }
 }

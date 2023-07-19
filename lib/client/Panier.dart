@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Commandes.dart';
+import 'package:projet_etudes/model/Commande.dart';
+import 'package:projet_etudes/model/Item.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 import 'package:provider/provider.dart';
@@ -371,31 +374,31 @@ class PannierState extends State<Pannier> {
                                           if (FirebaseAuth
                                                   .instance.currentUser !=
                                               null) {
-                                            List Listid = [];
+                                            List<Item> mesArticles = [];
+
                                             for (int i = 0;
                                                 i <
                                                     value
                                                         .selectedproduct.length;
                                                 i++) {
-                                              print(
-                                                  "list: ${value.selectedproduct[i].pharmacieref}");
-                                              Listid.add(value
-                                                  .selectedproduct[i]
-                                                  .pharmacieref);
+                                              mesArticles.add(
+                                                  value.selectedproduct[i]);
                                             }
-                                            print("list: $Listid");
-                                            var seen = Set<String>();
-                                            List uniquelist = Listid.where(
-                                                (id) => seen.add(id)).toList();
-                                            print(" unique List $uniquelist");
 
-                                            // Navigator.of(context,
-                                            //         rootNavigator: true)
-                                            //     .push(MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             new Confirmationpage(
-                                            //                 listid:
-                                            //                     uniquelist)));
+                                            Navigator
+                                                    .of(
+                                                        context,
+                                                        rootNavigator: true)
+                                                .push(MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        new Commandes(
+                                                            total: value.price,
+                                                            id: FirebaseAuth
+                                                                .instance
+                                                                .currentUser!
+                                                                .uid,
+                                                            listproduits:
+                                                                mesArticles)));
                                           } else {
                                             // Navigator.of(context,
                                             //         rootNavigator: true)

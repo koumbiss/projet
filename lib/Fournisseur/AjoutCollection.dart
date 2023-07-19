@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
@@ -62,7 +63,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
           image = File(photo.path);
 
           print("image");
-          
+
           print(image);
         });
         var nameimage = basename(photo.path);
@@ -90,6 +91,13 @@ class AJoutCollectionstate extends State<AJoutCollection> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
+              title: Text(
+                "Ajouter une collection",
+                style: GoogleFonts.quicksand(
+                  color: const Color.fromARGB(255, 10, 10, 10),
+                  fontSize: 26,
+                ),
+              ),
               flexibleSpace: Container(
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -97,29 +105,11 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                           end: Alignment.bottomRight,
                           colors: [Colors.white, Colors.white]))),
 
-              leading: Container(
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    IconlyLight.arrowLeft2,
-                    color: Color.fromARGB(255, 87, 87, 87),
-                  ),
-                ),
-              ),
               toolbarHeight: 52.7,
               // leading: Text("PG"),
               centerTitle: true,
 
               //shape: RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(0),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(14),topRight: Radius.circular(0))),
-              title: Container(
-                child: const Text("Ajout d'un produit",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Colors.white)),
-              ),
 
               elevation: 0,
             ),
@@ -131,13 +121,14 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                     children: [
                       Container(
                         width: 400,
-                        height: 440,
-                        margin: const EdgeInsets.only(top: 0, left: 10, right: 10),
+                        height: 400,
+                        margin:
+                            const EdgeInsets.only(top: 0, left: 10, right: 10),
                         decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(30),
-                                bottomRight: Radius.circular(30))),
+                                bottomLeft: Radius.circular(0),
+                                bottomRight: Radius.circular(0))),
                         child: image == null
                             ? Container(
                                 decoration: const BoxDecoration(
@@ -165,11 +156,13 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        const EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: const Color.fromARGB(
+                                                        color: const Color
+                                                            .fromARGB(
                                                             255, 248, 248, 248),
                                                         borderRadius:
                                                             BorderRadius
@@ -254,21 +247,23 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(200, 200), backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                      fixedSize: const Size(200, 200),
+                                      backgroundColor: const Color.fromARGB(
+                                          0, 255, 255, 255),
                                       elevation: 0,
                                       padding: const EdgeInsets.all(0),
                                     ),
                                     child: Container(
-                                        color:
-                                            const Color.fromARGB(0, 255, 255, 255))))
+                                        color: const Color.fromARGB(
+                                            0, 255, 255, 255))))
                             : Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: FileImage(image!),
                                         fit: BoxFit.cover),
                                     borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(30),
-                                        bottomRight: Radius.circular(30))),
+                                        bottomLeft: Radius.circular(0),
+                                        bottomRight: Radius.circular(0))),
                                 width: 200,
                                 height: 220,
                                 child: ElevatedButton(
@@ -286,11 +281,13 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        const EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: const Color.fromARGB(
+                                                        color: const Color
+                                                            .fromARGB(
                                                             255, 237, 237, 237),
                                                         borderRadius:
                                                             BorderRadius
@@ -376,10 +373,13 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       // fixedSize: Size(250, 250),
-                                      elevation: 0, backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                      elevation: 0,
+                                      backgroundColor: const Color.fromARGB(
+                                          0, 255, 255, 255),
                                       padding: const EdgeInsets.all(0),
                                     ),
-                                    child: Container(color: Colors.transparent))),
+                                    child:
+                                        Container(color: Colors.transparent))),
                       ),
                       Form(
                           key: formstates,
@@ -432,6 +432,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                         ),
                                       ))),
                               Container(
+                                height: 40,
                                 decoration: const BoxDecoration(
                                     gradient: LinearGradient(
                                         begin: Alignment.topLeft,
@@ -440,7 +441,8 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                       Color.fromARGB(255, 42, 41, 41),
                                       Color.fromARGB(255, 34, 32, 32)
                                     ])),
-                                margin: const EdgeInsets.only(top: 20, bottom: 20),
+                                margin:
+                                    const EdgeInsets.only(top: 20, bottom: 20),
                                 width: 200,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -463,14 +465,18 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                     //       "Vous devez choisir une photo");
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 0, backgroundColor: const Color.fromARGB(0, 244, 67, 54),
-                                    padding: const EdgeInsets.all(10),
+                                    elevation: 0,
+                                    backgroundColor:
+                                        const Color.fromARGB(0, 244, 67, 54),
+                                    padding: const EdgeInsets.all(2),
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                        borderRadius: BorderRadius.circular(0)),
                                   ),
-                                  child: const Text("Ajouter",
-                                      style: TextStyle(fontSize: 20)),
+                                  child: Text("Ajouter",
+                                      style: GoogleFonts.quicksand(
+                                          fontSize: 20,
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255))),
                                 ),
                               ),
                             ],

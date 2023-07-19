@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/ArticleDetails.dart';
 import 'package:projet_etudes/client/Menu.dart';
@@ -135,9 +136,36 @@ class ArticlesState extends State<Articles> {
                 Column(
                   children: [
                     Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: ElevatedButton(
+                          child: Icon(Icons.add),
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .push(MaterialPageRoute(
+                                    builder: (context) => new AJoutArticles(
+                                          idcollection: widget.idc,
+                                        )));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            // fixedSize: Size(250, 250),
+                            elevation: 0,
+                            // padding: EdgeInsets.all(0),
+                            primary: Color.fromARGB(0, 255, 255, 255),
+                            padding: EdgeInsets.all(0),
+                          )),
                       // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
                       decoration: BoxDecoration(
-                        color: couleur,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        // borderRadius: BorderRadius.circular(70),
+                      ),
+                      width: 60,
+
+                      height: 30,
+                    ),
+                    Container(
+                      // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
                         // borderRadius: BorderRadius.circular(70),
                       ),
 
