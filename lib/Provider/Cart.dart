@@ -11,6 +11,7 @@ class Cart with ChangeNotifier {
 
   add(Item productt) async {
     selectedproduct.add(productt);
+    // ignore: unused_local_variable
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     notifyListeners();
@@ -56,6 +57,7 @@ class Cart with ChangeNotifier {
     qte = 0;
     for (int i = 0; i < selectedproduct.length; i++) {
       qte = qte + selectedproduct[i].quantite;
+      // ignore: avoid_print
       print("quantite : $qte");
 
       notifyListeners();

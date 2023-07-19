@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/client/WelcomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/location');
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (_) => const WelcomeScreen(),
+      ));
     });
   }
 
@@ -32,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
             height: h, // Définissez la hauteur souhaitée
             width: w, // Définissez la largeur souhaitée
           ),
-         // Ajoutez votre image de logo
+          // Ajoutez votre image de logo
         ),
       ),
     );

@@ -4,8 +4,12 @@ class Item {
       disponibilite,
       description,
       image,
+<<<<<<< HEAD
+      collection;
+=======
       collection,
       categorie;
+>>>>>>> a1755a4d798e7b014df32f81d494e34648f12337
   late int prix, quantite, prixunitaire;
   Item(
       {required this.referenceArticle,
