@@ -1,12 +1,11 @@
 class Item {
   late String referenceArticle,
       nomArticle,
-      prixunitaire,
       disponibilite,
       description,
       image,
       collection;
-  late int prix, quantite;
+  late int prix, quantite, prixunitaire;
   Item(
       {required this.referenceArticle,
       required this.prixunitaire,

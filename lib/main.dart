@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:projet_etudes/client/WelcomeScreen.dart';
 
-import 'package:projet_etudes/client/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: MyHomePage(),
+      home: const WelcomeScreen(),
     );
   }
 }

@@ -1,32 +1,40 @@
+// ignore_for_file: avoid_print, avoid_unnecessary_containers
+
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_etudes/model/Categorie.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 class AJoutCollection extends StatefulWidget {
+  const AJoutCollection({super.key});
+
+  @override
   State<StatefulWidget> createState() {
     return AJoutCollectionstate();
   }
 }
 
 class AJoutCollectionstate extends State<AJoutCollection> {
-  GlobalKey<FormState> formstates = new GlobalKey<FormState>();
+  GlobalKey<FormState> formstates = GlobalKey<FormState>();
+  // ignore: prefer_typing_uninitialized_variables
   var v;
   late int re;
   final nomController = TextEditingController();
   final marqueController = TextEditingController();
   final quatiteController = TextEditingController();
   final prixController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final DescriptionController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final ReferenceController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final CategorieCollection = TextEditingController();
 
+  @override
   void dispose() {
     nomController.dispose();
     marqueController.dispose();
@@ -38,12 +46,14 @@ class AJoutCollectionstate extends State<AJoutCollection> {
     super.dispose();
   }
 
+  // ignore: prefer_typing_uninitialized_variables
   var selected;
   late int prix, quantite;
   File? image;
 
   var imagepicker = ImagePicker();
   CloudFirestore fire = CloudFirestore();
+  // ignore: non_constant_identifier_names
   uploadImage(Sourcee) async {
     try {
       final photo = await imagepicker.pickImage(source: Sourcee);
@@ -52,6 +62,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
           image = File(photo.path);
 
           print("image");
+          
           print(image);
         });
         var nameimage = basename(photo.path);
@@ -69,16 +80,18 @@ class AJoutCollectionstate extends State<AJoutCollection> {
     }
   }
 
+  // ignore: prefer_typing_uninitialized_variables
   var upl;
   //Alert alert = Alert();
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
               flexibleSpace: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -89,7 +102,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     IconlyLight.arrowLeft2,
                     color: Color.fromARGB(255, 87, 87, 87),
                   ),
@@ -101,7 +114,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
 
               //shape: RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(0),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(14),topRight: Radius.circular(0))),
               title: Container(
-                child: Text("Ajout d'un produit",
+                child: const Text("Ajout d'un produit",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
@@ -119,15 +132,15 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                       Container(
                         width: 400,
                         height: 440,
-                        margin: EdgeInsets.only(top: 0, left: 10, right: 10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.only(top: 0, left: 10, right: 10),
+                        decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(30),
                                 bottomRight: Radius.circular(30))),
                         child: image == null
                             ? Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image:
                                             AssetImage("assets/imagevide.jpg"),
@@ -138,9 +151,6 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                 width: 100,
                                 height: 500,
                                 child: ElevatedButton(
-                                    child: Container(
-                                        color:
-                                            Color.fromARGB(0, 255, 255, 255)),
                                     onPressed: () {
                                       showModalBottomSheet(
                                           context: context,
@@ -155,34 +165,34 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: Color.fromARGB(
+                                                        color: const Color.fromARGB(
                                                             255, 248, 248, 248),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(50)),
                                                   ),
                                                   ListTile(
-                                                    leading: Container(
+                                                    leading: const SizedBox(
                                                       width: 40,
                                                       height: 40,
                                                       child: CircleAvatar(
+                                                        backgroundColor:
+                                                            Color.fromARGB(255,
+                                                                241, 241, 241),
+                                                        radius: 50,
                                                         child: Icon(
                                                           Icons.image,
                                                           color: Color.fromARGB(
                                                               255, 72, 72, 72),
                                                           size: 23,
                                                         ),
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                241, 241, 241),
-                                                        radius: 50,
                                                       ),
                                                     ),
-                                                    title: new Text(
+                                                    title: const Text(
                                                       "Selectionner une photo du pelicule",
                                                       style: TextStyle(
                                                           fontSize: 16,
@@ -197,10 +207,17 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                     },
                                                   ),
                                                   ListTile(
-                                                      leading: Container(
+                                                      leading: const SizedBox(
                                                         width: 40,
                                                         height: 40,
                                                         child: CircleAvatar(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  241,
+                                                                  241,
+                                                                  241),
+                                                          radius: 50,
                                                           child: Icon(
                                                             Icons.camera_alt,
                                                             color:
@@ -211,16 +228,9 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                                     72),
                                                             size: 23,
                                                           ),
-                                                          backgroundColor:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  241,
-                                                                  241,
-                                                                  241),
-                                                          radius: 50,
                                                         ),
                                                       ),
-                                                      title: new Text(
+                                                      title: const Text(
                                                           "prendre une photo du camera ",
                                                           style: TextStyle(
                                                               fontSize: 16,
@@ -244,24 +254,24 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(200, 200),
+                                      fixedSize: const Size(200, 200), backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                                       elevation: 0,
-                                      // padding: EdgeInsets.all(0),
-                                      primary: Color.fromARGB(0, 255, 255, 255),
-                                      padding: EdgeInsets.all(0),
-                                    )))
+                                      padding: const EdgeInsets.all(0),
+                                    ),
+                                    child: Container(
+                                        color:
+                                            const Color.fromARGB(0, 255, 255, 255))))
                             : Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: FileImage(image!),
                                         fit: BoxFit.cover),
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(30),
                                         bottomRight: Radius.circular(30))),
                                 width: 200,
                                 height: 220,
                                 child: ElevatedButton(
-                                    child: Container(color: Colors.transparent),
                                     onPressed: () {
                                       showModalBottomSheet(
                                           context: context,
@@ -276,34 +286,34 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: Color.fromARGB(
+                                                        color: const Color.fromARGB(
                                                             255, 237, 237, 237),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(50)),
                                                   ),
                                                   ListTile(
-                                                    leading: Container(
+                                                    leading: const SizedBox(
                                                       width: 40,
                                                       height: 40,
                                                       child: CircleAvatar(
+                                                        backgroundColor:
+                                                            Color.fromARGB(255,
+                                                                241, 241, 241),
+                                                        radius: 50,
                                                         child: Icon(
                                                           Icons.image,
                                                           color: Color.fromARGB(
                                                               255, 72, 72, 72),
                                                           size: 23,
                                                         ),
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                241, 241, 241),
-                                                        radius: 50,
                                                       ),
                                                     ),
-                                                    title: new Text(
+                                                    title: const Text(
                                                       "Selectionner une photo du pelicule",
                                                       style: TextStyle(
                                                           fontSize: 16,
@@ -318,10 +328,17 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                     },
                                                   ),
                                                   ListTile(
-                                                      leading: Container(
+                                                      leading: const SizedBox(
                                                         width: 40,
                                                         height: 40,
                                                         child: CircleAvatar(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  241,
+                                                                  241,
+                                                                  241),
+                                                          radius: 50,
                                                           child: Icon(
                                                             Icons.camera_alt,
                                                             color:
@@ -332,16 +349,9 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                                                     72),
                                                             size: 23,
                                                           ),
-                                                          backgroundColor:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  241,
-                                                                  241,
-                                                                  241),
-                                                          radius: 50,
                                                         ),
                                                       ),
-                                                      title: new Text(
+                                                      title: const Text(
                                                           "prendre une photo du camera ",
                                                           style: TextStyle(
                                                               fontSize: 16,
@@ -366,11 +376,10 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       // fixedSize: Size(250, 250),
-                                      elevation: 0,
-                                      // padding: EdgeInsets.all(0),
-                                      primary: Color.fromARGB(0, 255, 255, 255),
-                                      padding: EdgeInsets.all(0),
-                                    ))),
+                                      elevation: 0, backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                      padding: const EdgeInsets.all(0),
+                                    ),
+                                    child: Container(color: Colors.transparent))),
                       ),
                       Form(
                           key: formstates,
@@ -379,18 +388,19 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                               Container(
                                   height: 50,
                                   width: 300,
-                                  margin: EdgeInsets.only(
+                                  margin: const EdgeInsets.only(
                                       bottom: 10, left: 10, right: 10, top: 20),
                                   child: TextFormField(
                                       controller: nomController,
                                       validator: (val) {
                                         if (val!.isEmpty) {
                                           return "champ vide";
-                                        } else
+                                        } else {
                                           return null;
+                                        }
                                       },
                                       keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         // errorMaxLines: 5,
                                         hintMaxLines: 19,
 
@@ -430,7 +440,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                       Color.fromARGB(255, 42, 41, 41),
                                       Color.fromARGB(255, 34, 32, 32)
                                     ])),
-                                margin: EdgeInsets.only(top: 20, bottom: 20),
+                                margin: const EdgeInsets.only(top: 20, bottom: 20),
                                 width: 200,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -452,16 +462,15 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                     //   alert.Showmessage(context,
                                     //       "Vous devez choisir une photo");
                                   },
-                                  child: Text("Ajouter",
-                                      style: TextStyle(fontSize: 20)),
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    padding: EdgeInsets.all(10),
-                                    primary: Color.fromARGB(0, 244, 67, 54),
+                                    elevation: 0, backgroundColor: const Color.fromARGB(0, 244, 67, 54),
+                                    padding: const EdgeInsets.all(10),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                   ),
+                                  child: const Text("Ajouter",
+                                      style: TextStyle(fontSize: 20)),
                                 ),
                               ),
                             ],

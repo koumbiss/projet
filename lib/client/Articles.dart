@@ -1,10 +1,10 @@
+// ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 
-import 'dart:math' as math;
 
 import 'package:projet_etudes/model/Article.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +13,8 @@ import '../model/Item.dart';
 
 class Articles extends StatefulWidget {
   final id, idc, nom, photo, categorie;
-  Articles({Key? key, this.idc, this.id, this.categorie, this.nom, this.photo})
-      : super(key: key);
+  const Articles({super.key, this.idc, this.id, this.categorie, this.nom, this.photo});
+  @override
   State<StatefulWidget> createState() {
     return ArticlesState();
   }
@@ -31,6 +31,7 @@ class ArticlesState extends State<Articles> {
   var vert22 = Colors.white;
   bool boolean = true;
   double mmargin = 19;
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,7 +42,7 @@ class ArticlesState extends State<Articles> {
                   Consumer<Cart>(builder: ((context, value, child) {
                     return Stack(children: [
                       Container(
-                        margin: EdgeInsets.only(right: 25),
+                        margin: const EdgeInsets.only(right: 25),
                         child: IconButton(
                             onPressed: () {
                               // Navigator.push(
@@ -60,6 +61,10 @@ class ArticlesState extends State<Articles> {
                           child: Container(
                             height: 20,
                             width: 30,
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(99, 224, 224, 224)),
                             child: Text(
                               " ${value.qte}",
                               style: TextStyle(
@@ -67,10 +72,6 @@ class ArticlesState extends State<Articles> {
                                   fontSize: 13,
                                   color: vert22),
                             ),
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(99, 224, 224, 224)),
                           )),
                     ]);
                   }))
@@ -83,12 +84,13 @@ class ArticlesState extends State<Articles> {
                           end: Alignment.bottomRight,
                           colors: [Colors.white, Colors.white]))),
 
+              // ignore: avoid_unnecessary_containers
               leading: Container(
                 child: IconButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     IconlyLight.arrowLeft2,
                     color: Color.fromARGB(255, 87, 87, 87),
                   ),
@@ -99,6 +101,7 @@ class ArticlesState extends State<Articles> {
               centerTitle: true,
 
               //shape: RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(0),bottomLeft: Radius.circular(0),bottomRight: Radius.circular(14),topRight: Radius.circular(0))),
+              // ignore: avoid_unnecessary_containers
               title: Container(
                   child: Text(
                 "widget.categorie",
@@ -113,7 +116,7 @@ class ArticlesState extends State<Articles> {
             ),
             resizeToAvoidBottomInset: true,
             body: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.topRight,
@@ -166,7 +169,7 @@ class ArticlesState extends State<Articles> {
 
                             return Container();
                           }
-                          return Center(
+                          return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }),
@@ -175,7 +178,7 @@ class ArticlesState extends State<Articles> {
                         Container(
                             width: 300,
                             margin:
-                                EdgeInsets.only(top: 10, bottom: 20, left: 30),
+                                const EdgeInsets.only(top: 10, bottom: 20, left: 30),
                             child: TextFormField(
                               onFieldSubmitted: (value) {
                                 print("search : $value");
@@ -183,7 +186,7 @@ class ArticlesState extends State<Articles> {
                               },
                               controller: searchControl,
                               keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   hintText: "chercher un produit",
                                   hintStyle: TextStyle(
                                       color:
@@ -203,12 +206,12 @@ class ArticlesState extends State<Articles> {
                                   )),
                                   filled: true,
                                   fillColor: Color.fromARGB(255, 250, 250, 250),
-                                  contentPadding: const EdgeInsets.all(15.5)),
+                                  contentPadding: EdgeInsets.all(15.5)),
                             )),
                         Container(
                           height: 50,
-                          margin: EdgeInsets.only(top: 10, bottom: 20),
-                          decoration: BoxDecoration(
+                          margin: const EdgeInsets.only(top: 10, bottom: 20),
+                          decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 250, 250, 250),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(0),
@@ -222,12 +225,13 @@ class ArticlesState extends State<Articles> {
                                 setState(() {
                                   boolean = false;
                                 });
-                              } else
+                              } else {
                                 setState(() {
                                   boolean = true;
                                 });
+                              }
                             },
-                            icon: Icon(Icons.search),
+                            icon: const Icon(Icons.search),
                             color: Colors.blueGrey,
                           ),
                         ),
@@ -244,11 +248,11 @@ class ArticlesState extends State<Articles> {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(left: 10),
                           ),
                           Container(
                               width: 400,
-                              padding: EdgeInsets.only(left: 10, right: 20),
+                              padding: const EdgeInsets.only(left: 10, right: 20),
                               child: ListView(
                                 children: [
                                   StreamBuilder(
@@ -309,7 +313,7 @@ class ArticlesState extends State<Articles> {
 
                                           return GridView.builder(
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               itemCount: mesproduits.length,
                                               gridDelegate:
                                                   SliverGridDelegateWithFixedCrossAxisCount(
@@ -326,15 +330,17 @@ class ArticlesState extends State<Articles> {
                                               ),
                                               shrinkWrap: true,
                                               itemBuilder: (context, index) {
-                                                var image;
-                                                var nom;
+                                                String image;
+                                                String nom;
+                                                
                                                 var contenuN;
-                                                var marque;
-                                                var quantite;
-                                                var prix;
-                                                var description;
-                                                var collection;
-                                                var disponibilte;
+                                                String marque;
+                                                // ignore: unused_local_variable
+                                                int quantite;
+                                                int prix;
+                                                String description;
+                                                String collection;
+                                                String disponibilte;
 
                                                 image =
                                                     mesproduits[index].image;
@@ -372,20 +378,20 @@ class ArticlesState extends State<Articles> {
                                                     "lenght nom ${nom.length}");
 
                                                 print(
-                                                    "lenght marge ${mmargin}");
+                                                    "lenght marge $mmargin");
 
                                                 return Container(
                                                   // height: 200,
 
-                                                  margin: EdgeInsets.only(
+                                                  margin: const EdgeInsets.only(
                                                       left: 10,
                                                       top: 10,
                                                       right: 10,
                                                       bottom: 10),
 
-                                                  padding: EdgeInsets.all(10),
+                                                  padding: const EdgeInsets.all(10),
 
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     boxShadow: [
                                                       BoxShadow(
                                                           color: Color.fromARGB(
@@ -456,10 +462,29 @@ class ArticlesState extends State<Articles> {
                                                             //             description:
                                                             //                 description)));
                                                           },
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            fixedSize:
+                                                                const Size(120, 120), backgroundColor: const Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
+                                                            elevation: 1,
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    0),
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            90)),
+                                                          ),
                                                           child: Stack(
                                                             children: [
+                                                              // ignore: unnecessary_null_comparison
                                                               image == null
-                                                                  ? CircleAvatar(
+                                                                  ? const CircleAvatar(
                                                                       backgroundColor: Color.fromARGB(
                                                                           255,
                                                                           255,
@@ -473,7 +498,7 @@ class ArticlesState extends State<Articles> {
                                                                           80,
                                                                     )
                                                                   : CircleAvatar(
-                                                                      backgroundColor: Color.fromARGB(
+                                                                      backgroundColor: const Color.fromARGB(
                                                                           255,
                                                                           255,
                                                                           255,
@@ -494,7 +519,7 @@ class ArticlesState extends State<Articles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: EdgeInsets.only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -503,13 +528,13 @@ class ArticlesState extends State<Articles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: Color.fromARGB(
+                                                                        color: const Color.fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
                                                                             193),
                                                                         child:
-                                                                            Text(
+                                                                            const Text(
                                                                           " non disponible ",
                                                                           style:
                                                                               TextStyle(color: Color.fromARGB(255, 140, 7, 7)),
@@ -517,43 +542,20 @@ class ArticlesState extends State<Articles> {
                                                                       ))
                                                                   : Container()
                                                             ],
-                                                          ),
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            fixedSize:
-                                                                Size(120, 120),
-                                                            elevation: 1,
-                                                            // padding: EdgeInsets.all(0),
-                                                            primary:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    0),
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            90)),
                                                           )),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
-                                                              nom == null
-                                                                  ? ""
-                                                                  : nom,
+                                                              nom,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -563,25 +565,24 @@ class ArticlesState extends State<Articles> {
                                                                       17))),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
-                                                              marque == null
-                                                                  ? ""
-                                                                  : marque,
+                                                              marque,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   color: Colors
                                                                       .grey,
                                                                   fontSize:
                                                                       14))),
                                                       Container(
                                                           margin:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets.only(
                                                                   top: 5),
                                                           child: Text(
+                                                              // ignore: unnecessary_null_comparison
                                                               contenuN == null
                                                                   ? ""
                                                                   : "$contenuN",
@@ -591,16 +592,16 @@ class ArticlesState extends State<Articles> {
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                   color: Colors
                                                                       .grey,
                                                                   fontSize:
                                                                       13))),
                                                       Container(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             top: 5),
                                                         decoration: BoxDecoration(
-                                                            boxShadow: [
+                                                            boxShadow: const [
                                                               BoxShadow(
                                                                   blurRadius:
                                                                       18,
@@ -614,7 +615,7 @@ class ArticlesState extends State<Articles> {
                                                                           230))
                                                             ],
                                                             color:
-                                                                Color.fromARGB(
+                                                                const Color.fromARGB(
                                                                     255,
                                                                     255,
                                                                     255,
@@ -624,19 +625,20 @@ class ArticlesState extends State<Articles> {
                                                                     .circular(
                                                                         40)),
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets.only(
                                                                 top: 2,
                                                                 bottom: 2,
                                                                 left: 2,
                                                                 right: 2),
                                                         width: 240,
                                                         child: Text(
+                                                            // ignore: unnecessary_null_comparison
                                                             prix == null
                                                                 ? ""
                                                                 : "$prix Mro",
                                                             textAlign: TextAlign
                                                                 .center,
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                                                                 color:
                                                                     Colors.grey,
                                                                 fontSize: 16,
@@ -650,11 +652,32 @@ class ArticlesState extends State<Articles> {
                                                               0
                                                           ? Container()
                                                           : Container(
-                                                              margin: EdgeInsets
+                                                              margin: const EdgeInsets
                                                                   .only(
                                                                       top: 10),
                                                               width: 40,
                                                               height: 40,
+                                                              decoration: const BoxDecoration(
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Color.fromARGB(
+                                                                            121,
+                                                                            168,
+                                                                            168,
+                                                                            168),
+                                                                        blurRadius:
+                                                                            15,
+                                                                        spreadRadius:
+                                                                            -4),
+                                                                  ],
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          218,
+                                                                          222,
+                                                                          241,
+                                                                          236)),
                                                               child: Consumer<
                                                                       Cart>(
                                                                   builder: ((context,
@@ -704,7 +727,7 @@ class ArticlesState extends State<Articles> {
                                                                             prix,
                                                                           );
                                                                         } else {
-                                                                          final snackBar =
+                                                                          const snackBar =
                                                                               SnackBar(
                                                                             content:
                                                                                 Text('quantite non disponible'),
@@ -735,37 +758,17 @@ class ArticlesState extends State<Articles> {
                                                                       instance.prices(
                                                                           a.prix);
                                                                     }
+                                                                    
                                                                     print(
                                                                         "${instance.selectedproduct}");
                                                                   },
-                                                                  icon: Icon(
+                                                                  icon: const Icon(
                                                                     Icons
                                                                         .add_shopping_cart_rounded,
                                                                     size: 27,
                                                                   ),
                                                                 );
                                                               })),
-                                                              decoration: BoxDecoration(
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                        color: Color.fromARGB(
-                                                                            121,
-                                                                            168,
-                                                                            168,
-                                                                            168),
-                                                                        blurRadius:
-                                                                            15,
-                                                                        spreadRadius:
-                                                                            -4),
-                                                                  ],
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          218,
-                                                                          222,
-                                                                          241,
-                                                                          236)),
                                                             ),
                                                     ],
                                                   ),
@@ -773,7 +776,7 @@ class ArticlesState extends State<Articles> {
                                               });
                                         }
 
-                                        return Center(
+                                        return const Center(
                                           child: CircularProgressIndicator(),
                                         );
                                       }),

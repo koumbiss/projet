@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
@@ -21,14 +20,17 @@ class MyHomePage1 extends State<MyHomePage> {
     'assets/collection korite23/photo10.jpg'
   ];
 
+  // ignore: prefer_typing_uninitialized_variables
   var ett;
 
+  // ignore: prefer_typing_uninitialized_variables
   var jour;
 
   TextEditingController searchController = TextEditingController();
   bool showloading = false;
   bool boolean = true;
   var couleur = Colors.white;
+  // ignore: prefer_typing_uninitialized_variables
   var status;
 
   @override
@@ -97,14 +99,14 @@ class MyHomePage1 extends State<MyHomePage> {
                           });
                     }),
               ),
-              Container(
+              SizedBox(
                 width: 400,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => AJoutCollection()));
+                            builder: (context) => const AJoutCollection()));
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(40, 40),
@@ -112,7 +114,7 @@ class MyHomePage1 extends State<MyHomePage> {
                     elevation: 1,
                     padding: const EdgeInsets.all(0),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.add,
                     color: Color.fromARGB(255, 31, 30, 30),
                   ),

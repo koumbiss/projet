@@ -1,4 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore: duplicate_ignore
+
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
@@ -19,14 +22,17 @@ class HomepageState extends State<HomePage> {
     'assets/collection korite23/photo10.jpg'
   ];
 
+  // ignore: prefer_typing_uninitialized_variables
   var ett;
 
+  // ignore: prefer_typing_uninitialized_variables
   var jour;
 
   TextEditingController searchController = TextEditingController();
   bool showloading = false;
   bool boolean = true;
   var couleur = Colors.white;
+  // ignore: prefer_typing_uninitialized_variables
   var status;
 
   @override
@@ -73,6 +79,7 @@ class HomepageState extends State<HomePage> {
                                     "yarry",
                                     "assets/collection korite23/photo6.jpg",
                                     DateTime.now());
+                                // ignore: avoid_print
                                 print("C'est bon ");
                               },
                               style: ElevatedButton.styleFrom(

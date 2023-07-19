@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:projet_etudes/model/Article.dart';
 import 'package:projet_etudes/model/Collection.dart';
 import 'package:projet_etudes/services/DBServices.dart';
