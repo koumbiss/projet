@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
-import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
-import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Articles.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
@@ -132,8 +130,8 @@ class MyHomePage1 extends State<MyHomePage> {
                                   );
                                 });
                           }
-                          return Center(
-                            child: const CircularProgressIndicator(),
+                          return const Center(
+                            child: CircularProgressIndicator(),
                           );
                         }),
                   ),
@@ -172,7 +170,7 @@ class MyHomePage1 extends State<MyHomePage> {
                   style: GoogleFonts.bebasNeue(
                       fontSize: 40,
                       //fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(255, 255, 255, 0.694)),
+                      color: const Color.fromRGBO(255, 255, 255, 0.694)),
                 ),
               ),
             ],

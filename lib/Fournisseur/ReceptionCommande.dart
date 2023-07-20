@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/services/Authentification.dart';
 
-import 'package:provider/provider.dart';
 
 class ReceptionCommande extends StatefulWidget {
+  const ReceptionCommande({super.key});
+
+  @override
   State<StatefulWidget> createState() {
     return ReceptionCommandeState();
   }
@@ -42,7 +41,7 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       IconlyLight.arrowLeft2,
                       color: Color.fromARGB(255, 87, 87, 87),
                     ),
@@ -76,11 +75,12 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                             if (snapshot.hasData) {
                               if (snapshot.data.docs.length == 0) {
                                 if (searchControl.text.isEmpty) {
-                                  return Center(
+                                  return const Center(
                                       child: Text(
                                           "vous n'avez aucune  commande  "));
-                                } else
-                                  return Center(child: Text("aucun resultat"));
+                                } else {
+                                  return const Center(child: Text("aucun resultat"));
+                                }
                               }
                               return ListView.builder(
                                 shrinkWrap: true,
@@ -170,13 +170,13 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                       title: Text(
                                           style: GoogleFonts.quicksand(
                                             color:
-                                                Color.fromARGB(255, 72, 72, 72),
+                                                const Color.fromARGB(255, 72, 72, 72),
                                           ),
                                           "Commande  : MD:${snapshot.data.docs[index].data()['modelivraison']}"),
                                       subtitle: snapshot.data.docs[index]
                                               .data()['etatCommande']
                                               .contains("refusé")
-                                          ? Text(
+                                          ? const Text(
                                               "refusé",
                                               style: TextStyle(
                                                   color: Color.fromARGB(
@@ -186,7 +186,7 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                           : Text(
                                               "${snapshot.data.docs[index].data()['etatCommande']}",
                                               style: GoogleFonts.quicksand(
-                                                color: Color.fromARGB(
+                                                color: const Color.fromARGB(
                                                     255, 72, 72, 72),
                                               ),
                                             ),
@@ -196,7 +196,7 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                               );
                             }
 
-                            return Center(
+                            return const Center(
                               child: CircularProgressIndicator(),
                             );
                           }),

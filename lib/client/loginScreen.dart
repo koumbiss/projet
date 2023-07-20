@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:projet_etudes/client/sign_in_screen.dart';
-=======
 import 'package:projet_etudes/services/Authentification.dart';
->>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
 
 class loginScreen extends StatelessWidget {
   const loginScreen({super.key});
@@ -68,33 +64,6 @@ class loginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-<<<<<<< HEAD
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white),
-                          onPressed: () {},
-                          child: Text(
-                            login.toUpperCase(),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          TextButton(
-                              style: TextButton.styleFrom(
-                                  alignment: Alignment.center,
-                                  foregroundColor: Colors.white),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignInScreen()),
-                                );
-                              },
-                              child: const Text(creComp)),
-                        ],
-=======
                             onPressed: () async {
                               var us = await Authentification().signinn(
                                   memailController, mpasswordController);
@@ -104,7 +73,6 @@ class loginScreen extends StatelessWidget {
                               }
                             },
                             child: Text(login.toUpperCase())),
->>>>>>> 5c8dcb21180b450363fa005fe70b5b43a1e3fb41
                       ),
                     ],
                   ),

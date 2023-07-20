@@ -1,20 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
-import 'package:projet_etudes/Fournisseur/Homepage.dart';
 import 'package:projet_etudes/Fournisseur/ReceptionCommande.dart';
-import 'package:projet_etudes/client/Articles.dart';
-import 'package:projet_etudes/client/Panier.dart';
 import 'package:projet_etudes/client/homepage.dart';
 
 class MenuFournisseur extends StatefulWidget {
   final indexx;
-  MenuFournisseur({super.key, this.indexx});
+  const MenuFournisseur({super.key, this.indexx});
 
+  @override
   State<StatefulWidget> createState() {
     return MenuFournisseurState();
   }
@@ -23,10 +18,10 @@ class MenuFournisseur extends StatefulWidget {
 class MenuFournisseurState extends State<MenuFournisseur> {
   int selectedindex = 0;
   final List pages = [
-    MyHomePage(),
-    AJoutCollection(),
+    const MyHomePage(),
+    const AJoutCollection(),
     ReceptionCommande(),
-    AJoutArticles(),
+    const AJoutArticles(),
   ];
 
   void selectedpage(int index) {
@@ -35,11 +30,13 @@ class MenuFournisseurState extends State<MenuFournisseur> {
     });
   }
 
+  @override
   void initState() {
-    selectedindex = widget.indexx == null ? 0 : widget.indexx;
+    selectedindex = widget.indexx ?? 0;
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -54,7 +51,7 @@ class MenuFournisseurState extends State<MenuFournisseur> {
                     showUnselectedLabels: false,
                     type: BottomNavigationBarType.fixed,
                     currentIndex: selectedindex,
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     onTap: selectedpage,
                     items: [
                       BottomNavigationBarItem(

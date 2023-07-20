@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Commandes.dart';
-import 'package:projet_etudes/model/Commande.dart';
 import 'package:projet_etudes/model/Item.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
@@ -401,7 +400,7 @@ class PannierState extends State<Pannier> {
                                                         rootNavigator: true)
                                                 .push(MaterialPageRoute(
                                                     builder: (context) =>
-                                                        new Commandes(
+                                                        Commandes(
                                                             total: value.price,
                                                             id: FirebaseAuth
                                                                 .instance

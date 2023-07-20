@@ -9,16 +9,16 @@ import 'package:provider/provider.dart';
 class ArticleDetails extends StatefulWidget {
   final Reference, item, image, nom, prix, quantite, description;
 
-  ArticleDetails(
-      {Key? key,
+  const ArticleDetails(
+      {super.key,
       this.Reference,
       this.item,
       this.image,
       this.nom,
       this.quantite,
       this.description,
-      this.prix})
-      : super(key: key);
+      this.prix});
+  @override
   State<StatefulWidget> createState() {
     return ArticleDetailsState();
   }
@@ -26,6 +26,7 @@ class ArticleDetails extends StatefulWidget {
 
 class ArticleDetailsState extends State<ArticleDetails> {
   var couleur = Colors.white;
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -36,15 +37,15 @@ class ArticleDetailsState extends State<ArticleDetails> {
                   Consumer<Cart>(builder: ((context, value, child) {
                     return Stack(children: [
                       Container(
-                        margin: EdgeInsets.only(right: 25),
+                        margin: const EdgeInsets.only(right: 25),
                         child: IconButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Menu(indexx: 1)));
+                                      builder: (context) => const Menu(indexx: 1)));
                             },
-                            icon: Icon(Icons.shopping_bag_rounded,
+                            icon: const Icon(Icons.shopping_bag_rounded,
                                 color: Colors.black)),
                       ),
                       Positioned(
@@ -53,17 +54,17 @@ class ArticleDetailsState extends State<ArticleDetails> {
                           child: Container(
                             height: 20,
                             width: 30,
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(99, 224, 224, 224)),
                             child: Text(
                               " ${value.qte}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13,
                                   color: Colors.black),
                             ),
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(99, 224, 224, 224)),
                           )),
                     ]);
                   }))
@@ -81,7 +82,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     IconlyLight.arrowLeft2,
                     color: Color.fromARGB(255, 87, 87, 87),
                   ),
@@ -142,7 +143,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                               children: [
                                 Container(
                                     width: 250,
-                                    margin: EdgeInsets.only(left: 10, top: 0),
+                                    margin: const EdgeInsets.only(left: 10, top: 0),
                                     child: Text(widget.nom,
                                         maxLines: 2,
                                         style: GoogleFonts.quicksand(
@@ -150,7 +151,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                                             color: Colors.black,
                                             fontSize: 19))),
                                 Container(
-                                    margin: EdgeInsets.only(left: 10, top: 5),
+                                    margin: const EdgeInsets.only(left: 10, top: 5),
                                     child: Text("${widget.prix} Mru",
                                         style: GoogleFonts.quicksand(
                                             color: Colors.black, fontSize: 20)))
@@ -159,7 +160,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                             Container(
                               width: 160,
                               height: 35,
-                              margin: EdgeInsets.only(left: 10, top: 10),
+                              margin: const EdgeInsets.only(left: 10, top: 10),
                               // padding: EdgeInsets.only(left: 30, right: 30),
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -171,10 +172,9 @@ class ArticleDetailsState extends State<ArticleDetails> {
                                   builder: ((context, instance, child) {
                                 return ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(230, 50),
+                                      fixedSize: const Size(230, 50), backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                                       elevation: 0,
-                                      primary: Color.fromARGB(0, 255, 255, 255),
-                                      padding: EdgeInsets.all(0),
+                                      padding: const EdgeInsets.all(0),
                                     ),
                                     onPressed: () {
                                       print(" id : ${widget.Reference}");
@@ -209,7 +209,7 @@ class ArticleDetailsState extends State<ArticleDetails> {
                                               widget.prix,
                                             );
                                           } else {
-                                            final snackBar = SnackBar(
+                                            const snackBar = SnackBar(
                                               content: Text(
                                                   'quantite non disponible'),
                                               backgroundColor: Color.fromARGB(

@@ -1,19 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-
-import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
-import 'package:projet_etudes/services/Cloudfirestore.dart';
-
 import 'package:provider/provider.dart';
 
 class Commandes extends StatefulWidget {
   final listproduits, id, total;
-  Commandes({Key? key, this.id, this.listproduits, this.total})
-      : super(key: key);
+  const Commandes({super.key, this.id, this.listproduits, this.total});
+  @override
   State<StatefulWidget> createState() {
     return CommandesState();
   }
@@ -25,9 +20,9 @@ class CommandesState extends State<Commandes> {
   bool livraison = false;
   var btmColors2 = Colors.white;
   // var btmColors22 = Colors.black;
-  var textColor2 = Color.fromARGB(255, 0, 0, 0);
-  var textColor1 = Color.fromARGB(255, 0, 0, 0);
-  var btmColors1 = Color.fromARGB(255, 251, 251, 251);
+  var textColor2 = const Color.fromARGB(255, 0, 0, 0);
+  var textColor1 = const Color.fromARGB(255, 0, 0, 0);
+  var btmColors1 = const Color.fromARGB(255, 251, 251, 251);
   //var btmColors11 = Color.fromARGB(255, 251, 251, 251);
   List<String> listype = [];
   bool b1 = false;
@@ -43,12 +38,13 @@ class CommandesState extends State<Commandes> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            actions: [],
+            actions: const [],
             flexibleSpace: Container(
                 decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -61,7 +57,7 @@ class CommandesState extends State<Commandes> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(
+                icon: const Icon(
                   IconlyLight.arrowLeft2,
                   color: Color.fromARGB(255, 87, 87, 87),
                 ),
@@ -84,24 +80,24 @@ class CommandesState extends State<Commandes> {
             elevation: 0,
           ),
           body: Container(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             child: Column(
               children: [
                 Expanded(
                   child: ListView(
                     children: [
                       Consumer<Cart>(builder: ((context, value, child) {
-                        if (value.selectedproduct.length == 0) {
+                        if (value.selectedproduct.isEmpty) {
                           return Container(
-                            child: Center(
+                            child: const Center(
                                 child: Text("aucun produit dans votre panier")),
                           );
                         } else {
                           return GridView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: widget.listproduits.length,
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 1,
                               childAspectRatio: 5,
                               mainAxisSpacing: 1,
@@ -109,20 +105,20 @@ class CommandesState extends State<Commandes> {
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return Container(
-                                padding:
-                                    EdgeInsets.only(top: 5, left: 3, right: 3),
-                                color: Color.fromARGB(9, 76, 49, 49),
+                                padding: const EdgeInsets.only(
+                                    top: 5, left: 3, right: 3),
+                                color: const Color.fromARGB(9, 76, 49, 49),
                                 child: Row(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(top: 3),
+                                      margin: const EdgeInsets.only(top: 3),
                                       width: 50,
                                       child: Text(
                                           " ${widget.listproduits[index].quantite} ",
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.quicksand(
                                               fontSize: 20,
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 0, 0, 0))),
                                     ),
                                     Column(
@@ -130,20 +126,21 @@ class CommandesState extends State<Commandes> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          margin: EdgeInsets.only(top: 3),
+                                          margin: const EdgeInsets.only(top: 3),
                                           width: 280,
                                           child: Text(
                                               "  ${widget.listproduits[index].nomArticle}",
                                               overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.quicksand(
                                                   fontSize: 20,
-                                                  color: Color.fromARGB(
+                                                  color: const Color.fromARGB(
                                                       255, 0, 0, 0))),
                                         ),
                                         Container(
                                           width: 100,
-                                          margin: EdgeInsets.only(top: 6),
-                                          padding: EdgeInsets.only(left: 3),
+                                          margin: const EdgeInsets.only(top: 6),
+                                          padding:
+                                              const EdgeInsets.only(left: 3),
                                           decoration: BoxDecoration(
                                               border: Border.all(
                                             color: const Color.fromARGB(
@@ -154,7 +151,7 @@ class CommandesState extends State<Commandes> {
                                               "${widget.listproduits[index].prix} Mro",
                                               style: GoogleFonts.quicksand(
                                                   fontSize: 20,
-                                                  color: Color.fromARGB(
+                                                  color: const Color.fromARGB(
                                                       255, 0, 0, 0))),
                                         ),
                                       ],
@@ -167,7 +164,7 @@ class CommandesState extends State<Commandes> {
                         }
                       })),
                       Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 40, top: 10, right: 40, bottom: 10),
                           color: Colors.white,
                           child: Column(
@@ -184,12 +181,14 @@ class CommandesState extends State<Commandes> {
                                       ),
                                       color: btmColors1,
                                     ),
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 6, bottom: 3, left: 0, right: 0),
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          fixedSize: Size(140, 100),
-                                          shape: RoundedRectangleBorder(
+                                          fixedSize: const Size(140, 100),
+                                          backgroundColor: const Color.fromARGB(
+                                              0, 255, 255, 255),
+                                          shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(10),
                                                   bottomRight:
@@ -197,21 +196,19 @@ class CommandesState extends State<Commandes> {
                                                   topLeft: Radius.circular(10),
                                                   bottomLeft:
                                                       Radius.circular(10))),
-                                          primary:
-                                              Color.fromARGB(0, 255, 255, 255),
                                           elevation: 0),
                                       onPressed: () {
                                         setState(() {
-                                          textColor1 = Color.fromARGB(
+                                          textColor1 = const Color.fromARGB(
                                               255, 255, 255, 255);
                                           btmColors1 = const Color.fromARGB(
                                               255, 0, 0, 0);
 
-                                          btmColors2 = Color.fromARGB(
+                                          btmColors2 = const Color.fromARGB(
                                               255, 251, 251, 251);
 
-                                          textColor2 =
-                                              Color.fromARGB(255, 0, 0, 0);
+                                          textColor2 = const Color.fromARGB(
+                                              255, 0, 0, 0);
                                           b1 = true;
                                           b2 = false;
                                           setState(() {
@@ -239,7 +236,7 @@ class CommandesState extends State<Commandes> {
                                   Container(
                                     width: 150,
                                     height: 50,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 6, bottom: 3, left: 20, right: 10),
                                     decoration: BoxDecoration(
                                       border: Border.all(
@@ -250,8 +247,10 @@ class CommandesState extends State<Commandes> {
                                     ),
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          fixedSize: Size(140, 100),
-                                          shape: RoundedRectangleBorder(
+                                          fixedSize: const Size(140, 100),
+                                          backgroundColor: const Color.fromARGB(
+                                              0, 255, 255, 255),
+                                          shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(10),
                                                   bottomRight:
@@ -259,8 +258,6 @@ class CommandesState extends State<Commandes> {
                                                   topLeft: Radius.circular(10),
                                                   bottomLeft:
                                                       Radius.circular(10))),
-                                          primary:
-                                              Color.fromARGB(0, 255, 255, 255),
                                           elevation: 0),
                                       onPressed: () {
                                         setState(() {
@@ -269,10 +266,10 @@ class CommandesState extends State<Commandes> {
 
                                           textColor2 = Colors.white;
 
-                                          btmColors1 = Color.fromARGB(
+                                          btmColors1 = const Color.fromARGB(
                                               255, 251, 251, 251);
-                                          textColor1 =
-                                              Color.fromARGB(255, 0, 0, 0);
+                                          textColor1 = const Color.fromARGB(
+                                              255, 0, 0, 0);
                                           b2 = true;
                                           b1 = false;
                                           setState(() {
@@ -294,12 +291,12 @@ class CommandesState extends State<Commandes> {
                                 ],
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: 10),
+                                margin: const EdgeInsets.only(top: 10),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Produits ",
                                       style: TextStyle(
                                         fontSize: 20,
@@ -309,7 +306,7 @@ class CommandesState extends State<Commandes> {
                                     ),
                                     Text(
                                       "${widget.total} Mro ",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         color: Color.fromARGB(255, 74, 74, 74),
                                       ),
@@ -318,10 +315,10 @@ class CommandesState extends State<Commandes> {
                                 ),
                               ),
                               Container(
-                                  margin: EdgeInsets.only(top: 20),
+                                  margin: const EdgeInsets.only(top: 20),
                                   child: btmColors1 ==
                                           const Color.fromARGB(255, 0, 0, 0)
-                                      ? Row(
+                                      ? const Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
@@ -344,7 +341,7 @@ class CommandesState extends State<Commandes> {
                                             )
                                           ],
                                         )
-                                      : Container(
+                                      : const SizedBox(
                                           height: 3,
                                           width: 3,
                                         )),
@@ -357,14 +354,14 @@ class CommandesState extends State<Commandes> {
                                     style: GoogleFonts.quicksand(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: const Color.fromARGB(255, 0, 0, 0),
                                     ),
                                   ),
                                   Text(
-                                    " ${totale} Mro ",
+                                    " $totale Mro ",
                                     style: GoogleFonts.quicksand(
                                       fontSize: 20,
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: const Color.fromARGB(255, 0, 0, 0),
                                     ),
                                   )
                                 ],
@@ -378,12 +375,12 @@ class CommandesState extends State<Commandes> {
                     flex: 0,
                     child: Container(
                       color: Colors.white,
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       height: 70,
                       width: 340,
                       child: Consumer<Cart>(builder: ((context, value, child) {
                         return Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.black,
                               boxShadow: [
                                 BoxShadow(
@@ -392,13 +389,13 @@ class CommandesState extends State<Commandes> {
                                     color: Color.fromARGB(255, 210, 208, 208))
                               ],
                             ),
-                            margin:
-                                EdgeInsets.only(left: 20, top: 12, bottom: 12),
+                            margin: const EdgeInsets.only(
+                                left: 20, top: 12, bottom: 12),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
-                                  primary: Colors.transparent,
-                                  shape: RoundedRectangleBorder(
+                                  backgroundColor: Colors.transparent,
+                                  shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         bottomLeft: Radius.circular(20),
