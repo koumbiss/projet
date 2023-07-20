@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                   textColor: Colors.black,
                   onPress: () {}),
               ProfileMenuWidget(
-                  title: "Porte-Cartes",
+                  title: "commandes",
                   icon: LineAwesomeIcons.address_card,
                   textColor: Colors.black,
                   onPress: () {}),
