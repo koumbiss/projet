@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-      home: Menu(
+      home: MenuFournisseur(
         indexx: 0,
       ),
     );

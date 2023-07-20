@@ -37,17 +37,6 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                             end: Alignment.bottomRight,
                             colors: [Colors.white, Colors.white]))),
                 toolbarHeight: 52.7,
-                leading: Container(
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      IconlyLight.arrowLeft2,
-                      color: Color.fromARGB(255, 87, 87, 87),
-                    ),
-                  ),
-                ),
                 centerTitle: true,
                 title: Container(
                     child: Text(
@@ -165,14 +154,36 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                         //             .data()['etatCommande'])));
                                       },
                                       leading: Text("${index + 1}"),
-                                      trailing: Text(
-                                          "${(snapshot.data.docs[index].data()['dateCommande'] as Timestamp).toDate()}"),
+                                      trailing: Container(
+                                        margin: EdgeInsets.only(left: 80),
+                                        child: ElevatedButton(
+                                            child:
+                                                Icon(Icons.arrow_outward_sharp),
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                              // fixedSize: Size(250, 250),
+                                              elevation: 0,
+                                              // padding: EdgeInsets.all(0),
+                                              primary: Color.fromARGB(
+                                                  0, 255, 255, 255),
+                                              padding: EdgeInsets.all(0),
+                                            )),
+                                        // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Color.fromARGB(255, 71, 196, 159),
+                                          // borderRadius: BorderRadius.circular(70),
+                                        ),
+                                        width: 30,
+
+                                        height: 30,
+                                      ),
                                       title: Text(
                                           style: GoogleFonts.quicksand(
                                             color:
                                                 Color.fromARGB(255, 72, 72, 72),
                                           ),
-                                          "Commande  : MD:${snapshot.data.docs[index].data()['modelivraison']}"),
+                                          "Commande :301A MD:${snapshot.data.docs[index].data()['modelivraison']}"),
                                       subtitle: snapshot.data.docs[index]
                                               .data()['etatCommande']
                                               .contains("refusé")
