@@ -23,8 +23,9 @@ class Authentification {
       } else if (e.code == 'wrong-password') {
         print('WRONG PASSWORD');
         return "mot de passe incorrecte";
-      } else
+      } else {
         print("sgniin exception ${e.code} ");
+      }
       return "$e";
     } catch (e) {
       print(e);

@@ -21,7 +21,7 @@ class SignInScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("assets/logo.png"),
+                  image: const AssetImage("assets/logo.png"),
                   height: size.height * 0.25,
                 ),
                 Text(
@@ -111,7 +111,7 @@ class SignInScreen extends StatelessWidget {
                                   borderSide: BorderSide(
                                       width: 2.0, color: Colors.white))),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: forhei - 20,
                         ),
                         SizedBox(
@@ -122,7 +122,7 @@ class SignInScreen extends StatelessWidget {
                               onPressed: () {},
                               child: Text(
                                 signin.toUpperCase(),
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                               )),
                         ),
                         TextButton(

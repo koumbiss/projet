@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             children: [
               SizedBox(height: 10),
@@ -36,12 +36,12 @@ class ProfileScreen extends StatelessWidget {
                     //Theme.of(context).textTheme.labelLarge,
                   ) //
                   ),
-              SizedBox(height: 20),
-              SizedBox(height: 30),
-              Divider(
+              const SizedBox(height: 20),
+              const SizedBox(height: 30),
+              const Divider(
                 color: Colors.black,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ProfileMenuWidget(
                   title: "Adresses",
                   icon: LineAwesomeIcons.address_book,
@@ -67,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                   icon: LineAwesomeIcons.fingerprint,
                   textColor: Colors.black,
                   onPress: () {}),
-              Divider(color: Colors.black),
+              const Divider(color: Colors.black),
               ProfileMenuWidget(
                 title: "Se déconnecter",
                 icon: LineAwesomeIcons.alternate_sign_out,
@@ -132,7 +132,7 @@ class ProfileMenuWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.black.withOpacity(0.1),
                 ),
-                child: Icon(
+                child: const Icon(
                   LineAwesomeIcons.angle_right,
                   size: 18.0,
                   color: Colors.black,

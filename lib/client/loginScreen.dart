@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/services/Authentification.dart';
 
 class loginScreen extends StatelessWidget {
@@ -72,8 +73,25 @@ class loginScreen extends StatelessWidget {
                                 print("c'est bon");
                               }
                             },
-                            child: Text(login.toUpperCase())),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white),
+                            child: Text(
+                              login.toUpperCase(),
+                              style: const TextStyle(color: Colors.black),
+                            )),
                       ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                              alignment: Alignment.center,
+                              foregroundColor: Colors.white),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignInScreen()),
+                            );
+                          },
+                          child: const Text("crée un nouveau compte")),
                     ],
                   ),
                 ))
