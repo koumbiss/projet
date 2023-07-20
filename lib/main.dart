@@ -42,8 +42,6 @@ class MyApp extends StatelessWidget {
             // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
           ),
         ),
-        home: Menu(
-          indexx: 0,
-        ));
+        home: SplashScreen());
   }
 }
