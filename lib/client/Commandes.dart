@@ -2,10 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
-import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
+import 'package:projet_etudes/client/Confirmation.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 import 'package:provider/provider.dart';
@@ -32,8 +31,7 @@ class CommandesState extends State<Commandes> {
   List<String> listype = [];
   bool b1 = false;
   bool b2 = true;
-  CollectionReference ref = FirebaseFirestore.instance.collection("Pharmacies");
-  @override
+
   void initState() {
     print(" mes donnees : ${widget.total}");
     print(" mes donnees : ${widget.id}");
@@ -407,7 +405,12 @@ class CommandesState extends State<Commandes> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  print("this is my liste $listype");
+                                  Navigator.of(context, rootNavigator: true)
+                                      .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              new Confirmation(
+                                                total: value.price,
+                                              )));
                                 },
                                 child: Text(
                                   "Confirmer la commande",

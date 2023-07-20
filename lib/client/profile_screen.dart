@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -11,11 +12,13 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text(
-          "profile",
-          style: Theme.of(context).textTheme.bodySmall,
+        backgroundColor: Colors.black,
+        title: Container(
+          margin: EdgeInsets.only(left: 170),
+          child: Text(
+            "profile",
+            style: GoogleFonts.quicksand(fontSize: 20),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -25,7 +28,10 @@ class ProfileScreen extends StatelessWidget {
             children: [
               SizedBox(height: 10),
               Text("Koumbiss BK",
-                  style: TextStyle(
+                  style: GoogleFonts.quicksand(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+
                     color: Colors.black,
                     //Theme.of(context).textTheme.labelLarge,
                   ) //
