@@ -42,13 +42,10 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
-<<<<<<< HEAD
-      home: MenuFournisseur(indexx: 0),
-=======
-      home: Menu(
+      /*home: Menu(
         indexx: 0,
-      ),
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
+      ),*/
+      home: loginScreen(),
     );
   }
 }

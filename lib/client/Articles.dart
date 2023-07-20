@@ -4,10 +4,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
-<<<<<<< HEAD
-=======
 import 'package:projet_etudes/client/ArticleDetails.dart';
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
 import 'package:projet_etudes/client/Menu.dart';
 
 import 'package:projet_etudes/model/Article.dart';
@@ -131,32 +128,6 @@ class ArticlesState extends State<Articles> {
               child: ListView(children: [
                 Column(
                   children: [
-<<<<<<< HEAD
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 5),
-                      child: ElevatedButton(
-                          child: const Icon(Icons.add),
-                          onPressed: () {
-                            Navigator.of(context, rootNavigator: true)
-                                .push(MaterialPageRoute(
-                                    builder: (context) => AJoutArticles(
-                                          idcollection: widget.idc,
-                                        )));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            // fixedSize: Size(250, 250),
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(0, 255, 255, 255),
-                            padding: const EdgeInsets.all(0),
-                          )),
-                      // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        // borderRadius: BorderRadius.circular(70),
-                      ),
-                      width: 60,
-=======
                     // Container(
                     //   margin: EdgeInsets.only(bottom: 5),
                     //   child: ElevatedButton(
@@ -181,7 +152,6 @@ class ArticlesState extends State<Articles> {
                     //     // borderRadius: BorderRadius.circular(70),
                     //   ),
                     //   width: 60,
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
 
                     //   height: 30,
                     // ),
@@ -411,11 +381,7 @@ class ArticlesState extends State<Articles> {
                                                                     170, 220),
                                                             backgroundColor:
                                                                 const Color
-<<<<<<< HEAD
                                                                         .fromARGB(
-=======
-                                                                    .fromARGB(
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                                     255,
                                                                     255,
                                                                     255,
@@ -441,11 +407,7 @@ class ArticlesState extends State<Articles> {
                                                                       width:
                                                                           200,
                                                                       margin: const EdgeInsets
-<<<<<<< HEAD
                                                                               .only(
-=======
-                                                                          .only(
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                                           top:
                                                                               0),
                                                                       decoration:
@@ -482,8 +444,7 @@ class ArticlesState extends State<Articles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: const EdgeInsets
-                                                                            .only(
+                                                                        padding: const EdgeInsets.only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -492,8 +453,7 @@ class ArticlesState extends State<Articles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: const Color
-                                                                            .fromARGB(
+                                                                        color: const Color.fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
@@ -509,26 +469,17 @@ class ArticlesState extends State<Articles> {
                                                             ],
                                                           )),
                                                       Container(
-<<<<<<< HEAD
                                                           margin: const EdgeInsets.only(
                                                               top: 0),
-=======
-                                                          margin:
-                                                              const EdgeInsets
-                                                                  .only(top: 0),
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                           child: Text(
-                                                              nom ==
-                                                                      null
+                                                              nom == null
                                                                   ? ""
                                                                   : nom,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                              overflow: TextOverflow
+                                                                  .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-<<<<<<< HEAD
                                                               style: GoogleFonts.quicksand(
                                                                   fontWeight:
                                                                       FontWeight
@@ -541,21 +492,6 @@ class ArticlesState extends State<Articles> {
                                                                       79),
                                                                   fontSize:
                                                                       17))),
-=======
-                                                              style: GoogleFonts
-                                                                  .quicksand(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      color: const Color
-                                                                          .fromARGB(
-                                                                          255,
-                                                                          81,
-                                                                          79,
-                                                                          79),
-                                                                      fontSize:
-                                                                          17))),
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                       Container(
                                                         margin: const EdgeInsets
                                                             .only(top: 0),
@@ -570,11 +506,7 @@ class ArticlesState extends State<Articles> {
                                                             style: GoogleFonts
                                                                 .quicksand(
                                                               color: const Color
-<<<<<<< HEAD
                                                                       .fromARGB(
-=======
-                                                                  .fromARGB(
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                                   255, 0, 0, 0),
                                                               fontSize: 15,
                                                             )),
@@ -587,11 +519,7 @@ class ArticlesState extends State<Articles> {
                                                           : Container(
                                                               margin:
                                                                   const EdgeInsets
-<<<<<<< HEAD
                                                                           .only(
-=======
-                                                                      .only(
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                                       top: 2),
                                                               width: 150,
                                                               height: 30,
@@ -678,19 +606,13 @@ class ArticlesState extends State<Articles> {
                                                                     style: ElevatedButton.styleFrom(
                                                                         elevation:
                                                                             0,
-<<<<<<< HEAD
                                                                         backgroundColor: const Color.fromARGB(
-=======
-                                                                        backgroundColor: const Color
-                                                                            .fromARGB(
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                                                                             255,
                                                                             255,
                                                                             255,
                                                                             255),
-                                                                        padding: const EdgeInsets
-                                                                            .all(
-                                                                            0)),
+                                                                        padding:
+                                                                            const EdgeInsets.all(0)),
                                                                     child: Text(
                                                                       "AJOUTER AU PANIER",
                                                                       style: GoogleFonts.quicksand(

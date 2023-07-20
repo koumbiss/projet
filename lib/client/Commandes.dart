@@ -1,17 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-<<<<<<< HEAD
-import 'package:google_fonts/google_fonts.dart';
-import 'package:projet_etudes/Provider/Cart.dart';
-=======
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Confirmation.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
 import 'package:provider/provider.dart';
 
 class Commandes extends StatefulWidget {

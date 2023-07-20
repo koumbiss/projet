@@ -26,18 +26,12 @@ class ProfileScreen extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: [
-<<<<<<< HEAD
-              const SizedBox(height: 10),
-              const Text("Koumbiss BK",
-                  style: TextStyle(
-=======
               SizedBox(height: 10),
               Text("Koumbiss BK",
                   style: GoogleFonts.quicksand(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
 
->>>>>>> 533422c8fc19995c753177871e77d976644a1049
                     color: Colors.black,
                     //Theme.of(context).textTheme.labelLarge,
                   ) //
