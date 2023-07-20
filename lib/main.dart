@@ -29,23 +29,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Ma superbe application',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
-        textTheme: const TextTheme(
-          // ignore: deprecated_member_use
-          headline1: TextStyle(color: Colors.white),
-          // ignore: deprecated_member_use
-          bodyText1: TextStyle(color: Colors.white),
-          // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
+        debugShowCheckedModeBanner: false,
+        title: 'Ma superbe application',
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.black,
+          textTheme: const TextTheme(
+            // ignore: deprecated_member_use
+            headline1: TextStyle(color: Colors.white),
+            // ignore: deprecated_member_use
+            bodyText1: TextStyle(color: Colors.white),
+            // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
+          ),
         ),
+<<<<<<< HEAD
       ),
       home: Menu(
         indexx: 0,
       ),
       //home: loginScreen(),
     );
+=======
+        home: Menu(
+          indexx: 0,
+        ));
+>>>>>>> 0b4f58011a8c89e40ba527c64c894859860a5b1f
   }
 }

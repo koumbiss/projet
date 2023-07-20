@@ -4,7 +4,6 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_etudes/services/Authentification.dart';
 
-
 class ReceptionCommande extends StatefulWidget {
   const ReceptionCommande({super.key});
 
@@ -79,7 +78,8 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                       child: Text(
                                           "vous n'avez aucune  commande  "));
                                 } else {
-                                  return const Center(child: Text("aucun resultat"));
+                                  return const Center(
+                                      child: Text("aucun resultat"));
                                 }
                               }
                               return ListView.builder(
@@ -165,14 +165,36 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                         //             .data()['etatCommande'])));
                                       },
                                       leading: Text("${index + 1}"),
-                                      trailing: Text(
-                                          "${(snapshot.data.docs[index].data()['dateCommande'] as Timestamp).toDate()}"),
+                                      trailing: Container(
+                                        margin: EdgeInsets.only(left: 80),
+                                        child: ElevatedButton(
+                                            child:
+                                                Icon(Icons.arrow_outward_sharp),
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                              // fixedSize: Size(250, 250),
+                                              elevation: 0,
+                                              // padding: EdgeInsets.all(0),
+                                              primary: Color.fromARGB(
+                                                  0, 255, 255, 255),
+                                              padding: EdgeInsets.all(0),
+                                            )),
+                                        // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Color.fromARGB(255, 71, 196, 159),
+                                          // borderRadius: BorderRadius.circular(70),
+                                        ),
+                                        width: 30,
+
+                                        height: 30,
+                                      ),
                                       title: Text(
                                           style: GoogleFonts.quicksand(
-                                            color:
-                                                const Color.fromARGB(255, 72, 72, 72),
+                                            color: const Color.fromARGB(
+                                                255, 72, 72, 72),
                                           ),
-                                          "Commande  : MD:${snapshot.data.docs[index].data()['modelivraison']}"),
+                                          "Commande :301A MD:${snapshot.data.docs[index].data()['modelivraison']}"),
                                       subtitle: snapshot.data.docs[index]
                                               .data()['etatCommande']
                                               .contains("refusé")
