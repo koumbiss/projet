@@ -5,7 +5,9 @@ import 'package:projet_etudes/Provider/Cart.dart';
 import 'package:projet_etudes/client/Menu.dart';
 
 import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/loginScreen.dart';
 import 'package:projet_etudes/client/profile_screen.dart';
+import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/client/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +42,13 @@ class MyApp extends StatelessWidget {
           // Ajoutez d'autres styles de texte personnalisés ici si nécessaire
         ),
       ),
+<<<<<<< HEAD
       home: MenuFournisseur(indexx: 0),
+=======
+      home: Menu(
+        indexx: 0,
+      ),
+>>>>>>> 533422c8fc19995c753177871e77d976644a1049
     );
   }
 }

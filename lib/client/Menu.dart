@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:projet_etudes/client/Panier.dart';
 import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/profile_screen.dart';
 
 class Menu extends StatefulWidget {
   final indexx;
@@ -18,7 +19,7 @@ class MenuState extends State<Menu> {
   final List pages = [
     const MyHomePage(),
     const Panier(),
-    const Panier(),
+    const ProfileScreen(),
   ];
 
   void selectedpage(int index) {
@@ -65,7 +66,7 @@ class MenuState extends State<Menu> {
                       ),
                       BottomNavigationBarItem(
                         label: "compte",
-                        icon: Icon(selectedindex == 3
+                        icon: Icon(selectedindex == 2
                             ? IconlyBold.profile
                             : IconlyLight.profile),
                       ),
