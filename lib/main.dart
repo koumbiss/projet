@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
 <<<<<<< HEAD
+<<<<<<< HEAD
       ),
       home: Menu(
         indexx: 0,
@@ -54,5 +55,8 @@ class MyApp extends StatelessWidget {
           indexx: 0,
         ));
 >>>>>>> 0b4f58011a8c89e40ba527c64c894859860a5b1f
+=======
+        home: SplashScreen());
+>>>>>>> 0d59ce9c59aaf7650ce196179a6ec3541f979c21
   }
 }
