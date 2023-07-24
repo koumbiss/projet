@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:projet_etudes/Fournisseur/AjoutArticles.dart';
 import 'package:projet_etudes/Fournisseur/AjoutCollection.dart';
+import 'package:projet_etudes/Fournisseur/Collections.dart';
 import 'package:projet_etudes/Fournisseur/ReceptionCommande.dart';
+import 'package:projet_etudes/Fournisseur/profilfournisseur.dart';
 import 'package:projet_etudes/client/homepage.dart';
+import 'package:projet_etudes/client/profile_screen.dart';
 
 class MenuFournisseur extends StatefulWidget {
   final indexx;
@@ -18,10 +21,10 @@ class MenuFournisseur extends StatefulWidget {
 class MenuFournisseurState extends State<MenuFournisseur> {
   int selectedindex = 0;
   final List pages = [
-    const MyHomePage(),
+    const Collections(),
     const AJoutCollection(),
-    ReceptionCommande(),
-    const AJoutArticles(),
+    const ReceptionCommande(),
+    const ProfilFournisseur(),
   ];
 
   void selectedpage(int index) {

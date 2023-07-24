@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/client/Menu.dart';
 import 'package:projet_etudes/client/loginScreen.dart';
 import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/fournisseur/Homepage.dart';
@@ -93,7 +94,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(
+                          builder: (context) => const Menu(
+                                indexx: 0,
+                              )),
                     );
                   },
                   child: const Text("Continuer en tant que visiteur")),

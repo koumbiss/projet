@@ -394,31 +394,39 @@ class CommandesState extends State<Commandes> {
                             ),
                             margin: const EdgeInsets.only(
                                 left: 20, top: 12, bottom: 12),
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 0,
-                                  backgroundColor: Colors.transparent,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
+                            child: Consumer<Cart>(
+                                builder: ((context, value, child) {
+                              return ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    elevation: 0,
+                                    backgroundColor: Colors.transparent,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          bottomLeft: Radius.circular(20),
+                                          bottomRight: Radius.circular(20),
+                                          topRight: Radius.circular(20)),
+                                    ),
                                   ),
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .push(MaterialPageRoute(
-                                          builder: (context) =>
-                                              new Confirmation(
-                                                total: value.price,
-                                              )));
-                                },
-                                child: Text(
-                                  "Confirmer la commande",
-                                  style: GoogleFonts.quicksand(
-                                      fontSize: 22, color: Colors.white),
-                                )));
+                                  onPressed: () {
+                                    print("Livraus:${value.qte}");
+                                    Navigator.of(context, rootNavigator: true)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) =>
+                                                new Confirmation(
+                                                  listproduits:
+                                                      widget.listproduits,
+                                                  livraison: livraison,
+                                                  quantite: value.qte,
+                                                  total: value.price,
+                                                )));
+                                  },
+                                  child: Text(
+                                    "Confirmer la commande",
+                                    style: GoogleFonts.quicksand(
+                                        fontSize: 22, color: Colors.white),
+                                  ));
+                            })));
                       })),
                     ))
               ],

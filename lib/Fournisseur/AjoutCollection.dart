@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/Fournisseur/MenuFournisseur.dart';
 import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 class AJoutCollection extends StatefulWidget {
@@ -455,13 +456,13 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                           upl,
                                           DateTime.now());
                                       print("C'est bon ");
-                                      // var ider = FirebaseAuth
-                                      //     .instance.currentUser!.uid;
-                                      // Navigator.pop(context);
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return MenuFournisseur(
+                                          indexx: 0,
+                                        );
+                                      }));
                                     }
-                                    //  else
-                                    //   alert.Showmessage(context,
-                                    //       "Vous devez choisir une photo");
                                   },
                                   style: ElevatedButton.styleFrom(
                                     elevation: 0,

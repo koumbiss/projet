@@ -135,7 +135,8 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                     children: [
                       Container(
                         width: 100,
-                        margin: const EdgeInsets.only(top: 20, left: 10, right: 0),
+                        margin:
+                            const EdgeInsets.only(top: 20, left: 10, right: 0),
                         decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.only(
@@ -168,11 +169,13 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        const EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: const Color.fromARGB(
+                                                        color: const Color
+                                                            .fromARGB(
                                                             255, 248, 248, 248),
                                                         borderRadius:
                                                             BorderRadius
@@ -257,13 +260,15 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(200, 200), backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                      fixedSize: const Size(200, 200),
+                                      backgroundColor: const Color.fromARGB(
+                                          0, 255, 255, 255),
                                       elevation: 0,
                                       padding: const EdgeInsets.all(0),
                                     ),
                                     child: Container(
-                                        color:
-                                            const Color.fromARGB(0, 255, 255, 255))))
+                                        color: const Color.fromARGB(
+                                            0, 255, 255, 255))))
                             : Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -289,11 +294,13 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                                 children: [
                                                   Container(
                                                     margin:
-                                                        const EdgeInsets.only(top: 5),
+                                                        const EdgeInsets.only(
+                                                            top: 5),
                                                     height: 4,
                                                     width: 44,
                                                     decoration: BoxDecoration(
-                                                        color: const Color.fromARGB(
+                                                        color: const Color
+                                                            .fromARGB(
                                                             255, 237, 237, 237),
                                                         borderRadius:
                                                             BorderRadius
@@ -379,10 +386,13 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       // fixedSize: Size(250, 250),
-                                      elevation: 0, backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                                      elevation: 0,
+                                      backgroundColor: const Color.fromARGB(
+                                          0, 255, 255, 255),
                                       padding: const EdgeInsets.all(0),
                                     ),
-                                    child: Container(color: Colors.transparent))),
+                                    child:
+                                        Container(color: Colors.transparent))),
                       ),
                       Form(
                           key: formstates,
@@ -673,7 +683,8 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                       Color.fromARGB(255, 42, 41, 41),
                                       Color.fromARGB(255, 34, 32, 32)
                                     ])),
-                                margin: const EdgeInsets.only(top: 20, bottom: 20),
+                                margin:
+                                    const EdgeInsets.only(top: 20, bottom: 20),
                                 width: 200,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -700,6 +711,7 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                           widget.idcollection,
                                           CategorieCollection.text);
                                       print("C'est bon ");
+                                      Navigator.pop(context);
                                       // var ider = FirebaseAuth
                                       //     .instance.currentUser!.uid;
                                       // Navigator.pop(context);
@@ -709,7 +721,9 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                     //       "Vous devez choisir une photo");
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 0, backgroundColor: const Color.fromARGB(0, 244, 67, 54),
+                                    elevation: 0,
+                                    backgroundColor:
+                                        const Color.fromARGB(0, 244, 67, 54),
                                     padding: const EdgeInsets.all(10),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:

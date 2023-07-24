@@ -1,12 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:projet_etudes/client/WelcomeScreen.dart';
+import 'package:projet_etudes/client/adresse.dart';
+import 'package:projet_etudes/client/loginScreen.dart';
+import 'package:projet_etudes/client/mescommandes.dart';
+import 'package:projet_etudes/client/parametre.dart';
+import 'package:projet_etudes/client/splash_screen.dart';
+import 'package:projet_etudes/services/Authentification.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Authentification auth = Authentification();
     //final String profileImage = "assets/maybe.jpeg";
 
     return Scaffold(
@@ -21,70 +31,155 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              SizedBox(height: 10),
-              Text("Koumbiss BK",
-                  style: GoogleFonts.quicksand(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-
-                    color: Colors.black,
-                    //Theme.of(context).textTheme.labelLarge,
-                  ) //
+      body: FirebaseAuth.instance.currentUser == null
+          ? Container(
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 12,
+                            spreadRadius: -4,
+                            color: Color.fromARGB(255, 210, 210, 210))
+                      ],
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  width: 250,
+                  height: 46,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        primary: Color.fromARGB(0, 29, 150, 142)),
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true).push(
+                          MaterialPageRoute(
+                              builder: (context) => new loginScreen()));
+                    },
+                    child: Text("Se connecter",
+                        style: GoogleFonts.mukta(
+                            fontSize: 22, fontWeight: FontWeight.bold)),
                   ),
-              const SizedBox(height: 20),
-              const SizedBox(height: 30),
-              const Divider(
-                color: Colors.black,
+                ),
               ),
-              const SizedBox(height: 10),
-              ProfileMenuWidget(
-                  title: "Adresses",
-                  icon: LineAwesomeIcons.address_book,
-                  textColor: Colors.black,
-                  onPress: () {}),
-              ProfileMenuWidget(
-                  title: "commandes",
-                  icon: LineAwesomeIcons.address_card,
-                  textColor: Colors.black,
-                  onPress: () {}),
-              ProfileMenuWidget(
-                  title: "E-mail",
-                  icon: LineAwesomeIcons.mail_bulk,
-                  textColor: Colors.black,
-                  onPress: () {}),
-              ProfileMenuWidget(
-                  title: "Telephone",
-                  icon: LineAwesomeIcons.phone,
-                  textColor: Colors.black,
-                  onPress: () {}),
-              ProfileMenuWidget(
-                  title: "Mot de passe",
-                  icon: LineAwesomeIcons.fingerprint,
-                  textColor: Colors.black,
-                  onPress: () {}),
-              const Divider(color: Colors.black),
-              ProfileMenuWidget(
-                title: "Se déconnecter",
-                icon: LineAwesomeIcons.alternate_sign_out,
-                textColor: Colors.red,
-                endIcon: false,
-                onPress: () {},
+            )
+          : Container(
+              child: SingleChildScrollView(
+                child: StreamBuilder<Object>(
+                    stream: FirebaseFirestore.instance
+                        .collection("Clients")
+                        .doc(FirebaseAuth.instance.currentUser!.uid)
+                        .snapshots(),
+                    builder: (context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return Container(
+                          padding: const EdgeInsets.all(30.0),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 10),
+                              Text("${snapshot.data["nomUtilisateur"]}",
+                                  style: GoogleFonts.quicksand(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+
+                                    color: Colors.black,
+                                    //Theme.of(context).textTheme.labelLarge,
+                                  ) //
+                                  ),
+                              const SizedBox(height: 20),
+                              const SizedBox(height: 30),
+                              const Divider(
+                                color: Colors.black,
+                              ),
+                              const SizedBox(height: 10),
+                              ProfileMenuWidget(
+                                  title: "adresse",
+                                  icon: LineAwesomeIcons.address_book,
+                                  textColor: Colors.black,
+                                  onPress: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return adresse(
+                                        idc: snapshot.data.id,
+                                      );
+                                    }));
+                                  }),
+                              ProfileMenuWidget(
+                                  title: "commandes",
+                                  icon: LineAwesomeIcons.address_card,
+                                  textColor: Colors.black,
+                                  onPress: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return mescommandes();
+                                    }));
+                                  }),
+                              ProfileMenuWidget(
+                                  title: "${snapshot.data["email"]}",
+                                  icon: LineAwesomeIcons.mail_bulk,
+                                  textColor: Colors.black,
+                                  onPress: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return ModificationScreen(
+                                        champ: "email",
+                                        value: snapshot.data["email"],
+                                      );
+                                    }));
+                                  }),
+                              ProfileMenuWidget(
+                                  title: "${snapshot.data["telephone"]}",
+                                  icon: LineAwesomeIcons.phone,
+                                  textColor: Colors.black,
+                                  onPress: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return ModificationScreen(
+                                        champ: "telephone",
+                                        value: snapshot.data["telephone"],
+                                      );
+                                    }));
+                                  }),
+                              ProfileMenuWidget(
+                                  title: "Mot de passe",
+                                  icon: LineAwesomeIcons.fingerprint,
+                                  textColor: Colors.black,
+                                  onPress: () {}),
+                              const Divider(color: Colors.black),
+                              ProfileMenuWidget(
+                                title: "Se déconnecter",
+                                icon: LineAwesomeIcons.alternate_sign_out,
+                                textColor: Colors.red,
+                                endIcon: false,
+                                onPress: () async {
+                                  await auth.Logout();
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context) {
+                                    return WelcomeScreen();
+                                  }));
+                                },
+                              ),
+                              ProfileMenuWidget(
+                                  title: "Supprimer votre compte",
+                                  icon: LineAwesomeIcons.trash,
+                                  textColor: Colors.red,
+                                  endIcon: false,
+                                  onPress: () {}),
+                            ],
+                          ),
+                        );
+                      }
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }),
               ),
-              ProfileMenuWidget(
-                  title: "Supprimer votre compte",
-                  icon: LineAwesomeIcons.trash,
-                  textColor: Colors.red,
-                  endIcon: false,
-                  onPress: () {}),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }

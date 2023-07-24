@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projet_etudes/client/CommandeDetails.dart';
 import 'package:projet_etudes/services/Authentification.dart';
 
 class ReceptionCommande extends StatefulWidget {
@@ -170,7 +171,44 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                         child: ElevatedButton(
                                             child:
                                                 Icon(Icons.arrow_outward_sharp),
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              print(
+                                                  "${snapshot.data.docs[index].data()['totalCommande']}");
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MyCommandeDetails(
+                                                            Idclient: snapshot
+                                                                    .data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'Idclient'],
+                                                            dateCommande: snapshot
+                                                                    .data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'dateCommande'],
+                                                            etatCommande: snapshot
+                                                                    .data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'etatCommande'],
+                                                            id: snapshot.data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'idCommande'],
+                                                            livraison: snapshot
+                                                                    .data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'modelivraison'],
+                                                            total: snapshot.data
+                                                                    .docs[index]
+                                                                    .data()[
+                                                                'totalCommande'],
+                                                          )));
+                                            },
                                             style: ElevatedButton.styleFrom(
                                               // fixedSize: Size(250, 250),
                                               elevation: 0,
@@ -194,7 +232,7 @@ class ReceptionCommandeState extends State<ReceptionCommande> {
                                             color: const Color.fromARGB(
                                                 255, 72, 72, 72),
                                           ),
-                                          "Commande :301A MD:${snapshot.data.docs[index].data()['modelivraison']}"),
+                                          " reference : ${snapshot.data.docs[index].data()['idCommande']} MD:${snapshot.data.docs[index].data()['modelivraison']}"),
                                       subtitle: snapshot.data.docs[index]
                                               .data()['etatCommande']
                                               .contains("refusé")

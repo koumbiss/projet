@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projet_etudes/Fournisseur/MenuFournisseur.dart';
+import 'package:projet_etudes/client/Menu.dart';
 import 'package:projet_etudes/client/sign_in_screen.dart';
 import 'package:projet_etudes/services/Authentification.dart';
+import 'package:projet_etudes/services/Cloudfirestore.dart';
 
 class loginScreen extends StatelessWidget {
   const loginScreen({super.key});
@@ -51,6 +55,7 @@ class loginScreen extends StatelessWidget {
                         height: forhei - 20,
                       ),
                       TextFormField(
+                        obscureText: true,
                         controller: mpasswordController,
                         decoration: const InputDecoration(
                           //labelText: "Mot de passe",
@@ -69,8 +74,34 @@ class loginScreen extends StatelessWidget {
                               var us = await Authentification().signinn(
                                   memailController, mpasswordController);
 
+                              print("reponse $us");
+
+                              if (us == "true") {
+                                var idd =
+                                    FirebaseAuth.instance.currentUser!.uid;
+
+                                await CloudFirestore()
+                                    .getTypeuser(idd)
+                                    .then((value) {
+                                  return Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return value == true
+                                        ? Menu(
+                                            indexx: 0,
+                                          )
+                                        : MenuFournisseur(
+                                            indexx: 0,
+                                          );
+                                  }));
+                                });
+                              }
+
                               if (us == 'true') {
                                 print("c'est bon");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Menu(indexx: 0)));
                               }
                             },
                             style: ElevatedButton.styleFrom(

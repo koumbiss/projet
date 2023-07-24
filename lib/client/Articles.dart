@@ -128,33 +128,6 @@ class ArticlesState extends State<Articles> {
               child: ListView(children: [
                 Column(
                   children: [
-                    // Container(
-                    //   margin: EdgeInsets.only(bottom: 5),
-                    //   child: ElevatedButton(
-                    //       child: Icon(Icons.add),
-                    //       onPressed: () {
-                    //         Navigator.of(context, rootNavigator: true)
-                    //             .push(MaterialPageRoute(
-                    //                 builder: (context) => new AJoutArticles(
-                    //                       idcollection: widget.idc,
-                    //                     )));
-                    //       },
-                    //       style: ElevatedButton.styleFrom(
-                    //         // fixedSize: Size(250, 250),
-                    //         elevation: 0,
-                    //         // padding: EdgeInsets.all(0),
-                    //         primary: Color.fromARGB(0, 255, 255, 255),
-                    //         padding: EdgeInsets.all(0),
-                    //       )),
-                    //   // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
-                    //   decoration: BoxDecoration(
-                    //     color: Color.fromARGB(255, 0, 0, 0),
-                    //     // borderRadius: BorderRadius.circular(70),
-                    //   ),
-                    //   width: 60,
-
-                    //   height: 30,
-                    // ),
                     Container(
                       // margin: EdgeInsets.only(left: 10, top: 200, bottom: 40),
                       decoration: const BoxDecoration(
@@ -381,7 +354,7 @@ class ArticlesState extends State<Articles> {
                                                                     170, 220),
                                                             backgroundColor:
                                                                 const Color
-                                                                        .fromARGB(
+                                                                    .fromARGB(
                                                                     255,
                                                                     255,
                                                                     255,
@@ -407,7 +380,7 @@ class ArticlesState extends State<Articles> {
                                                                       width:
                                                                           200,
                                                                       margin: const EdgeInsets
-                                                                              .only(
+                                                                          .only(
                                                                           top:
                                                                               0),
                                                                       decoration:
@@ -444,7 +417,8 @@ class ArticlesState extends State<Articles> {
                                                                       left: 0,
                                                                       child:
                                                                           Container(
-                                                                        padding: const EdgeInsets.only(
+                                                                        padding: const EdgeInsets
+                                                                            .only(
                                                                             left:
                                                                                 10,
                                                                             top:
@@ -453,7 +427,8 @@ class ArticlesState extends State<Articles> {
                                                                                 5,
                                                                             right:
                                                                                 10),
-                                                                        color: const Color.fromARGB(
+                                                                        color: const Color
+                                                                            .fromARGB(
                                                                             136,
                                                                             193,
                                                                             193,
@@ -469,29 +444,33 @@ class ArticlesState extends State<Articles> {
                                                             ],
                                                           )),
                                                       Container(
-                                                          margin: const EdgeInsets.only(
-                                                              top: 0),
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(top: 0),
                                                           child: Text(
-                                                              nom == null
+                                                              nom ==
+                                                                      null
                                                                   ? ""
                                                                   : nom,
-                                                              overflow: TextOverflow
-                                                                  .ellipsis,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
-                                                              style: GoogleFonts.quicksand(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: const Color
+                                                              style: GoogleFonts
+                                                                  .quicksand(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: const Color
                                                                           .fromARGB(
-                                                                      255,
-                                                                      81,
-                                                                      79,
-                                                                      79),
-                                                                  fontSize:
-                                                                      17))),
+                                                                          255,
+                                                                          81,
+                                                                          79,
+                                                                          79),
+                                                                      fontSize:
+                                                                          17))),
                                                       Container(
                                                         margin: const EdgeInsets
                                                             .only(top: 0),
@@ -506,7 +485,7 @@ class ArticlesState extends State<Articles> {
                                                             style: GoogleFonts
                                                                 .quicksand(
                                                               color: const Color
-                                                                      .fromARGB(
+                                                                  .fromARGB(
                                                                   255, 0, 0, 0),
                                                               fontSize: 15,
                                                             )),
@@ -519,7 +498,7 @@ class ArticlesState extends State<Articles> {
                                                           : Container(
                                                               margin:
                                                                   const EdgeInsets
-                                                                          .only(
+                                                                      .only(
                                                                       top: 2),
                                                               width: 150,
                                                               height: 30,
@@ -529,7 +508,7 @@ class ArticlesState extends State<Articles> {
                                                                           Border
                                                                               .all(
                                                                 color: const Color
-                                                                        .fromARGB(
+                                                                    .fromARGB(
                                                                     255,
                                                                     0,
                                                                     0,
@@ -606,19 +585,22 @@ class ArticlesState extends State<Articles> {
                                                                     style: ElevatedButton.styleFrom(
                                                                         elevation:
                                                                             0,
-                                                                        backgroundColor: const Color.fromARGB(
+                                                                        backgroundColor: const Color
+                                                                            .fromARGB(
                                                                             255,
                                                                             255,
                                                                             255,
                                                                             255),
-                                                                        padding:
-                                                                            const EdgeInsets.all(0)),
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            0)),
                                                                     child: Text(
                                                                       "AJOUTER AU PANIER",
                                                                       style: GoogleFonts.quicksand(
                                                                           fontSize:
                                                                               14,
-                                                                          color: const Color.fromARGB(
+                                                                          color: const Color
+                                                                              .fromARGB(
                                                                               255,
                                                                               3,
                                                                               3,
