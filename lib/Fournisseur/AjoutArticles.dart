@@ -275,8 +275,8 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                         image: FileImage(image!),
                                         fit: BoxFit.cover),
                                     borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(30),
-                                        bottomRight: Radius.circular(30))),
+                                        bottomLeft: Radius.circular(0),
+                                        bottomRight: Radius.circular(0))),
                                 width: 200,
                                 height: 220,
                                 child: ElevatedButton(
@@ -304,7 +304,7 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                                             255, 237, 237, 237),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(50)),
+                                                                .circular(0)),
                                                   ),
                                                   ListTile(
                                                     leading: const SizedBox(
@@ -400,9 +400,9 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                             children: [
                               Container(
                                   height: 40,
-                                  width: 140,
+                                  width: 100,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 10, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: CategorieCollection,
                                       validator: (val) {
@@ -446,9 +446,9 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                       ))),
                               Container(
                                   height: 40,
-                                  width: 200,
+                                  width: 130,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 10, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: ReferenceController,
                                       validator: (val) {
@@ -492,9 +492,9 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                       ))),
                               Container(
                                   height: 50,
-                                  width: 260,
+                                  width: 170,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: nomController,
                                       validator: (val) {
@@ -536,10 +536,10 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                         ),
                                       ))),
                               Container(
-                                  width: 255,
+                                  width: 180,
                                   height: 50,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: prixController,
                                       validator: (val) {
@@ -583,10 +583,10 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                         ),
                                       ))),
                               Container(
-                                  width: 255,
+                                  width: 180,
                                   height: 50,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: quatiteController,
                                       validator: (val) {
@@ -631,10 +631,10 @@ class AJoutArticlesstate extends State<AJoutArticles> {
                                         ),
                                       ))),
                               Container(
-                                  width: 255,
+                                  width: 170,
                                   height: 50,
                                   margin: const EdgeInsets.only(
-                                      bottom: 10, left: 20, right: 10, top: 20),
+                                      bottom: 10, left: 0, right: 0, top: 20),
                                   child: TextFormField(
                                       controller: DescriptionController,
                                       validator: (val) {

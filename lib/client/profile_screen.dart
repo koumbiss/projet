@@ -158,18 +158,12 @@ class ProfileScreen extends StatelessWidget {
                                 endIcon: false,
                                 onPress: () async {
                                   await auth.Logout();
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context) {
-                                    return WelcomeScreen();
-                                  }));
+                                  Navigator.of(context, rootNavigator: true)
+                                      .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              new loginScreen()));
                                 },
                               ),
-                              ProfileMenuWidget(
-                                  title: "Supprimer votre compte",
-                                  icon: LineAwesomeIcons.trash,
-                                  textColor: Colors.red,
-                                  endIcon: false,
-                                  onPress: () {}),
                             ],
                           ),
                         );

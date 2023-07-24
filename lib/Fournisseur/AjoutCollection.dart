@@ -120,7 +120,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                   Column(
                     children: [
                       Container(
-                        width: 400,
+                        width: 300,
                         height: 400,
                         margin:
                             const EdgeInsets.only(top: 0, left: 10, right: 10),
@@ -247,7 +247,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      fixedSize: const Size(200, 200),
+                                      fixedSize: const Size(170, 170),
                                       backgroundColor: const Color.fromARGB(
                                           0, 255, 255, 255),
                                       elevation: 0,
@@ -264,7 +264,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                                     borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(0),
                                         bottomRight: Radius.circular(0))),
-                                width: 200,
+                                width: 170,
                                 height: 220,
                                 child: ElevatedButton(
                                     onPressed: () {
@@ -387,7 +387,7 @@ class AJoutCollectionstate extends State<AJoutCollection> {
                             children: [
                               Container(
                                   height: 50,
-                                  width: 300,
+                                  width: 260,
                                   margin: const EdgeInsets.only(
                                       bottom: 10, left: 10, right: 10, top: 20),
                                   child: TextFormField(

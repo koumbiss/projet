@@ -264,14 +264,14 @@ class MyCommandeDetailsState extends State<MyCommandeDetails> {
                                           margin: EdgeInsets.only(
                                             top: 10,
                                             left: 0,
-                                            right: 20,
+                                            right: 0,
                                             bottom: 10,
                                           ),
                                           decoration: BoxDecoration(
                                             color: Color.fromARGB(
                                                 255, 255, 255, 255),
                                           ),
-                                          height: 120,
+                                          height: 100,
                                           child: Row(children: [
                                             Expanded(
                                               child: Container(
@@ -313,8 +313,8 @@ class MyCommandeDetailsState extends State<MyCommandeDetails> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsets.only(
-                                                      top: 12, right: 20),
-                                                  width: 200,
+                                                      top: 12, right: 0),
+                                                  width: 150,
                                                   child: Text(
                                                     snapshot.data.docs[index]
                                                         .data()['nomArticle'],
@@ -331,7 +331,7 @@ class MyCommandeDetailsState extends State<MyCommandeDetails> {
                                                   children: [
                                                     Container(
                                                         margin: EdgeInsets.only(
-                                                            top: 0, left: 10),
+                                                            top: 0, left: 0),
                                                         decoration:
                                                             BoxDecoration(),
                                                         child: Text(
@@ -347,13 +347,13 @@ class MyCommandeDetailsState extends State<MyCommandeDetails> {
                                                                             34,
                                                                             34),
                                                                     fontSize:
-                                                                        17,
+                                                                        13,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold))),
                                                     Container(
                                                         margin: EdgeInsets.only(
-                                                            top: 0, right: 20),
+                                                            top: 0, right: 0),
                                                         width: 90,
                                                         decoration:
                                                             BoxDecoration(),
@@ -366,7 +366,7 @@ class MyCommandeDetailsState extends State<MyCommandeDetails> {
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        17,
+                                                                        13,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold))),

@@ -136,18 +136,12 @@ class ProfilFournisseur extends StatelessWidget {
                                 endIcon: false,
                                 onPress: () async {
                                   await auth.Logout();
-                                  Navigator.of(context).push(
+                                  Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
                                     return loginScreen();
                                   }));
                                 },
                               ),
-                              ProfileMenuWidget(
-                                  title: "Supprimer votre compte",
-                                  icon: LineAwesomeIcons.trash,
-                                  textColor: Colors.red,
-                                  endIcon: false,
-                                  onPress: () {}),
                             ],
                           ),
                         );

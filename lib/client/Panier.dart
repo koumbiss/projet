@@ -395,8 +395,7 @@ class PannierState extends State<Pannier> {
                                             }
 
                                             Navigator
-                                                    .of(
-                                                        context,
+                                                    .of(context,
                                                         rootNavigator: true)
                                                 .push(MaterialPageRoute(
                                                     builder: (context) =>
@@ -435,7 +434,7 @@ class PannierState extends State<Pannier> {
                                           color: const Color.fromARGB(
                                               255, 196, 196, 196)))),
                               Container(
-                                margin: const EdgeInsets.only(left: 30),
+                                margin: const EdgeInsets.only(left: 2),
                                 child: Text("${value.price} Mro",
                                     style: GoogleFonts.quicksand(
                                         //fontWeight: FontWeight.bold,

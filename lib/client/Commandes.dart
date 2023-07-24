@@ -175,7 +175,7 @@ class CommandesState extends State<Commandes> {
                               Row(
                                 children: [
                                   Container(
-                                    width: 150,
+                                    width: 130,
                                     height: 50,
                                     decoration: BoxDecoration(
                                       border: Border.all(
@@ -237,10 +237,10 @@ class CommandesState extends State<Commandes> {
                                     ),
                                   ),
                                   Container(
-                                    width: 150,
+                                    width: 130,
                                     height: 50,
                                     margin: const EdgeInsets.only(
-                                        top: 6, bottom: 3, left: 20, right: 10),
+                                        top: 6, bottom: 3, left: 4, right: 2),
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: textColor2,

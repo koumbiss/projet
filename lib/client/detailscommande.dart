@@ -314,7 +314,7 @@ class detailscommandeState extends State<detailscommande> {
                                                 Container(
                                                   margin: EdgeInsets.only(
                                                       top: 12, right: 20),
-                                                  width: 200,
+                                                  width: 150,
                                                   child: Text(
                                                     snapshot.data.docs[index]
                                                         .data()['nomArticle'],
@@ -331,7 +331,7 @@ class detailscommandeState extends State<detailscommande> {
                                                   children: [
                                                     Container(
                                                         margin: EdgeInsets.only(
-                                                            top: 0, left: 10),
+                                                            top: 0, left: 0),
                                                         decoration:
                                                             BoxDecoration(),
                                                         child: Text(
@@ -347,13 +347,13 @@ class detailscommandeState extends State<detailscommande> {
                                                                             34,
                                                                             34),
                                                                     fontSize:
-                                                                        17,
+                                                                        13,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold))),
                                                     Container(
                                                         margin: EdgeInsets.only(
-                                                            top: 0, right: 20),
+                                                            top: 0, right: 0),
                                                         width: 90,
                                                         decoration:
                                                             BoxDecoration(),
@@ -366,7 +366,7 @@ class detailscommandeState extends State<detailscommande> {
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        17,
+                                                                        14,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold))),

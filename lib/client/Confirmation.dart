@@ -111,11 +111,13 @@ class ConfirmationState extends State<Confirmation> {
                           margin: EdgeInsets.only(
                               right: 10, left: 5, top: 20, bottom: 0),
                           padding: EdgeInsets.only(left: 5, right: 5),
-                          child: Text(
-                            "Reference de la commande: 301A",
-                            style: GoogleFonts.quicksand(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 0, 0, 0),
+                          child: Center(
+                            child: Text(
+                              "commande ",
+                              style: GoogleFonts.quicksand(
+                                fontSize: 17,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
                             ),
                           ),
                         ),
@@ -139,14 +141,14 @@ class ConfirmationState extends State<Confirmation> {
                                                     width: 1,
                                                     color: Colors.black),
                                                 color: Colors.white),
-                                            width: 200,
+                                            width: 170,
                                             margin: EdgeInsets.only(
-                                                right: 10,
-                                                left: 50,
+                                                right: 5,
+                                                left: 15,
                                                 top: 20,
                                                 bottom: 0),
                                             padding: EdgeInsets.only(
-                                                left: 10, right: 10),
+                                                left: 5, right: 5),
                                             child: DropdownButton(
                                               icon: Icon(Icons.payment),
                                               dropdownColor: Color.fromARGB(
@@ -193,7 +195,7 @@ class ConfirmationState extends State<Confirmation> {
                                           height: 30,
                                           margin: EdgeInsets.only(
                                               right: 10,
-                                              left: 10,
+                                              left: 0,
                                               top: 20,
                                               bottom: 0),
                                           padding: EdgeInsets.only(

@@ -129,7 +129,7 @@ class ArticlesFRState extends State<ArticlesFR> {
                             margin: const EdgeInsets.only(left: 10),
                           ),
                           Container(
-                              width: 400,
+                              width: 330,
                               padding: const EdgeInsets.only(
                                   left: 10, bottom: 10, right: 20),
                               child: ListView(
@@ -308,7 +308,7 @@ class ArticlesFRState extends State<ArticlesFR> {
                                                               .styleFrom(
                                                             fixedSize:
                                                                 const Size(
-                                                                    170, 220),
+                                                                    110, 160),
                                                             backgroundColor:
                                                                 const Color
                                                                     .fromARGB(
@@ -450,7 +450,7 @@ class ArticlesFRState extends State<ArticlesFR> {
                                                       Container(
                                                         margin: const EdgeInsets
                                                             .only(top: 2),
-                                                        width: 150,
+                                                        width: 130,
                                                         height: 30,
                                                         decoration:
                                                             BoxDecoration(
@@ -485,7 +485,7 @@ class ArticlesFRState extends State<ArticlesFR> {
                                                                 style: GoogleFonts
                                                                     .quicksand(
                                                                         fontSize:
-                                                                            14,
+                                                                            12,
                                                                         color: const Color
                                                                             .fromARGB(
                                                                             255,
